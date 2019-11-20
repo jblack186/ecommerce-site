@@ -1,0 +1,36 @@
+{
+  "name": "ecommerce-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jblack186/ecommerce-site.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jblack186/ecommerce-site/issues"
+  },
+  "homepage": "https://github.com/jblack186/ecommerce-site#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "cross-env": "^6.0.3",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-router": "0.0.1",
+    "helmet": "^3.21.2",
+    "install": "^0.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.20.1",
+    "nodemon": "^1.19.4",
+    "sqlite3": "^4.1.0",
+    "supertest": "^4.0.2"
+  }
+}
