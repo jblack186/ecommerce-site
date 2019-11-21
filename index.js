@@ -1,11 +1,13 @@
-require('dotenv').config();
+  
+var PORT = process.env.PORT || 5000;
+var express = require('express');
+var app = express();
 
-const server = require('./server.js');
+var http = require('http');
+var server = http.Server(app);
 
-server.use(express.static('client'))
+app.use(express.static('client'));
 
-const PORT = process.env.PORT || 8000;
-server.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+server.listen(PORT, function() {
+  console.log('Chat server running');
 });
-
