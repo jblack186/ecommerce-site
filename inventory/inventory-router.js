@@ -3,8 +3,8 @@ const Inventory = require('./inventory-model.js');
 
 router.get('/', (req, res) => {
     Inventory.find()
-    .then(inventory => {
-      res.status(200).json(inventory);
+    .then(polos => {
+      res.status(200).json(polos);
     })
     .catch(err => {
         console.log(err);

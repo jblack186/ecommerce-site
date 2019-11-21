@@ -5,6 +5,5 @@ module.exports = {
 }
 
 function find() {
-    return db('inventory as i')
-    .join()
+    return db('polos')
 }
