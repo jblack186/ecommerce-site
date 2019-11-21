@@ -12,7 +12,9 @@ server.use(express.json());
 
 server.use('/api/inventory', InventoryRouter);
 
-
+server.get("/", function(req, res) {
+    res.send("Hello")
+})
 
 module.exports = server;
 
