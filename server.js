@@ -12,15 +12,7 @@ server.use(express.json());
 
 server.use('/api/inventory', InventoryRouter);
 
-server.get('/', (req, res) => {
-    Inventory.find()
-    .then(inventory => {
-        res.status(200).json(inventory)
-    })
-    .catch(err =>
-        console.log(err))
 
-})
 
 module.exports = server;
 
