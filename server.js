@@ -12,13 +12,7 @@ server.use(express.json());
 
 server.use('/api/inventory', InventoryRouter);
 
-if (process.env.NODE_ENV === 'production') {
-	server.use(express.static('client/build'));
-}
 
-server.get('*', (request, response) => {
-	response.sendFile(path.join(__dirname, 'client/build', 'index.html'));
-});
 
 module.exports = server;
 
