@@ -1,5 +1,7 @@
 require('dotenv').config();
 
+const express = require('express');
+
 const server = require('./server.js');
 
 server.use(express.static('client'))
