@@ -1,5 +1,7 @@
 
 exports.seed = function(knex) {
+  return knex('polos').truncate()
+  .then(function () {
   // Deletes ALL existing entries
  
       // Inserts seed entries
@@ -17,5 +19,6 @@ exports.seed = function(knex) {
 
 
       ]);
+    })
     };
 
