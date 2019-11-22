@@ -7,7 +7,7 @@ exports.up = function(knex) {
       .notNullable()
       tbl.string('description', 256)
       tbl.integer('price')
-      tbl.string('img', 256)
+      tbl.string('img', 255)
       
 
   })
