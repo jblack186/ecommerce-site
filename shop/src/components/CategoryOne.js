@@ -16,13 +16,24 @@ const CategoryOne = () => {
             })
     }, [])
 
-console.log(polos)
+console.log(polos.img)
 
     return (
         <div>
             <NavBar />
             <div>
-                {polos.leng}
+                {polos.map(item => { 
+                    
+                return <div> <img src={item.img} /> <p>{item.item_name}</p> <p>{item.price}</p> <p>{item.description} </p></div>
+                    
+                 
+                  
+                })}
+                {/* {polos.map(item => {
+                  return <p>{item.item_name}</p>
+                  
+                })} */}
+                
             </div>
 
         </div>
