@@ -15,9 +15,9 @@ server.use(express.json());
 
 server.use('/api/inventory', InventoryRouter);
 
-server.get("/", function(req, res) {
-    res.send("Hello")
-})
+// server.get("/", function(req, res) {
+//     res.send("Hello")
+// })
 
 
 server.get('/', (req, res) => {
