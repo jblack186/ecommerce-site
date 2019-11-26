@@ -8,7 +8,7 @@ exports.up = function(knex) {
       tbl.string('description', 256)
       tbl.integer('price')
       tbl.string('img', 255)
-      tbl.integer('sku')
+      tbl.string('sku', 256)
       
 
   })
@@ -25,4 +25,6 @@ exports.up = function(knex) {
 exports.down = function(knex) {
   return knex.schema
   .dropTableIfExists('polos')
+  .dropTableIfExists('users')
+
 };
