@@ -11,6 +11,14 @@ exports.up = function(knex) {
       
 
   })
+
+  .createTable('users', tbl => {
+    tbl.increments();
+    tbl.string('username', 256)
+      .notNullable()
+    tbl.string('password', 256)
+      .notNullable()
+  })
 };
 
 exports.down = function(knex) {

@@ -16,7 +16,9 @@
     width: 500px;
     display: flex;
     justify-content: space-between;
+    list-style: none;
 }
+
 
 .cart-about {
     width: 100px;
@@ -27,11 +29,19 @@
 }
 
 .brand {
+    list-style: none;
+    color: black;
+    text-decoration: none;
+}
 
+.brand h1:hover {
+    list-style: none;;
+    
 }
 
 .clothes-links {
     font-size: 22px;
+    color: black;
 }
 
 .home-image {
@@ -40,7 +50,12 @@
     
 }
 
-
+.bottom-nav {
+    border-top: solid 1px gray;
+    height: 70px;
+    width: 80%;
+    margin: 0 auto;
+}
 
 
 
