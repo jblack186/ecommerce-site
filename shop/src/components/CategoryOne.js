@@ -6,27 +6,21 @@ import Footer from './Footer';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
-import {useParams} from 'react-router';
+import {useParams, useLocation, useHistory} from 'react-router';
 
 
 const CategoryOne = (props) => {
-    const [polos, setPolos] = useState([])
-    useEffect(() => {
-        axios.get("https://shirt-store123.herokuapp.com/api/inventory")
-            .then(res => {
-                setPolos(res.data)
-                console.log(res)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }, [])
+    const location = useLocation();
+    const history = useHistory();
+    
+  
+    console.log(location)
+   
+    function click(){
+        history.push('/');
+    }
 
-const id = polos.filter(id => {
-   return id = id
-})
-console.log(id)
-
+console.log(props.polo)
     return (
 
         <div>
@@ -48,8 +42,8 @@ console.log(id)
                 </div>
                 <div className='item-container'>
 
-                    {polos.map(item => {                
-                    return <Link exact to={`/productpage/${item.id}`}><div><img src={item.img} className='item-pic' alt='item-image'/> <div  className='item'><p>{item.item_name}</p> <p>${item.price}</p> <p>{item.description} </p> <button>Add to Cart <h2><FontAwesomeIcon className='icon' icon={faCartArrowDown} /></h2> </button></div></div></Link>                          
+                    {props.polo.map(item => {                
+                    return <div><Link exact to={`/productpage/${item.id}`}><img src={item.img} className='item-pic' alt='item-image'/> <div  className='item'><p>{item.item_name}</p> <p>${item.price}</p> <p>{item.description} </p> </div></Link><button onClick={click}>Add to Cart <h2><FontAwesomeIcon className='icon' icon={faCartArrowDown} /></h2></button></div>                    
                     })}
                 
                     

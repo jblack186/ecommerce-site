@@ -8,6 +8,7 @@ exports.up = function(knex) {
       tbl.string('description', 256)
       tbl.integer('price')
       tbl.string('img', 255)
+      tbl.integer('sku')
       
 
   })
