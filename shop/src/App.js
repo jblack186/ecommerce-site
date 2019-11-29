@@ -7,10 +7,14 @@ import HomeImages from './components/HomeImages';
 import Footer from './components/Footer';
 import CategoryOne from './components/CategoryOne';
 import ProductPage from './components/ProductPage';
+import Basket from './components/Basket';
 import axios from 'axios';
+
 
 const App = () => {
   const [polos, setPolos] = useState([])
+  const [basket, setBasket] = useState([])
+
     useEffect(() => {
         axios.get("https://shirt-store123.herokuapp.com/api/inventory")
             .then(res => {
@@ -24,10 +28,11 @@ const App = () => {
 
   return (
     <div className="App">
+          <Basket cartItems={basket} />
+
      <Route exact path='/' render= {(props) => { return <HomeImages  {...props} />}} />
      <Route exact path='/categoryone' render= {(props) => { return <CategoryOne {...props} polo={polos} />}} />
-     <Route exact path='/productpage/:id' render= {(props) => { return <ProductPage  {...props} polo={polos} />}} />
-
+     <Route exact path='/productpage/:id' render= {(props) => { return <ProductPage  {...props} polo={polos} cartItems={basket} />}} />
     </div>
   );
 }
