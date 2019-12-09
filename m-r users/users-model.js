@@ -8,8 +8,8 @@ module.exports = {
 
 function findAll() {
     return db('users as u')
-    .join('cart as c', 'c.user_id', 'u.id')
-    .select('*')
+    // .join('cart as c', 'c.user_id', 'u.id')
+    // .select('*')
 
 }
 
