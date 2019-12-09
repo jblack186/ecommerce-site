@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './HomeImages.css';
 import NavBar from './NavBar';
 import Footer from './Footer';
@@ -8,10 +8,12 @@ import Dale from '../img/dale-alejandro-RYrMPoxzaZ0-unsplash.jpg';
 import Adrian from '../img/sajiam-n8bZJpA0hig-unsplash.jpg';
 
 
-const HomeImages = () => {
-
+const HomeImages = (props) => {
+    const [message] = useState(localStorage.getItem('user'))
+console.log(props)
     return (
         <div>
+            <h5>{message}</h5>
             <NavBar />
             <div className='home-images'>
                 <div className='image-box'>

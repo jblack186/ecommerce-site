@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Basket = (props) => {
     const [items, setItems] = useState([])
 
-    console.log('cart', props.cartItems)
 
     function addCartItem(item) {
         setItems(item)
@@ -17,6 +17,8 @@ const Basket = (props) => {
     function totalPrice(items) {
         return items.reduce((acc, item) => acc + item.quantity * item.price, 0.0)
     }
+
+   
     
     return (
         <div>

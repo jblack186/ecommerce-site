@@ -22,7 +22,7 @@ const App = () => {
         axios.get("https://shirt-store123.herokuapp.com/api/inventory")
             .then(res => {
                 setPolos(res.data)
-                console.log(res)
+                // console.log(res)
             })
             .catch(err => {
                 console.log(err)
@@ -33,7 +33,7 @@ const App = () => {
     <div className="App">
       <Route exact path='/register' render= {(props) => { return <Register  {...props} />}} />
       <Route exact path='/login' render= {(props) => { return <Login  {...props} />}} />
-      <Basket cartItems={basket} />
+      <Basket cartItems={Basket} />
       <Route exact path='/Basket2' render= {(props) => { return <Basket2  {...props} />}} />
      <Route exact path='/' render= {(props) => { return <HomeImages  {...props} />}} />
      <Route exact path='/categoryone' render= {(props) => { return <CategoryOne {...props} polo={polos} />}} />

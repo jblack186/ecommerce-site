@@ -22,14 +22,13 @@ class Login extends React.Component {
     login = (e) => {
         
         e.preventDefault();
-        axios.post(`https://vacation-planner-bw.herokuapp.com/api/users/login`, this.state)
+        axios.post(`https://shirt-store123.herokuapp.com/api/login`, this.state)
         .then(response => {
             
         localStorage.setItem('token', response.data.token)
         localStorage.setItem('user', response.data.message)
 localStorage.setItem('id', response.data.user_id)
-console.log(response)
-this.props.history.push('/vacations')
+this.props.history.push('/')
 })
         .catch(error => {
             console.log(error)
@@ -44,6 +43,7 @@ this.props.history.push('/vacations')
         console.log(this.props)
         return (
             <div>
+                
                 <Dropdown className='form-dropdown'>
                         <Dropdown.Toggle variant="success" id="dropdown-basic">
                             Login
