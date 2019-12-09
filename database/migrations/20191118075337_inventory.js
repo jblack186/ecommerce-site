@@ -1,30 +1,18 @@
 
 exports.up = function(knex) {
   return knex.schema
-  .createTable('polos', tbl => {
-      tbl.increments();
-      tbl.string('item_name', 256)
-      .notNullable()
-      tbl.string('description', 256)
-      tbl.integer('price')
-      tbl.integer('quantity')
-      tbl.string('img', 255)
-      tbl.string('sku', 256)
-      tbl.integer('cart_id')
-        .references('id')
-        .inTable('cart')
-        .onDelete('CASCADE')
-        .onUpdate('CASCADE')
-
-      
-
+  .createTable('users', tbl => {
+      tbl.increments()
+      tbl.string('username', 125).notNullable()
+    tbl.string('password', 125).notNullable()
   })
-
-
 };
 
 exports.down = function(knex) {
-  return knex.schema
-  .dropTableIfExists('polos')
+    return knex.schema
+    .dropTableIfExists('users')
 
 };
+
+
+

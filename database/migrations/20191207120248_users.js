@@ -1,15 +1,21 @@
-
 exports.up = function(knex) {
   return knex.schema
-  .createTable('users', tbl => {
+  .createTable('cart', tbl => {
       tbl.increments()
-      tbl.string('username', 125).notNullable()
-    tbl.string('password', 125).notNullable()
-  })
-};
+      tbl.integer('user_id')
+      .references('id')
+      .inTable('users')
+      .onDelete('CASCADE')
+      .onUpdate('CASCADE')
 
+      
+
+})
+
+
+};
+  
 exports.down = function(knex) {
     return knex.schema
-    .dropTableIfExists('users')
-
+    .dropTableIfExists('cart')
 };
