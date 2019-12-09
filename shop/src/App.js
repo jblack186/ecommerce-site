@@ -8,6 +8,9 @@ import Footer from './components/Footer';
 import CategoryOne from './components/CategoryOne';
 import ProductPage from './components/ProductPage';
 import Basket from './components/Basket';
+import Basket2 from './components/Basket2';
+import Register from './components/Register';
+import Login from './components/Login';
 import axios from 'axios';
 
 
@@ -28,8 +31,10 @@ const App = () => {
 
   return (
     <div className="App">
-          <Basket cartItems={basket} />
-
+      <Route exact path='/register' render= {(props) => { return <Register  {...props} />}} />
+      <Route exact path='/login' render= {(props) => { return <Login  {...props} />}} />
+      <Basket cartItems={basket} />
+      <Route exact path='/Basket2' render= {(props) => { return <Basket2  {...props} />}} />
      <Route exact path='/' render= {(props) => { return <HomeImages  {...props} />}} />
      <Route exact path='/categoryone' render= {(props) => { return <CategoryOne {...props} polo={polos} />}} />
      <Route exact path='/productpage/:id' render= {(props) => { return <ProductPage  {...props} polo={polos} cartItems={basket} />}} />
