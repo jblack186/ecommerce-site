@@ -10,6 +10,7 @@ exports.up = function(knex) {
       tbl.string('img', 255)
       tbl.string('sku', 256)
       tbl.integer('cart_id')
+        .notNullable()
         .references('id')
         .inTable('cart')
         .onDelete('CASCADE')
