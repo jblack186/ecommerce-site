@@ -51,7 +51,7 @@ console.log(props.polo)
                 <div className='item-container'>
 
                     {props.polo.map(item => {                
-                    return <div><Link exact to={`/productpage/${item.id}`}><img src={item.img} className='item-pic' alt='item-image'/> <div  className='item'><p>{item.item_name}</p> <p>{formatPrice(item.price)}</p> <p>{item.description} </p> </div></Link><button onClick={click}>Add to Cart <h2><FontAwesomeIcon className='icon' icon={faCartArrowDown} /></h2></button></div>                    
+                return <div><Link exact to={`/productpage/${item.id}`}><img src={item.img} className='item-pic' alt='item-image'/> <div  className='item'><p>{item.item_name}</p> <p>{formatPrice(item.price)}</p> <p>{item.description} </p> </div></Link><button onClick={click}>Add to Cart <h2><FontAwesomeIcon className='icon' icon={faCartArrowDown} /></h2></button></div>                    
                     })}
                 
                 <tr>
