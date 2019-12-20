@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs');
 const generateToken = require('../config/token')
 const Users = require('../m-r users/users-model')
 
-
 router.post('/', (req, res) => {
   let {username, password} = req.body
 
