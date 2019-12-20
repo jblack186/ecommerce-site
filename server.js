@@ -50,7 +50,7 @@ server.use(session({
 
 server.use('/api/register', Register);
 server.use('/api/login', Login);
-server.use('api/auth, authRouter');
+server.use('api/auth', authRouter);
 server.use('/api/inventory', InventoryRouter);
 server.use('/api/users', UsersRouter);
 server.use('/api/cart', CartRouter);
