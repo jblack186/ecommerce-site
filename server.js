@@ -20,7 +20,7 @@ const dbEnv = process.env.DB_ENV || 'development';
 
 const sessionConfig = {
     //session storage options
-    name: 'Cocoabutter',
+    name: 'cocoabutter',
     secret: 'dont bother me',
     saveUninitialized: true, // has implications with GDPR laws
     resave: false,
@@ -42,10 +42,10 @@ const sessionConfig = {
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
-// server.use(session({
-//     secret: 'secret-key',
-//     resave: false,
-// }));
+server.use(session({
+    secret: 'secret-key',
+    resave: false,
+}));
 
 server.use('/api/register', Register);
 server.use('/api/login', Login);
