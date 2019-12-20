@@ -28,7 +28,7 @@ const sessionConfig = {
     //cookie options
     knex, // imported from dbCOnfig.js
     tablename: 'sessions',
-    sidfieldname: "id",
+    sidfieldname: "sid",
     createTable: true,
     clearInterval: 1000 * 60 * 10, //defaults to 6000 milliseconds
     cookie: {
