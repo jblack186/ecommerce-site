@@ -15,12 +15,13 @@ router.post('/', (req, res) => {
   } else {
     Users.addUser(user)
       .then(newUser => {
-        const token = generateToken(newUser)
+        // const token = generateToken(newUser)
+        // req.session.user = newUser
 
         res.status(200).json({  
           message: `Welcome ${newUser.firstname}. You have been successfully registered!`,
           id: newUser.id,
-          token: token
+          // token: token
         })
       })
       .catch(err => {

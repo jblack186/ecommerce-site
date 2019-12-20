@@ -8,6 +8,11 @@ module.exports = {
 
 function findAll() {
     return db('cart as c')
+    .join('users as u', 'u.id', 'c.user_id')
+    .join('flannel as f', 'f.cart_id', 'c.id')
+    // .join('polos as p', 'p.cart_id', 'c.id')
+    
+   
     
 
 }

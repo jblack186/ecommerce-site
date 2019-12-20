@@ -13,12 +13,13 @@ router.post('/', (req, res) => {
     Users.findBy({username}).first()
     .then(user => {
       if(user && bcrypt.compareSync(password, user.password)) {
-        const token = generateToken(user)
-
+        // const token = generateToken(user)
+        req.session.user = user
         res.status(200).json({
           message: `Welcome ${user.username}!`,
           id: user.id, 
-          token: token
+          password: user.password
+          // token: token
         })
 
       } else {
@@ -26,6 +27,7 @@ router.post('/', (req, res) => {
       }
     })
     .catch(err => {
+      console.log(err)
       res.status(500) 
       .json({ message: "Sorry, but something went wrong while logging in" });
     })

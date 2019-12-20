@@ -1,46 +1,42 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { Dropdown, Form, Button } from 'react-bootstrap';
 import { withRouter } from 'react-router';
 
-class Login extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            username: '',
-            password: '',
-        }
-        console.log(this.state)
-       
-    }
+const Login = () => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const history = useHistory();
 
-    changeHandler = (e) => {
+    const changeUsername = (e) => {
         e.preventDefault();
-        this.setState({[e.target.name]: e.target.value})
+        setUsername(e.target.value)
+
     }
 
-    login = (e) => {
+    const changePassword = (e) => {
+        e.preventDefault();
+        setPassword(e.target.value)
+
+    }
+
+    const login = (e) => {
         
         e.preventDefault();
-        axios.post(`https://shirt-store123.herokuapp.com/api/login`, this.state)
+        axios.post(`https://shirt-store123.herokuapp.com/api/login`, {'username': username, 'password': password})
         .then(response => {
             
         localStorage.setItem('token', response.data.token)
         localStorage.setItem('user', response.data.message)
-localStorage.setItem('id', response.data.user_id)
-this.props.history.push('/')
+// localStorage.setItem('id', response.data.user_id)
+        history.push('/')
 })
         .catch(error => {
             console.log(error)
         })
       
     }
-    
-
-    
-
-    render() {
-        console.log(this.props)
         return (
             <div>
                 
@@ -50,10 +46,10 @@ this.props.history.push('/')
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
-                        <form onSubmit={this.login} className='form'>
+                        <form onSubmit={login} className='form'>
                             <Form.Group controlId="formBasicEmail">
                                 <Form.Label className='form-text'>Email address</Form.Label>
-                                <Form.Control onChange={this.changeHandler} name='username' type="username" placeholder="Enter username" />
+                                <Form.Control onChange={changeUsername} name='username' type="username" placeholder="Enter username" />
                                 <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
                                 </Form.Text>
@@ -61,7 +57,7 @@ this.props.history.push('/')
 
                             <Form.Group controlId="formBasicPassword">
                                 <Form.Label className='form-text'>Password</Form.Label>
-                                <Form.Control onChange={this.changeHandler} name='password' type="username" type="password" placeholder="Password" />
+                                <Form.Control onChange={changePassword} name='password' type="username" type="password" placeholder="Password" />
                             </Form.Group>
                             <Form.Group controlId="formBasicCheckbox">
                                 <Form.Check className='form-text' type="checkbox" label="Check me out" />
@@ -78,6 +74,6 @@ this.props.history.push('/')
             </div>
         )
     }
-}
+
 
 export default withRouter(Login);
