@@ -11,7 +11,7 @@ const KnexSessionStore = require('connect-session-knex')(session); // to store s
 
 
 
-const knex = require('./database/dbConfig.js')
+const knex = require('./database/dbConfig.js');
 const server = express();
 const dbEnv = process.env.DB_ENV || 'development';
 
@@ -42,10 +42,10 @@ const sessionConfig = {
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
-server.use(session({
-    secret: 'secret-key',
-    resave: false,
-}));
+// server.use(session({
+//     secret: 'secret-key',
+//     resave: false,
+// }));
 
 server.use('/api/register', Register);
 server.use('/api/login', Login);

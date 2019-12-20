@@ -18,7 +18,6 @@ router.post('/', (req, res) => {
           message: `Welcome ${user.username}!`,
           id: user.id, 
           password: user.password,
-          cookies: ''
           // token: token
         })
 
