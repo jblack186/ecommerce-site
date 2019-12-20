@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
    } else {
       res.status(401).json({message: 'Invalid Credentials'});
    }
-}) //go to using sessions and cookies web24 luiz training kit 1:11:00
+} //go to using sessions and cookies web24 luiz  1:11:00
 
 
 
