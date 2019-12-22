@@ -43,10 +43,7 @@ const sessionConfig = {
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
-server.use(session({
-    secret: 'secret-key',
-    resave: false,
-}));
+server.use(session(sessionConfig));
 
 server.use('/api/register', Register);
 server.use('/api/login', Login);
