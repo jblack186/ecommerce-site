@@ -2,7 +2,7 @@ const secrets = require('../config/secrets.js');
 // const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
-   if (req.session) {
+   if (req.session && req.session.user) {
       next();
    } else {
       res.status(401).json({message: 'Invalid Credentials'});
