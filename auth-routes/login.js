@@ -16,10 +16,11 @@ router.post('/', (req, res) => {
         req.session.user = user
 
         res.status(200).json({
-          message: `Welcome ${user.username}!`,
-          
+          message: `Welcomeg ${user.username}!`,
+
           // token: token
         })
+        
 
       } else {
         res.status(401).json({message: 'Invalid credentials'})

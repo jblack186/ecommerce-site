@@ -9,6 +9,7 @@ const Login = require('./auth-routes/login.js');
 const authRouter = require('./auth/authenticate-middleware.js');
 const session = require('express-session'); //install express session
 const KnexSessionStore = require('connect-session-knex')(session); // to store sessions in database
+const db = require('./database/dbConfig.js');
 
 
 
@@ -32,7 +33,7 @@ const sessionConfig = {
     resave: false, // save sessions even when they are not changed
     store: new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
     //cookie options
-    knex, // imported from dbCOnfig.js
+    knex: db, // imported from dbCOnfig.js
     tablename: 'sessions',
     sidfieldname: "sid",
     createTable: true,
