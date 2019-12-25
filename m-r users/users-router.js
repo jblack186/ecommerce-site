@@ -33,9 +33,9 @@ router.get('/', (req, res) => {
 
 router.get('/users', authRouter, (req, res) => {
   const username = req.body
-  Users.findBy(username)
+  const user = Users.findBy(username)
   .then(user => {
-    res.status(200).json(user.id)
+    res.status(200).json(user)
   })
   .catch(err => {
     console.log(err)
