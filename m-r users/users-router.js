@@ -25,6 +25,7 @@ router.get('/', (req, res) => {
   res.status(200).json(users);
   console.log(res)
 })
+
 .catch(err => {
     console.log(err);
     res.send(err)
