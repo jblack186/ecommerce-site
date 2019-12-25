@@ -27,7 +27,7 @@ const sessionConfig = {
     cookie: {
         maxAge: 1000 * 600 * 10,
         secure: process.env.NODE_ENV == 'development' ? false : true, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
-        httpOnly: false // if true JS cannot access the cookie
+        httpOnly: true // if true JS cannot access the cookie
     },
     saveUninitialized: true, // has implications with GDPR laws
     resave: false, // save sessions even when they are not changed
