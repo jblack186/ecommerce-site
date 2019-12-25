@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
 })
 })
 
-router.get('/users', authRouter, (req, res) => {
+router.get('/users', (req, res) => {
   const username = req.body
   const user = Users.findBy(username)
   .then(user => {
