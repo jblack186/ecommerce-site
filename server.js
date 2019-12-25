@@ -10,7 +10,7 @@ const authRouter = require('./auth/authenticate-middleware.js');
 const session = require('express-session'); //install express session
 const KnexSessionStore = require('connect-session-knex')(session); // to store sessions in database
 const db = require('./database/dbConfig.js');
-
+const User = require('./m-r users/users-model.js');
 
 
 const knex = require('./database/dbConfig.js');
@@ -56,6 +56,7 @@ server.use('/api/cart', CartRouter);
 
 
 server.get("/", authRouter, function(req, res) {
+    return db('users')
     res.send("Hello")
     // res.cookie(sessionConfig)
 })

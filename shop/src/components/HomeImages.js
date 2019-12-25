@@ -6,13 +6,23 @@ import Anomaly from '../img/anomaly-WWesmHEgXDs-unsplash.jpg';
 import Banter from '../img/banter-snaps-eLOwnWvK9Fk-unsplash (1).jpg';
 import Dale from '../img/dale-alejandro-RYrMPoxzaZ0-unsplash.jpg';
 import Adrian from '../img/sajiam-n8bZJpA0hig-unsplash.jpg';
-
+import axios from 'axios';
 
 const HomeImages = (props) => {
     const [message] = useState(localStorage.getItem('user'))
-console.log('cookie', document.cookie)
+console.log('props', localStorage.getItem('user'))
+
+const test = e => {
+    e.preventDefault();
+axios.get('https://shirt-store123.herokuapp.com/api/users', {username: localStorage.getItem('user')} )
+.then(res => {
+    console.log(res)
+})
+}
+
     return (
         <div>
+            <button onClick={test}>test</button>
             <h5>{message}</h5>
             <NavBar />
             <div className='home-images'>

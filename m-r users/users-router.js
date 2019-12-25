@@ -1,5 +1,7 @@
 const router = require('express').Router();
 const Users = require('./users-model.js');
+const authRouter = require('../auth/authenticate-middleware.js');
+
 
 require('dotenv').config()
 console.log(process.env)
@@ -27,6 +29,17 @@ router.get('/', (req, res) => {
     console.log(err);
     res.send(err)
 })
+})
+
+router.get('/users', authRouter, (req, res) => {
+  const username = req.body
+  Users.findBy(username)
+  .then(user => {
+    res.status(200).json(user.id)
+  })
+  .catch(err => {
+    console.log(err)
+  })
 })
 
 
