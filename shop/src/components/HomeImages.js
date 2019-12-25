@@ -14,7 +14,7 @@ console.log('props', localStorage.getItem('user'))
 
 const test = e => {
     e.preventDefault();
-axios.get('https://shirt-store123.herokuapp.com/api/users', {username: localStorage.getItem('user')} )
+axios.get('https://shirt-store123.herokuapp.com/api/users/users')
 .then(res => {
     console.log(res)
 })
