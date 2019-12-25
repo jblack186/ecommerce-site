@@ -15,13 +15,15 @@ function findAll() {
 
 function findBy(filter) {
     return db('users').where(filter)
+ 
 }
 
 function addUser(user) {
+    const u = user
   return db('users')
     .insert(user)
     .then(user => {
-        return user
+        return u
     })
 }
 

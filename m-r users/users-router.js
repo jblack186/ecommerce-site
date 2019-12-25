@@ -19,13 +19,24 @@ router.get('/', (req, res) => {
 
   router.post('/', async (req, res) => {
     const user = req.body
-    try {
-      const newUser = await Users.addUser(user)
-      res.status(201).json(user)
-    }
-    catch(error) {
-      res.status(500).json(error)
-    }
-  })
+ .then(users => {
+  res.status(200).json(users);
+  console.log(res)
+})
+.catch(err => {
+    console.log(err);
+    res.send(err)
+})
+})
+
+
+    // try {
+    //   const newUser = await Users.addUser(user)
+    //   res.status(201).json(user)
+    // }
+    // catch(error) {
+    //   res.status(500).json(error)
+    // }
+  
 
   module.exports = router;
