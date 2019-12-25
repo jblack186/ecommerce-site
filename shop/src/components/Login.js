@@ -38,6 +38,8 @@ const Login = () => {
         })
       
     }
+    console.log('cookie', document.cookie)
+
         return (
             <div>
                 

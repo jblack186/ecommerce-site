@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
-const generateToken = require('../config/token')
-const Users = require('../m-r users/users-model')
+const generateToken = require('../config/token.js');
+const Users = require('../m-r users/users-model.js');
+const auth = require('../auth/authenticate-middleware.js');
 
-router.post('/', (req, res) => {
+router.post('/', auth, (req, res) => {
   let {username, password} = req.body
 
   if(!req.body.username || !req.body.password) {
@@ -15,9 +16,9 @@ router.post('/', (req, res) => {
         // const token = generateToken(user)
         req.session.user = user
         res.setHeader("Set-Cookie", user.id)
-        res.cookie('e', user.id)
         res.status(200).json({
           message: `Welcomeg ${user.username}!`,
+          id: user.id
           
 
           // token: token

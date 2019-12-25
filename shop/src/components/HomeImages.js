@@ -10,7 +10,7 @@ import Adrian from '../img/sajiam-n8bZJpA0hig-unsplash.jpg';
 
 const HomeImages = (props) => {
     const [message] = useState(localStorage.getItem('user'))
-console.log(props)
+console.log('cookie', document.cookie)
     return (
         <div>
             <h5>{message}</h5>

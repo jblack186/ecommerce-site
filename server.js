@@ -55,7 +55,7 @@ server.use('/api/users', UsersRouter);
 server.use('/api/cart', CartRouter);
 
 
-server.get("/", function(req, res) {
+server.get("/", authRouter, function(req, res) {
     res.send("Hello")
     // res.cookie(sessionConfig)
 })
