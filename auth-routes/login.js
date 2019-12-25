@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
         
 
       } else {
-        res.status(401).json({message: 'Invalid credentials'})
+        res.status(401).json({message: 'Invalid credential'})
       }
     })
     .catch(err => {
