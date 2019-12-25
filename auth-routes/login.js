@@ -4,7 +4,7 @@ const generateToken = require('../config/token.js');
 const Users = require('../m-r users/users-model.js');
 const auth = require('../auth/authenticate-middleware.js');
 
-router.post('/', auth, (req, res) => {
+router.post('/', (req, res) => {
   let {username, password} = req.body
 
   if(!req.body.username || !req.body.password) {
