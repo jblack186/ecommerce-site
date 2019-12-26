@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
         // const token = generateToken(user)
         req.session.user = user
         res.setHeader("Set-Cookie", req.session)
-        
+      
         res.status(200).json({
           message: user.username,
           id: user.id,

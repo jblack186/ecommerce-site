@@ -20,32 +20,60 @@ const dbEnv = process.env.DB_ENV || 'development';
 // require('dotenv').config()
 // console.log(process.env)
 
-const sessionConfig = {
-    //session storage options
-    name: 'cocoabutter',
-    secret: process.env.COOKIE_SECRET || 'dont bother me',
-    cookie: {
-        maxAge: 1000 * 600 * 10,
-        secure: process.env.NODE_ENV == 'development' ? false : true, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
-        httpOnly: true // if true JS cannot access the cookie
-    },
-    saveUninitialized: true, // has implications with GDPR laws
-    resave: false, // save sessions even when they are not changed
-    store: new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
-    //cookie options
-    knex: db, // imported from dbCOnfig.js
-    tablename: 'sessions',
-    sidfieldname: "sid",
-    createTable: true,
-    clearInterval: 1000 * 60 * 10 //defaults to 6000 milliseconds
-}),
+const Knex = require("knex");
+const knexs = Knex({
+  client: "pg",
+  connection: {
+    host: "127.0.0.1",
+    user: "postgres",
+    password: "",
+    database: "jam_ci_test"
+  }
+});
+
+const store = new KnexSessionStore({
+    knex: knex,
+    tablename: "sessions" // optional. Defaults to 'sessions'
+  });
+
+  server.use(
+    session({
+      secret: "keyboard cat",
+      cookie: {
+        maxAge: 10000 // ten seconds, for testing
+      },
+      store: store
+    })
+  );
+// const sessionConfig = {
+//     //session storage options
+//     name: 'cocoabutter',
+//     secret: process.env.COOKIE_SECRET || 'dont bother me',
+//     cookie: {
+//         maxAge: 1000 * 600 * 10,
+//         store: store,
+//         secure: process.env.NODE_ENV == 'development' ? false : true, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
+//         httpOnly: true // if true JS cannot access the cookie
+//     },
+//     saveUninitialized: true, // has implications with GDPR laws
+//     resave: false, // save sessions even when they are not changed
+//     store: new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
+//     //cookie options
+//     knex: knexs, // imported from dbCOnfig.js
+//     tablename: 'sessions',
+//     sidfieldname: "sid",
+//     createTable: true,
+//     clearInterval: 1000 * 60 * 10 //defaults to 6000 milliseconds
+// }),
     
-}
+// }
+
+
 
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
-server.use(session(sessionConfig));
+// server.use(session(sessionConfig));
 
 server.use('/api/register', Register);
 server.use('/api/login', Login);
