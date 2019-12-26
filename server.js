@@ -23,7 +23,12 @@ const dbEnv = process.env.DB_ENV || 'development';
 const Knex = require("knex");
 const knexs = Knex({
   client: "pg",
-  connection: process.env.DATABASE_URL
+  connection: {
+    host: "shirt-store123.herokuapp.com",
+    user: "blackwellj1040@gmail.com",
+    password: "Baoirghnoare142!",
+    database: "process.env.DATABASE_URL"
+  }
 });
 
 const store = new KnexSessionStore({

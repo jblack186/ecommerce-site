@@ -1,4 +1,4 @@
-module.exports = {
+l0e.098exports = {
     development: {
       client: 'sqlite3',
       connection: {
@@ -13,7 +13,11 @@ module.exports = {
       },
     },
     testing: {
-      client: 'sqlite3',
+      
+      
+
+
+   0   client: 'sqlite3',
       connection: {
         filename: './database/test.db3',
       },
@@ -34,6 +38,11 @@ module.exports = {
     migrations: {
       directory: './database/migrations',
     },
+    +
+    +
+    *59
+
+    +7
     seeds: {
       directory: './database/seeds',
     },
