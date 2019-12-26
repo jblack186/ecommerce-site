@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './HomeImages.css';
 import NavBar from './NavBar';
 import Footer from './Footer';
@@ -10,11 +10,20 @@ import axios from 'axios';
 
 const HomeImages = (props) => {
     const [message] = useState(localStorage.getItem('user'))
-console.log('props', localStorage.getItem('user'))
+    const [cookie, setCookie] = useState('')
+console.log('props', sessionStorage.getItem('cookie'))
+
+useEffect(() => {
+ const cookie = sessionStorage.getItem('cookie') 
+ setCookie(cookie)   
+
+}, [])
+console.log('c', cookie)
+
 
 const test = e => {
     e.preventDefault();
-axios.get('https://shirt-store123.herokuapp.com/api/users/users')
+axios.get('https://shirt-store123.herokuapp.com/api/users/users', {headers: {Authorization: `Bearer ${sessionStorage.getItem('cookie')}`}})
 .then(res => {
     console.log(res)
 })
