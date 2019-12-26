@@ -21,18 +21,18 @@ const dbEnv = process.env.DB_ENV || 'development';
 // console.log(process.env)
 
 const Knex = require("knex");
-// const knexs = Knex({
-//   client: "pg",
-//   connection: {
-//     host: "shirt-store123.herokuapp.com",
-//     user: "blackwellj1040@gmail.com",
-//     password: "Baoirghnoare142!",
-//     database: "process.env.DATABASE_URL"
-//   }
-// });
+const knexs = Knex({
+  client: "pg",
+  connection: {
+    host: "shirt-store123.herokuapp.com",
+    user: "blackwellj1040@gmail.com",
+    password: "Baoirghnoare142!",
+    database: "process.env.DATABASE_URL"
+  }
+});
 
 const store = new KnexSessionStore({
-    // knex: knexs,
+    knex: knexs,
     tablename: "sessions" // optional. Defaults to 'sessions'
   });
 
