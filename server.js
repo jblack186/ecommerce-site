@@ -40,7 +40,7 @@ const store = new KnexSessionStore({
     session({
       secret: "keyboard cat",
       cookie: {
-        maxAge: 10000 // ten seconds, for testing
+        maxAge: 1000 * 60 * 60 // ten seconds, for testing
       },
       store: store
     })
