@@ -26,11 +26,11 @@ const Login = () => {
         e.preventDefault();
         axios.post(`https://shirt-store123.herokuapp.com/api/login`, {'username': username, 'password': password})
         .then(response => {
-            const sess = response.data.session.cookie
+            // const sess = response.data.session.cookie
 
-            console.log('sess', sess)
+        //     console.log('sess', sess)
 
-        sessionStorage.setItem('cookie', sess)
+        // sessionStorage.setItem('cookie', sess)
         localStorage.setItem('user', response.data.message)
 // localStorage.setItem('id', response.data.user_id)
         history.push('/')
