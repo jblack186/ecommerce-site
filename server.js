@@ -23,12 +23,7 @@ const dbEnv = process.env.DB_ENV || 'development';
 const Knex = require("knex");
 const knexs = Knex({
   client: "pg",
-  connection: {
-    host: "127.0.0.1",
-    user: "postgres",
-    password: "",
-    database: "jam_ci_test"
-  }
+  connection: process.env.DATABASE_URL
 });
 
 const store = new KnexSessionStore({
