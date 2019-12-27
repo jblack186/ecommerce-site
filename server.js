@@ -32,6 +32,7 @@ const knexs = Knex({
   pool: {
     max: 500,
     min: 2,
+    propagateCreateError: false 
   }
 });
 
