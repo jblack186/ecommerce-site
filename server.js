@@ -30,9 +30,9 @@ const knexs = Knex({
     database: "process.env.DATABASE_URL"
   },
   pool: {
-    max: 500,
+    max: 50,
     min: 2,
-    propagateCreateError: false 
+    propagateCreateError: true 
   }
 });
 
