@@ -21,7 +21,8 @@ const dbEnv = process.env.DB_ENV || 'development';
 // console.log(process.env)
 
 server.use(cors({
-    origin: '*',
+    method: ['POST', 'GET'],
+    origin: "http://localhost:3000",
   }));
 
 const Knex = require("knex");
