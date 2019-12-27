@@ -13,7 +13,7 @@ const db = require('./database/dbConfig.js');
 const User = require('./m-r users/users-model.js');
 
 
-const knex = require('./database/dbConfig.js');
+// const knex = require('./database/dbConfig.js');
 const server = express();
 const dbEnv = process.env.DB_ENV || 'development';
 
@@ -21,7 +21,7 @@ const dbEnv = process.env.DB_ENV || 'development';
 // console.log(process.env)
 
 const Knex = require("knex");
-const knexs = Knex({
+const knex = Knex({
   client: "pg",
   connection: {
     host: "shirt-store123.herokuapp.com",
@@ -38,7 +38,7 @@ const knexs = Knex({
 });
 
 const store = new KnexSessionStore({
-    knex: knexs,
+    knex: knex,
     tablename: "sessions" // optional. Defaults to 'sessions'
   });
 
