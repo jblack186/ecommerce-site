@@ -30,11 +30,11 @@ const knex = Knex({
     database: process.env.DATABASE_URL
   },
   pool: {
-    max: 10,
-    min: 2,
+    max: 50,
+    min: 0,
     propagateCreateError: true 
   },
-  acquireConnectionTimeout: 5868000 
+  acquireConnectionTimeout: 1000 
 
 });
 
@@ -52,35 +52,35 @@ const store = new KnexSessionStore({
       store: store
     })
   );
-// const sessionConfig = {
-//     //session storage options
-//     name: 'cocoabutter',
-//     secret: process.env.COOKIE_SECRET || 'dont bother me',
-//     cookie: {
-//         maxAge: 1000 * 600 * 10,
-//         store: store,
-//         secure: process.env.NODE_ENV == 'development' ? false : true, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
-//         httpOnly: true // if true JS cannot access the cookie
-//     },
-//     saveUninitialized: true, // has implications with GDPR laws
-//     resave: false, // save sessions even when they are not changed
-//     store: new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
-//     //cookie options
-//     knex: knexs, // imported from dbCOnfig.js
-//     tablename: 'sessions',
-//     sidfieldname: "sid",
-//     createTable: true,
-//     clearInterval: 1000 * 60 * 10 //defaults to 6000 milliseconds
-// }),
+const sessionConfig = {
+    //session storage options
+    name: 'cocoabutter',
+    secret: process.env.COOKIE_SECRET || 'dont bother me',
+    cookie: {
+        maxAge: 1000 * 600 * 10,
+        store: store,
+        secure: process.env.NODE_ENV == 'development' ? false : true, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
+        httpOnly: true // if true JS cannot access the cookie
+    },
+    saveUninitialized: true, // has implications with GDPR laws
+    resave: false, // save sessions even when they are not changed
+    store: new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
+    //cookie options
+    knex: knexs, // imported from dbCOnfig.js
+    tablename: 'sessions',
+    sidfieldname: "sid",
+    createTable: true,
+    clearInterval: 1000 * 60 * 10 //defaults to 6000 milliseconds
+}),
     
-// }
+}
 
 
 
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
-// server.use(session(sessionConfig));
+server.use(session(sessionConfig));
 
 server.use('/api/register', Register);
 server.use('/api/login', Login);
@@ -89,6 +89,12 @@ server.use('/api/inventory', InventoryRouter);
 server.use('/api/users', UsersRouter);
 server.use('/api/cart', CartRouter);
 
+
+server.use("/", function(req, res, next) {
+    var n = req.session.views || 0;
+    req.session.views = ++n;
+    res.end(n + " views");
+  });
 
 server.get("/", authRouter, function(req, res) {
     return db('users')
