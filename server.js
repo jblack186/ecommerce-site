@@ -25,7 +25,7 @@ const knexs = Knex({
   client: "pg",
   connection: {
     host: "shirt-store123.herokuapp.com",
-    user: "blackwellj1040@gmail.com",
+    user: "blackwellsj1040@gmail.com",
     password: "Baoirghnoare142!",
     database: "process.env.DATABASE_URL"
   },
