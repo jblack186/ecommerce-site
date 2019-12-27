@@ -6,7 +6,7 @@ const cors = require('cors');
 
 
 const cor = router.use(cors({
-  origin: "http://localhost:3000/register",
+  origin: "http://localhost:3000",
   credentials: true
 }));
 
