@@ -66,7 +66,7 @@ const sessionConfig = {
     resave: false, // save sessions even when they are not changed
     store: new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
     //cookie options
-    knex: knexs, // imported from dbCOnfig.js
+    knex: knex, // imported from dbCOnfig.js
     tablename: 'sessions',
     sidfieldname: "sid",
     createTable: true,
