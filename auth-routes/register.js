@@ -5,14 +5,11 @@ const Users = require('../m-r users/users-model.js')
 const cors = require('cors');
 
 
-const cor = router.use(cors({
-  origin: "http://localhost:3000",
-  credentials: true
-}));
+
 
 router.use(cors());
 
-router.post('/', cors(cor), (req, res) => {
+router.post('/', (req, res) => {
   let  user = req.body
 
   const hash = bcrypt.hashSync(user.password, 10)

@@ -20,6 +20,10 @@ const dbEnv = process.env.DB_ENV || 'development';
 // require('dotenv').config()
 // console.log(process.env)
 
+server.use(cors({
+    origin: '*',
+  }));
+
 const Knex = require("knex");
 const knex = Knex({
   client: "pg",
