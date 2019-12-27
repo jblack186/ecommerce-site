@@ -22,7 +22,9 @@ const dbEnv = process.env.DB_ENV || 'development';
 
 server.use(cors({
     method: ['POST', 'GET'],
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "http://localhost:3000/register"],
+
+
   }));
 
 const Knex = require("knex");
