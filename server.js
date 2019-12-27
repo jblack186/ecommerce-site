@@ -33,7 +33,8 @@ const knexs = Knex({
     max: 50,
     min: 2,
     propagateCreateError: true 
-  }
+  },
+  acquireConnectionTimeout: 1000 * 60 * 60
 });
 
 const store = new KnexSessionStore({
