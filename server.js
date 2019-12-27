@@ -76,10 +76,7 @@ const sessionConfig = {
 }
 
 
-server.use(cors({
-    origin: "http://localhost:3000",
-    credentials: true
-  }));
+
 server.use(helmet());
 server.use(express.json());
 server.use(session(sessionConfig));
