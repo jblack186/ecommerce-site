@@ -30,10 +30,9 @@ const knexs = Knex({
     database: "process.env.DATABASE_URL"
   },
   pool: {
-    max: 7,
-    min: 3,
-    acquireTimeout: 60 * 1000
-}
+    max: 500,
+    min: 2,
+  }
 });
 
 const store = new KnexSessionStore({
