@@ -27,7 +27,7 @@ const knex = Knex({
     host: "shirt-store123.herokuapp.com",
     user: "blackwellj1040@gmail.com",
     password: "Baoirghnoare142!",
-    database: "process.env.DATABASE_URL"
+    database: process.env.DATABASE_URL
   },
   pool: {
     max: 10,
