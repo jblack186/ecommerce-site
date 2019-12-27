@@ -28,7 +28,12 @@ const knexs = Knex({
     user: "blackwellj1040@gmail.com",
     password: "Baoirghnoare142!",
     database: "process.env.DATABASE_URL"
-  }
+  },
+  pool: {
+    max: 7,
+    min: 3,
+    acquireTimeout: 60 * 1000
+}
 });
 
 const store = new KnexSessionStore({
