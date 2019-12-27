@@ -6,13 +6,13 @@ const cors = require('cors');
 
 
 const cor = router.use(cors({
-  origin: "http://localhost:3000/api/register",
+  origin: "http://localhost:3000/register",
   credentials: true
 }));
 
 router.use(cors());
 
-router.post('/', cor, (req, res) => {
+router.post('/', cors(cor), (req, res) => {
   let  user = req.body
 
   const hash = bcrypt.hashSync(user.password, 10)
