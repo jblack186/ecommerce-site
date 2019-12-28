@@ -28,7 +28,7 @@ router.post('/', (req, res) => {
         // const token = generateToken(newUser)
         req.session.user = newUser
         // set.session = newUser.username
-        res.status(201).json(newUser, header)
+        res.status(201).json(newUser)
       })
       .catch(err => {
         res.status(500)
