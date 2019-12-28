@@ -22,7 +22,7 @@ const dbEnv = process.env.DB_ENV || 'development';
 
 server.use(cors({
     method: ['POST', 'GET'],
-    origin: ['*'],
+    origin: ['http://localhost:3000'],
 
   }));
 

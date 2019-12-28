@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
   } else {
     Users.addUser(user)
       .then(newUser => {
-      res.setHeader('Access-Control-Allow-Origin', 'https://shirt-store123.herokuapp.com/api/register');
+      res.setHeader('Access-Control-Allow-Origin', '*');
         // const token = generateToken(newUser)
         req.session.user = newUser
         // set.session = newUser.username
