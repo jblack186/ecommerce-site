@@ -24,12 +24,11 @@ router.post('/', (req, res) => {
   } else {
     Users.addUser(user)
       .then(newUser => {
-       res.setHeader('Access-Control-Allow-Origin', '*');
+      res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
         // const token = generateToken(newUser)
         req.session.user = newUser
         // set.session = newUser.username
-        res.status(201).json({user: newUser, head: header})
-        res.render('yo')
+        res.status(201).json({newUser})
       })
       .catch(err => {
         res.status(500)
