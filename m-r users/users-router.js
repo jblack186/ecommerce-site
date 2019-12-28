@@ -1,10 +1,12 @@
 const router = require('express').Router();
 const Users = require('./users-model.js');
+const cors = require('cors');
 const authRouter = require('../auth/authenticate-middleware.js');
 
 
 require('dotenv').config()
 console.log(process.env)
+
 
 
 router.get('/', (req, res) => {

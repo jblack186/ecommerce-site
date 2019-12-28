@@ -1,15 +1,20 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const generateToken = require('../config/token')
-const Users = require('../m-r users/users-model.js')
+const Users = require('../m-r users/users-model.js');
 const cors = require('cors');
 
 
+//test
 
+const cor = router.use(cors({
+  method: ['POST', 'GET'],
+  origin: ['http://localhost:3000', 'http://localhost:3000/register'],
+  accessControlAllowOrigin: '*'
 
-router.use(cors());
+}));
 
-router.post('/', (req, res) => {
+router.post('/', cor, (req, res) => {
   let  user = req.body
 
   const hash = bcrypt.hashSync(user.password, 10)
