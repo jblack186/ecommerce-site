@@ -21,7 +21,6 @@ router.post('/', cor, (req, res) => {
 
   if(!user.username || !user.password ) {
     res.status(422).json({message: 'Please enter Username and Password to create an account'})
-    res.setHeader('Access-Control-Allow-Origin', '*');
   } else {
     Users.addUser(user)
       .then(newUser => {
