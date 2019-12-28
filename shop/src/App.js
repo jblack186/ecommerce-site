@@ -18,16 +18,16 @@ const App = () => {
   const [polos, setPolos] = useState([])
   const [basket, setBasket] = useState([])
 
-    useEffect(() => {
-        axios.get("https://shirt-store123.herokuapp.com/api/inventory")
-            .then(res => {
-                setPolos(res.data)
-                // console.log(res)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }, [])
+    // useEffect(() => {
+    //     axios.get("https://shirt-store123.herokuapp.com/api/inventory",{headers : {"Access-Control-Allow-Origin": 'http://localhost:3000'}})
+    //         .then(res => {
+    //             setPolos(res.data)
+    //             // console.log(res)
+    //         })
+    //         .catch(err => {
+    //             console.log(err)
+    //         })
+    // }, [])
 
   return (
     <div className="App">
