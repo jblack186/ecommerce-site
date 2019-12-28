@@ -20,7 +20,7 @@ export default class Register extends React.Component {
 
     register = (e) => {
         e.preventDefault();
-        axios.post('https://shirt-store123.herokuapp.com/api/register', this.state, {headers : {"Access-Control-Allow-Origin": 'http://localhost:3000'}})
+        axios.post('https://shirt-store123.herokuapp.com/api/register', this.state, {headers : {'Content-Type': 'application/json;charset=UTF-8', "Access-Control-Allow-Origin": 'http://localhost:3000'}})
         .then(response => {
             console.log(response)
         //    this.props.history.push('/login') 
