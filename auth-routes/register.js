@@ -4,7 +4,6 @@ const generateToken = require('../config/token')
 const Users = require('../m-r users/users-model.js');
 const cors = require('cors');
 
-
 //test
 
 // const cor = router.use(cors({
@@ -13,7 +12,7 @@ const cors = require('cors');
 
 // }));
 
-router.post('/', (req, res) => {
+router.post('/', cors(), (req, res) => {
   let  user = req.body
 
   const hash = bcrypt.hashSync(user.password, 10)
