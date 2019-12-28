@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
     Users.addUser(user)
       .then(newUser => {
         
-      res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+      // res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
       req.header('Access-Control-Allow-Origin', 'http://localhost:3000');
 
         // const token = generateToken(newUser)
