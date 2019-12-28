@@ -6,13 +6,12 @@ const cors = require('cors');
 
 //test
 
-// const cor = router.use(cors({
-//   method: ['POST', 'GET'],
-//   origin: ['http://localhost:3000', 'http://localhost:3000/register'],
+const corsOptions = {
+origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
-// }));
-
-router.post('/', cors(), (req, res) => {
+router.post('/', cors(corsOptions), (req, res) => {
   let  user = req.body
 
   const hash = bcrypt.hashSync(user.password, 10)
@@ -24,7 +23,7 @@ router.post('/', cors(), (req, res) => {
     Users.addUser(user)
       .then(newUser => {
         
-      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
         // const token = generateToken(newUser)
         req.session.user = newUser
         // set.session = newUser.username
