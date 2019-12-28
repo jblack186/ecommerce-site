@@ -10,7 +10,6 @@ const cors = require('cors');
 const cor = router.use(cors({
   method: ['POST', 'GET'],
   origin: ['http://localhost:3000', 'http://localhost:3000/register'],
-  accessControlAllowOrigin: '*'
 
 }));
 
