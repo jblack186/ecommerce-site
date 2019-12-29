@@ -21,8 +21,9 @@ const dbEnv = process.env.DB_ENV || 'development';
 // console.log(process.env)
 
 server.use(cors({
-    methods: ['POST', 'GET'],
-    origin: "http://localhost:3000",
+  origin: "http://localhost:3000/",
+    credentials: true,
+    methods: ['POST', 'GET']
 
   }));
 
@@ -47,7 +48,7 @@ const knex = Knex({
 });
 
 const store = new KnexSessionStore({
-    // knex: knex,
+    knex: knex,
     tablename: "sessions" // optional. Defaults to 'sessions'
   });
 
