@@ -122,9 +122,15 @@ server.use("/", function(req, res, next) {
   });
 
 server.get("/", function(req, res) {
-    return db('users')
-    res.send("Hello")
-    // res.cookie(sessionConfig)
+  User.findAll()
+  .then(users => {
+    res.status(200).json(users);
+    console.log(res)
+  })
+  .catch(err => {
+      console.log(err);
+      res.send(err)
+  })
 })
 
 module.exports = server;
