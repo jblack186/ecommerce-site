@@ -121,7 +121,7 @@ server.use("/", function(req, res, next) {
     res.end(n + " views");
   });
 
-server.get("/", authRouter, function(req, res) {
+server.get("/", function(req, res) {
     return db('users')
     res.send("Hello")
     // res.cookie(sessionConfig)
