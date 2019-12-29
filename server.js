@@ -102,7 +102,7 @@ const sessionConfig = {
 }
 
 
-server.use(allowCrossDomain);
+// server.use(allowCrossDomain);
 server.use(helmet());
 server.use(express.json());
 server.use(session(sessionConfig));
