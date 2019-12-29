@@ -47,7 +47,7 @@ const knex = Knex({
 });
 
 const store = new KnexSessionStore({
-    knex: knex,
+    // knex: knex,
     tablename: "sessions" // optional. Defaults to 'sessions'
   });
 
