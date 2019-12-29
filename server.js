@@ -57,10 +57,10 @@ const knex = Knex({
   },
   pool: {
     max: 50,
-    min: 0,
+    min: 1,
     propagateCreateError: true 
   },
-  acquireConnectionTimeout: 1000 
+  // acquireConnectionTimeout: 60000 
 
 });
 
@@ -115,11 +115,7 @@ server.use('/api/users', UsersRouter);
 server.use('/api/cart', CartRouter);
 
 
-server.use("/", function(req, res, next) {
-    var n = req.session.views || 0;
-    req.session.views = ++n;
-    res.end(n + " views");
-  });
+
 
 server.get("/", function(req, res) {
   User.findAll()
