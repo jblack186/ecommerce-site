@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
         // set.session = newUser.username
 
         res.status(201).json({newUser})
-        sessionStorage.setItem('yo', 'me');
+        localStorage.setItem('yo', 'me');
 
       })
       .catch(err => {
