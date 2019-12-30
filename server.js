@@ -10,6 +10,7 @@ const sessions = require('express-session'); //install express session
 const KnexSessionStore = require('connect-session-knex')(sessions); // to store sessions in database
 const db = require('./database/dbConfig.js');
 const User = require('./m-r users/users-model.js');
+const cors = require('cors');
 
 
 // const knex = require('./database/dbConfig.js');
