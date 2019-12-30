@@ -17,7 +17,6 @@ const User = require('./m-r users/users-model.js');
 const server = express();
 const dbEnv = process.env.DB_ENV || 'development';
 
-const KnexSessionStore = connectSessionKnex(sessions);
 
 // require('dotenv').config()
 // console.log(process.env)
@@ -92,11 +91,10 @@ const sessionConfig = {
     },
     store: new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
     //cookie options
-    knex: db, // imported from dbCOnfig.js
-    tablename: 'sessions',
-    sidfieldname: "sid",
-    createTable: true,
-    clearInterval: 1000 * 60 * 10 //defaults to 6000 milliseconds
+    host: "127.0.0.1",
+    user: "postgres",
+    password: "",
+    database: "shirt-store123"
 }),
     
 }
