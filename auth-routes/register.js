@@ -6,11 +6,14 @@ const cors = require('cors');
 
 //test
 
-
+router.use(function(req, res, next) {
+  req.header("Access-Control-Allow-Origin", "*");    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 router.post('/', (req, res) => {
   let  user = req.body
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000");   
 
   const hash = bcrypt.hashSync(user.password, 10)
   user.password=hash
@@ -21,10 +24,7 @@ router.post('/', (req, res) => {
     Users.addUser(user)
       .then(newUser => {
         
-      // res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
       
-      res.header("Access-Control-Allow-Origin", "*");   
-      // res.header('Access-Control-Allow-Headers', '"Origin, X-Requested-With, Content-Type, Accept"');
         // const token = generateToken(newUser)
         req.session.user = newUser
         // set.session = newUser.username
