@@ -24,7 +24,7 @@ router.post('/', (req, res) => {
     .then(user => {
       if(user && bcrypt.compareSync(password, user.password)) {
         req.session.user = user;
-        sessionStorage.setItem('cookie', user);
+        res.sessionStorage.setItem('cookie', user);
         // const token = generateToken(user)
         // res.setHeader("Set-Cookie", req.session)
       
