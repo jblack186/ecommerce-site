@@ -131,7 +131,7 @@ const sessionConfig = {
 // server.use(allowCrossDomain);
 server.use(helmet());
 server.use(express.json());
-// server.use(session(sessionConfig));
+server.use(session(sessionConfig));
 
 server.use('/api/register', Register);
 server.use('/api/login', Login);
