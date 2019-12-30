@@ -1,5 +1,4 @@
 const express = require('express');
-const cors = require('cors');
 const helmet = require('helmet');
 const InventoryRouter = require('./m-r inventory/inventory-router.js');
 const UsersRouter = require('./m-r users/users-router.js');
@@ -23,13 +22,7 @@ const dbEnv = process.env.DB_ENV || 'development';
 
 
 
-server.use(cors({
-  origin: "http://localhost:3000",
-    credentials: true,
-    withCredentials: true,
 
-
-  }));
 
 
 
@@ -41,27 +34,27 @@ server.use(cors({
   // });
 
 const Knex = require("knex");
-const knex = Knex({
-  client: "pg",
-  connection: {
-    host: 'localhost',
-    database: 'shirt-store123',
-    user: "postgres",
-    password: process.env.POSTGRES_PASS,
+// const knex = Knex({
+//   client: "pg",
+//   connection: {
+//     host: 'localhost',
+//     database: 'shirt-store123',
+//     user: "postgres",
+//     password: process.env.POSTGRES_PASS,
     
-  },
-  "pool": {
-    "min": 2,
-    "max": 6,
-    "createTimeoutMillis": 3000,
-    "acquireTimeoutMillis": 30000,
-    "idleTimeoutMillis": 30000,
-    "reapIntervalMillis": 1000,
-    "createRetryIntervalMillis": 100,
-    "propagateCreateError": false // <- default is true, set to false
-  },  
+//   },
+//   "pool": {
+//     "min": 2,
+//     "max": 6,
+//     "createTimeoutMillis": 3000,
+//     "acquireTimeoutMillis": 30000,
+//     "idleTimeoutMillis": 30000,
+//     "reapIntervalMillis": 1000,
+//     "createRetryIntervalMillis": 100,
+//     "propagateCreateError": false // <- default is true, set to false
+//   },  
 
-});
+// });
 
 // const store = new KnexSessionStore({
 //   knex: require('./database/dbConfig.js'),

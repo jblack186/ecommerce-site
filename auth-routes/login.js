@@ -3,6 +3,16 @@ const bcrypt = require('bcryptjs');
 const generateToken = require('../config/token.js');
 const Users = require('../m-r users/users-model.js');
 const auth = require('../auth/authenticate-middleware.js');
+const cors = require('cors');
+
+
+router.use(cors({
+  origin: "http://localhost:3000",
+    credentials: true,
+    withCredentials: true,
+
+
+  }));
 
 router.post('/', (req, res) => {
   let {username, password} = req.body
