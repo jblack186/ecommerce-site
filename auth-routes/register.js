@@ -31,10 +31,11 @@ router.post('/', (req, res) => {
         
         // const token = generateToken(newUser)
         req.session.user = newUser
+        res.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
+
         // set.session = newUser.username
 
         res.status(201).json({newUser})
-        localStorage.setItem('yo', 'me');
 
       })
       .catch(err => {

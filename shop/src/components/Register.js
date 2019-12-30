@@ -20,10 +20,9 @@ export default class Register extends React.Component {
 
     register = (e) => {
         e.preventDefault();
-        axios.post('https://shirt-store123.herokuapp.com/api/register', this.state, {
+        axios.post('https://shirt-store123.herokuapp.com/api/register', this.state,{
           withCredentials: true,
           credentials: true,
-          sameSite: false
       })
         .then(response => {
             console.log(response)
