@@ -91,10 +91,13 @@ const sessionConfig = {
     },
     store: new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
     //cookie options
+    client: "pg",
+    connection : {
     host: "127.0.0.1",
     user: "postgres",
     password: "",
     database: "shirt-store123"
+    }
 }),
     
 }
