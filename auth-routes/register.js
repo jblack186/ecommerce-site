@@ -27,14 +27,13 @@ router.post('/', (req, res) => {
   } else {
     Users.addUser(user)
     
-      .then(newUser => {
-
+      .then(user => {
+        req.session.user = user
         // const token = generateToken(newUser)
-        req.session.username = newUser.username
 
         // set.session = newUser.username
 
-        res.status(201).json({newUser})
+        res.status(201).json({user})
 
       })
       .catch(err => {

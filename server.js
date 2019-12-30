@@ -7,7 +7,7 @@ const CartRouter = require('./m-r cart/cart-router.js');
 const Register = require('./auth-routes/register.js');
 const Login = require('./auth-routes/login.js');
 const authRouter = require('./auth/authenticate-middleware.js');
-const session = require('express-session'); //install express session
+const sessions = require('express-session'); //install express session
 const KnexSessionStore = require('connect-session-knex')(session); // to store sessions in database
 const db = require('./database/dbConfig.js');
 const User = require('./m-r users/users-model.js');
@@ -132,7 +132,7 @@ const sessionConfig = {
 // server.use(allowCrossDomain);
 server.use(helmet());
 server.use(express.json());
-server.use(session(sessionConfig));
+server.use(sessions(sessionConfig));
 
 server.use('/api/register', Register);
 server.use('/api/login', Login);
