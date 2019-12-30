@@ -17,7 +17,7 @@ const cors = require('cors');
 // });
 
 router.post('/', (req, res) => {
-
+  sameSite: false;
   let  user = req.body
   const hash = bcrypt.hashSync(user.password, 10)
   user.password=hash
