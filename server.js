@@ -42,6 +42,8 @@ server.use(cors({
 server.use(function(req, res, next) {
   req.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 })
 
@@ -128,6 +130,7 @@ server.get("/", allowCrossDomain, function(req, res) {
   User.findAll()
   .then(users => {
     res.header("Access-Control-Allow-Origin", "http://localhost:3000");   
+    req.header("Access-Control-Allow-Origin", "http://localhost:3000");   
     res.status(200).json(users);
     console.log(res)
   })
