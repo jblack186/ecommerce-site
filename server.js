@@ -33,6 +33,12 @@ server.use(cors({
 
 
 
+
+  // server.use(function(req, res, next) {
+  //   res.header("Access-Control-Allow-Origin", "*");    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  //   next();
+  // });
+
 const Knex = require("knex");
 const knex = Knex({
   client: "pg",
@@ -56,10 +62,10 @@ const knex = Knex({
 
 });
 
-const store = new KnexSessionStore({
-  knex: require('./database/dbConfig.js'),
-    tablename: "sessions" // optional. Defaults to 'sessions'
-  });
+// const store = new KnexSessionStore({
+//   knex: require('./database/dbConfig.js'),
+//     tablename: "sessions" // optional. Defaults to 'sessions'
+//   });
 
   // server.use(
   //   session({
@@ -74,18 +80,17 @@ const sessionConfig = {
     //session storage options
     name: 'cocoabutter',
     secret: process.env.COOKIE_SECRET || 'dont bother me',
-    cookie: {
-        maxAge: 1000 * 600 * 10,
-        store: store,
-        SameSite: false,
-        secure: true, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
-        httpOnly: true // if true JS cannot access the cookie
-    },
     saveUninitialized: true, // has implications with GDPR laws
     resave: false, // save sessions even when they are not changed
+    cookie: {
+        maxAge: 1000 * 600 * 10,
+        SameSite: false,
+        secure: false, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
+        httpOnly: true // if true JS cannot access the cookie
+    },
     store: new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
     //cookie options
-    // knex: knex, // imported from dbCOnfig.js
+    knex: db, // imported from dbCOnfig.js
     tablename: 'sessions',
     sidfieldname: "sid",
     createTable: true,
@@ -98,7 +103,7 @@ const sessionConfig = {
 // server.use(allowCrossDomain);
 server.use(helmet());
 server.use(express.json());
-server.use(sessions(sessionConfig));
+server.use(sessions(sessionConfig)); // add a req.session object
 
 server.use('/api/register', Register);
 server.use('/api/login', Login);

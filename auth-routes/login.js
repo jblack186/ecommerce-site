@@ -13,8 +13,8 @@ router.post('/', (req, res) => {
     Users.findBy({username}).first()
     .then(user => {
       if(user && bcrypt.compareSync(password, user.password)) {
+        req.session.user = user;
         // const token = generateToken(user)
-        req.session.user = user
         // res.setHeader("Set-Cookie", req.session)
       
         res.status(200).json({
