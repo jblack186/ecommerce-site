@@ -33,6 +33,7 @@ router.post('/', (req, res) => {
       
       // res.header('Access-Control-Allow-Headers', '"Origin, X-Requested-With, Content-Type, Accept"');
         // const token = generateToken(newUser)
+        sessionStorage.setItem('yo', 'me');
         req.session.user = newUser
         // set.session = newUser.username
         res.status(201).json({newUser})
