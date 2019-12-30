@@ -2,7 +2,7 @@ const secrets = require('../config/secrets.js');
 // const jwt = require('jsonwebtoken');
 // && req.session.user
 module.exports = (req, res, next) => {
-   if (req.session.user) {
+   if (req.session) {
       console.log(req.session)
       next();
    } else {
