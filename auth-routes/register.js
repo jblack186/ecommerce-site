@@ -6,7 +6,7 @@ const cors = require('cors');
 
 //test
 
-router.use(cors())
+// router.use(cors())
 
 // router.use(function(req, res, next) {
 //   req.header("Access-Control-Allow-Origin", "http://localhost:3000");
