@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
     Users.addUser(user)
     
       .then(newUser => {
-        res.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict")
+        req.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict")
 
         // const token = generateToken(newUser)
         req.session.user = newUser
