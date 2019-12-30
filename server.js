@@ -100,7 +100,6 @@ const store = new KnexSessionStore({
       secret: "keyboard cat",
       cookie: {
         maxAge: 1000 * 60 * 60, // ten seconds, for testing
-        sameSite: null
       },
       store: store
     })
@@ -112,6 +111,7 @@ const sessionConfig = {
     cookie: {
         maxAge: 1000 * 600 * 10,
         store: store,
+        sameSite: 'none',
         secure: process.env.NODE_ENV == 'development' ? false : true, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
         httpOnly: true // if true JS cannot access the cookie
     },
