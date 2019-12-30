@@ -17,6 +17,8 @@ const User = require('./m-r users/users-model.js');
 const server = express();
 const dbEnv = process.env.DB_ENV || 'development';
 
+const KnexSessionStore = connectSessionKnex(sessions);
+
 // require('dotenv').config()
 // console.log(process.env)
 
