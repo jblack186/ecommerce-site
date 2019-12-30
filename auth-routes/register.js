@@ -14,6 +14,7 @@ router.use(function(req, res, next) {
 
 router.post('/', (req, res) => {
   let  user = req.body
+  req.header("Access-Control-Allow-Origin", "*");   
 
   const hash = bcrypt.hashSync(user.password, 10)
   user.password=hash
@@ -26,7 +27,7 @@ router.post('/', (req, res) => {
         
       // res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
       
-      header("Access-Control-Allow-Origin", "*");   
+      res.header("Access-Control-Allow-Origin", "*");   
       // res.header('Access-Control-Allow-Headers', '"Origin, X-Requested-With, Content-Type, Accept"');
         // const token = generateToken(newUser)
         req.session.user = newUser
