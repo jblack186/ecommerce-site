@@ -25,7 +25,7 @@ export default class Register extends React.Component {
           credentials: true,
      } })
         .then(response => {
-            response.header('Access-Control-Allow-Origin', 'http://localhost:300g0');            console.log(response)
+            console.log(response)
            this.props.history.push('/login') 
         })
         .catch(error => {
@@ -39,7 +39,6 @@ export default class Register extends React.Component {
         axios.get('https://shirt-store123.herokuapp.com')
         .then(res => {
             console.log(res)
-            res.setHeader('Access-Control-Allow-Origin', "http://localhost:3000")
         })
         .catch(err => {
             console.log(err)

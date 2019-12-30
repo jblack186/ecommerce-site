@@ -68,11 +68,13 @@ server.use(cors({
   // });
 
 const Knex = require("knex");
-const knexs = Knex({
+const knex = Knex({
   client: "pg",
   connection: {
-    // user: "blackwellj1040@gmail.com",
-    // password: "Baoirghnoare142!",
+    host: 'localhost',
+    database: 'shirt-store123',
+    user: "postgres",
+    password: process.env.POSTGRES_PASS,
     
   },
   "pool": {
@@ -89,7 +91,7 @@ const knexs = Knex({
 });
 
 const store = new KnexSessionStore({
-    // knex: knexs,
+  knex: require('./database/dbConfig.js'),
     tablename: "sessions" // optional. Defaults to 'sessions'
   });
 
@@ -102,28 +104,28 @@ const store = new KnexSessionStore({
       store: store
     })
   );
-// const sessionConfig = {
-//     //session storage options
-//     name: 'cocoabutter',
-//     secret: process.env.COOKIE_SECRET || 'dont bother me',
-//     cookie: {
-//         maxAge: 1000 * 600 * 10,
-//         store: store,
-//         secure: process.env.NODE_ENV == 'development' ? false : true, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
-//         httpOnly: true // if true JS cannot access the cookie
-//     },
-//     saveUninitialized: true, // has implications with GDPR laws
-//     resave: false, // save sessions even when they are not changed
-//     store: new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
-//     //cookie options
-//     // knex: knex, // imported from dbCOnfig.js
-//     tablename: 'sessions',
-//     sidfieldname: "sid",
-//     createTable: true,
-//     clearInterval: 1000 * 60 * 10 //defaults to 6000 milliseconds
-// }),
+const sessionConfig = {
+    //session storage options
+    name: 'cocoabutter',
+    secret: process.env.COOKIE_SECRET || 'dont bother me',
+    cookie: {
+        maxAge: 1000 * 600 * 10,
+        store: store,
+        secure: process.env.NODE_ENV == 'development' ? false : true, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
+        httpOnly: true // if true JS cannot access the cookie
+    },
+    saveUninitialized: true, // has implications with GDPR laws
+    resave: false, // save sessions even when they are not changed
+    store: new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
+    //cookie options
+    // knex: knex, // imported from dbCOnfig.js
+    tablename: 'sessions',
+    sidfieldname: "sid",
+    createTable: true,
+    clearInterval: 1000 * 60 * 10 //defaults to 6000 milliseconds
+}),
     
-// }
+}
 
 
 // server.use(allowCrossDomain);
