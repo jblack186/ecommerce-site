@@ -22,7 +22,7 @@ const dbEnv = process.env.DB_ENV || 'development';
 
 //CORS middleware
 const allowCrossDomain = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -36,15 +36,15 @@ server.use(cors({
   }));
 
 server.use(function(req, res, next) {
-  req.header("Access-Control-Allow-Origin", "*");
+  req.header("Access-Control-Allow-Origin", "http://localhost:3000");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 })
 
-  server.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-  });
+  // server.use(function(req, res, next) {
+  //   res.header("Access-Control-Allow-Origin", "*");    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  //   next();
+  // });
 
 const Knex = require("knex");
 const knexs = Knex({
