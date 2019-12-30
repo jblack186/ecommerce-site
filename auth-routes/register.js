@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
     Users.addUser(user)
     
       .then(user => {
-        req.session.user = user
+        // req.session.user = user
         // const token = generateToken(newUser)
 
         // set.session = newUser.username
