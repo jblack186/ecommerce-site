@@ -18,6 +18,7 @@ const cors = require('cors');
 
 router.post('/', (req, res) => {
   let  user = req.body
+  res.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
 
   const hash = bcrypt.hashSync(user.password, 10)
   user.password=hash
@@ -31,7 +32,6 @@ router.post('/', (req, res) => {
         
         // const token = generateToken(newUser)
         req.session.user = newUser
-        res.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
 
         // set.session = newUser.username
 
