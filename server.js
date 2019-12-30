@@ -121,6 +121,8 @@ server.use('/api/cart', CartRouter);
 
 
 server.get("/", function(req, res) {
+  req.header("Access-Control-Allow-Origin", "http://localhost:3000");   
+
   User.findAll()
   .then(users => {
     res.status(200).json(users);
