@@ -50,8 +50,8 @@ const Knex = require("knex");
 const knexs = Knex({
   client: "pg",
   connection: {
-    user: "blackwellj1040@gmail.com",
-    password: "Baoirghnoare142!",
+    // user: "blackwellj1040@gmail.com",
+    // password: "Baoirghnoare142!",
     database: process.env.DATABASE_URL
   },
   "pool": {
@@ -68,7 +68,7 @@ const knexs = Knex({
 });
 
 const store = new KnexSessionStore({
-    // knex: knexs,
+    knex: knexs,
     tablename: "sessions" // optional. Defaults to 'sessions'
   });
 
