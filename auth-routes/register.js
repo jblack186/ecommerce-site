@@ -29,14 +29,13 @@ router.post('/', (req, res) => {
     
       .then(newUser => {
         
-      // res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-      
-      // res.header('Access-Control-Allow-Headers', '"Origin, X-Requested-With, Content-Type, Accept"');
         // const token = generateToken(newUser)
-        sessionStorage.setItem('yo', 'me');
         req.session.user = newUser
         // set.session = newUser.username
+
         res.status(201).json({newUser})
+        sessionStorage.setItem('yo', 'me');
+
       })
       .catch(err => {
         res.status(500)
