@@ -17,7 +17,7 @@ const cors = require('cors');
 // });
 
 router.post('/', (req, res) => {
-  res.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict")
+  req.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict")
 
   let  user = req.body
   const hash = bcrypt.hashSync(user.password, 10)
