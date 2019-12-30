@@ -30,7 +30,7 @@ router.post('/', (req, res) => {
       .then(newUser => {
 
         // const token = generateToken(newUser)
-        req.session.user = newUser
+        req.session.username = newUser.username
 
         // set.session = newUser.username
 
