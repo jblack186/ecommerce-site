@@ -30,7 +30,7 @@ const allowCrossDomain = function(req, res, next) {
 }
 
 server.use(cors({
-  origin: "*",
+  origin: "http://localhost:3000",
     credentials: true,
 
   }));
