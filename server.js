@@ -96,7 +96,7 @@ const sessionConfig = {
     host: "127.0.0.1",
     user: "postgres",
     password: "",
-    database: "shirt-store123"
+    database: "shirt-store15vs"
     }
 }),
     
