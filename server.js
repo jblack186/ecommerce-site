@@ -20,16 +20,7 @@ const dbEnv = process.env.DB_ENV || 'development';
 // require('dotenv').config()
 // console.log(process.env)
 
-//CORS middleware
-// const allowCrossDomain = function(req, res, next) {
-//   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-//   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-//   res.header('Access-Control-Allow-Headers', 'Content-Type');
-//   req.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-//   req.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-//   req.header('Access-Control-Allow-Headers', 'Content-Type');
-//   next();
-// }
+
 
 server.use(cors({
   origin: "http://localhost:3000",
@@ -40,32 +31,7 @@ server.use(cors({
   }));
 
 
-//   server.use((req , res , next) => {
-//     res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-//   //   res.header("Access-Control-Allow-Credentials", true);
-//   // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-//   res.header("Access-Control-Allow-Headers", 'Content-Types, Authorization, Application/JSON');
-//   if(req.method === 'OPTIONS'){
-//     res.header('Access-Control-Allow-Methods', 'PUT, POST,PATCH,DELETE, GET');
-//     return res.status(200).json({});
-//   }
-//   next();
-// });
 
-
-
-// server.use(function(req, res, next) {
-//   req.header("Access-Control-Allow-Origin", "http://localhost:3000");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-//   req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// })
-
-  // server.use(function(req, res, next) {
-  //   res.header("Access-Control-Allow-Origin", "*");    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  //   next();
-  // });
 
 const Knex = require("knex");
 const knex = Knex({
