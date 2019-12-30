@@ -6,11 +6,7 @@ const cors = require('cors');
 
 //test
 
-router.use(function(req, res, next) {
-  req.header("Access-Control-Allow-Origin", "*");    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+
 
 router.post('/', (req, res) => {
   let  user = req.body
