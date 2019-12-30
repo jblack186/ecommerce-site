@@ -49,7 +49,7 @@ server.use(function(req, res, next) {
 const Knex = require("knex");
 const knexs = Knex({
   client: "pg",
-  connection: database: process.env.DATABASE_URL,
+  connection: process.env.DATABASE_URL,
   
 
 });
