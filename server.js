@@ -120,7 +120,7 @@ server.use('/api/cart', CartRouter);
 
 
 
-server.get("/", function(req, res) {
+server.get("/", allowCrossDomain, function(req, res) {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");   
   User.findAll()
   .then(users => {
