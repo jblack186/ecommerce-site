@@ -26,7 +26,7 @@ export default class Register extends React.Component {
       })
         .then(response => {
             console.log(response)
-        //    this.props.history.push('/login') 
+           this.props.history.push('/login') 
         })
         .catch(error => {
             console.log(error)

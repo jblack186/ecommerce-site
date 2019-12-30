@@ -28,12 +28,12 @@ const Login = () => {
         .then(response => {
             // const sess = response.data.session.cookie
 
-        //     console.log('sess', sess)
+            console.log(response)
 
         // sessionStorage.setItem('cookie', sess)
         localStorage.setItem('user', response.data.message)
 // localStorage.setItem('id', response.data.user_id)
-        history.push('/')
+        // history.push('/')
 })
         .catch(error => {
             console.log(error)
