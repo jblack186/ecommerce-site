@@ -29,11 +29,11 @@ const allowCrossDomain = function(req, res, next) {
   next();
 }
 
-// server.use(cors({
-//   origin: "*",
-//     credentials: true,
+server.use(cors({
+  origin: "*",
+    credentials: true,
 
-//   }));
+  }));
 
 server.use(function(req, res, next) {
   req.header("Access-Control-Allow-Origin", "*");
