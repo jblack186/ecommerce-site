@@ -16,15 +16,16 @@ const cors = require('cors');
 //   next();
 // });
 
-const auth = router.use((req, res, next) => {
+var auth = router.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
   next();
 });
 
-router.post('/',auth, (req, res) => {
+router.post('/', (req, res) => {
   let  user = req.body
   const hash = bcrypt.hashSync(user.password, 10)
   user.password=hash
+  req.header("Access-Control-Allow-Origin", "http://localhost:3000");
 
   if(!user.username || !user.password ) {
     res.status(422).json({message: 'Please enter Username and Password to create an account'})
@@ -32,14 +33,13 @@ router.post('/',auth, (req, res) => {
     Users.addUser(user)
    
       .then(user => {
-        user.req.header("Access-Control-Allow-Origin", "http://localhost:3000");
+        
+        res.status(201).json({user})
 
-        // req.session.user = user
+// console.log(req.header)
         // const token = generateToken(newUser)
 
-        // set.session = newUser.username
 
-        res.status(201).json({user})
 
       })
       .catch(err => {
