@@ -30,21 +30,20 @@ module.exports = {
   
     production: {
       client: 'pg',
+      useNullAsDefault: true,
       connection: {
-        host: '127.0.0.1',
-        port: '5432',
-        database: 'jamisonblackwell',
-        user: "postgres",
-        password: ""
-        
-        
+        connectionString: process.env.DATABASE_URL,
       },
+      searchPath: ['knex', 'public'],
       migrations: {
-        directory: './database/migrations',
+        directory: './data/migrations'
       },
       seeds: {
-        directory: './database/seeds',
+        directory: './data/seeds'
       },
-    },
+      debug: true
+    }
+  
+  
 
 };
