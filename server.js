@@ -44,7 +44,7 @@ const Knex = require("knex");
 const knex = Knex({
   client: "pg",
   connection: {
-    host: 'localhost',
+    host: '127.0.0.1',
     database: 'postgres',
     user: "postgres",
     password: ""
@@ -91,8 +91,8 @@ const sessionConfig = {
         httpOnly: true // if true JS cannot access the cookie
     },
     store: new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
-      // knex: knex,
-      tablename: "sessions"
+      knex: knex,
+      tablename: "session"
   
 }),
     
