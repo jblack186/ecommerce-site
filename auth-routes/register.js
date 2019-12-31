@@ -26,7 +26,7 @@ router.post('/', (req, res) => {
   let  user = req.body
   const hash = bcrypt.hashSync(user.password, 10)
   user.password=hash
-  const head = res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
 
   if(!user.username || !user.password ) {
     res.status(422).json({message: 'Please enter Username and Password to create an account'})
@@ -34,7 +34,7 @@ router.post('/', (req, res) => {
     Users.addUser(user)
    
       .then(user => {
-        res.send(head)
+        res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         res.status(201).json({user})
 
 console.log(res.header)
