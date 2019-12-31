@@ -4,11 +4,11 @@ const generateToken = require('../config/token')
 const Users = require('../m-r users/users-model.js');
 const cors = require('cors');
 
-const auth = cors({
-  origin: "*",
-    credentials: true,
-    withCredentials: true,
-});
+// const auth = cors({
+//   origin: "*",
+//     credentials: true,
+//     withCredentials: true,
+// });
 
 // router.use(function(req, res, next) {
 //   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -16,7 +16,7 @@ const auth = cors({
 //   next();
 // });
 
-router.use((req, res, next) => {
+const auth = router.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
 });
