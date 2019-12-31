@@ -30,7 +30,7 @@ router.post('/', (req, res) => {
         res.status(200).json({
           message: user.username,
           id: user.id,
-          // session: req.session
+          session: user
           
 
           // token: token
