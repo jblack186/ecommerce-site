@@ -4,7 +4,11 @@ const generateToken = require('../config/token')
 const Users = require('../m-r users/users-model.js');
 const cors = require('cors');
 
-
+router.use(cors({
+  origin: "http://localhost:3000",
+    credentials: true,
+    withCredentials: true,
+}));
 
 router.post('/', (req, res) => {
   let  user = req.body
