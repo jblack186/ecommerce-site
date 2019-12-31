@@ -20,11 +20,11 @@ export default class Register extends React.Component {
 
     register = (e) => {
         e.preventDefault();
-        axios.post('https://shirt-store123.herokuapp.com/api/register', this.state, {headers :  {'Access-Control-Allow-Origin': "http://localhost:3000",
+        axios.post('https://shirt-store123.herokuapp.com/api/register', this.state, {headers :  {'Access-Control-Allow-Origin': "http://localhost:3000s",
           withCredentials: true,
           credentials: true,
           crossDoamin: true,
-          'Access-Control-Allow-Origin': 'http://localhost:3000'
+          'Access-Control-Allow-Origin': 'http://localhost:3000s'
      } })
         .then(response => {
             console.log(response.headers)
