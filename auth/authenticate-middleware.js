@@ -6,6 +6,8 @@ const Users = require('../m-r users/users-model.js');
 module.exports = (req, res, next) => {
    console.log('sess', req.session)
    if (req.session && req.session.user) {
+      req.header("Access-Control-Allow-Origin", "http://localhost:3000");
+
       next();
    } else {
       res.status(401).json({message: 'Invalid Credentials'});

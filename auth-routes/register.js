@@ -17,7 +17,6 @@ router.use(function(req, res, next) {
 });
 
 router.post('/',auth, (req, res) => {
-  req.header("Access-Control-Allow-Origin", "http://localhost:3000");
   let  user = req.body
   const hash = bcrypt.hashSync(user.password, 10)
   user.password=hash
