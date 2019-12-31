@@ -41,15 +41,16 @@ server.use(cors({
   // });
 
 const Knex = require("knex");
-// const knex = Knex({
-//   client: "pg",
-//   connection: {
-//     host: 'localhost',
-//     database: 'shirt-store123',
-//     user: "postgres",
-//     password: process.env.POSTGRES_PASS,
+const knex = Knex({
+  client: "pg",
+  connection: {
+    host: 'localhost',
+    database: 'postgres',
+    user: "postgres",
+    password: ""
     
-//   },
+  }
+})
 //   "pool": {
 //     "min": 2,
 //     "max": 6,
@@ -90,14 +91,9 @@ const sessionConfig = {
         httpOnly: true // if true JS cannot access the cookie
     },
     store: new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
-    //cookie options
-    client: "pg",
-    connection : {
-    host: "localhost",
-    user: "postgres",
-    password: "",
-    database: "postgress"
-    }
+      knex: knex,
+      tablename: "sessions"
+  
 }),
     
 }
