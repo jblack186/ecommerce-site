@@ -27,6 +27,8 @@ router.post('/',auth, (req, res) => {
     Users.addUser(user)
    
       .then(user => {
+        req.header("Access-Control-Allow-Origin", "http://localhost:3000");
+
         // req.session.user = user
         // const token = generateToken(newUser)
 
