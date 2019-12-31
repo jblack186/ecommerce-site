@@ -15,7 +15,7 @@ const cors = require('cors');
 
 // const knex = require('./database/dbConfig.js');
 const server = express();
-const dbEnv = process.env.DB_ENV || 'development';
+const dbEnv = process.env.DB_ENV || 'production';
 
 
 // require('dotenv').config()
