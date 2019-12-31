@@ -95,7 +95,7 @@ const sessionConfig = {
         maxAge: 1000 * 600 * 10,
         sameSite: 'false',
         secure: false, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
-        httpOnly: false // if true JS cannot access the cookie
+        httpOnly: true // if true JS cannot access the cookie
     },
     store: new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
       knex: knex,
