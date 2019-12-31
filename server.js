@@ -45,11 +45,18 @@ const knex = Knex({
   client: "pg",
   connection: {
     host: '127.0.0.1',
+    port: '5432',
     database: 'postgres',
     user: "postgres",
     password: ""
     
-  }
+  },
+  pool: {
+         min: 3,
+         max: 7,
+       },
+       acquireConnectionTimeout: 5000
+     
 })
 //   "pool": {
 //     "min": 2,
