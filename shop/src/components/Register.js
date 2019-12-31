@@ -38,7 +38,7 @@ export default class Register extends React.Component {
         e.preventDefault();
         axios.get('https://shirt-store123.herokuapp.com')
         .then(res => {
-            console.log(res)
+            console.log(res.data.session)
         })
         .catch(err => {
             console.log(err)

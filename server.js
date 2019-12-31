@@ -93,10 +93,10 @@ const sessionConfig = {
     //cookie options
     client: "pg",
     connection : {
-    host: "127.0.0.1",
+    host: "localhost",
     user: "postgres",
     password: "",
-    database: "shirt-store15vs"
+    database: "postgress"
     }
 }),
     
