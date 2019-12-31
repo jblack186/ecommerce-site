@@ -5,7 +5,7 @@ const Users = require('../m-r users/users-model.js');
 const cors = require('cors');
 
 const auth = cors({
-  origin: "http://localhost:3000",
+  origin: "*",
     credentials: true,
     withCredentials: true,
 });
