@@ -124,7 +124,6 @@ server.get("/", authRouter, function(req, res) {
     // res.header("Access-Control-Allow-Origin", "http://localhost:3000");   
     // req.header("Access-Control-Allow-Origin", "http://localhost:3000");   
     res.status(200).json(users);
-    console.log(res)
   })
   .catch(err => {
       console.log(err);

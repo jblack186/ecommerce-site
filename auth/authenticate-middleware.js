@@ -1,9 +1,10 @@
 const secrets = require('../config/secrets.js');
+const Users = require('../m-r users/users-model.js');
 // const jwt = require('jsonwebtoken');
 
 // && req.session.user
 module.exports = (req, res, next) => {
-   console.log('sess', req.session)
+   // console.log('sess', req.session.statusCode)
    if (req.session.user) {
       next();
    } else {
