@@ -16,7 +16,7 @@ const cors = require('cors');
 //   next();
 // });
 
-vrouter.use((req, res, next) => {
+router.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
   req.header('Access-Control-Allow-Origin', 'http://localhost:3000');
   next();
