@@ -20,13 +20,13 @@ export default class Register extends React.Component {
 
     register = (e) => {
         e.preventDefault();
-        axios.post('https://shirt-store123.herokuapp.com/api/register', this.state,{
+        axios.post('https://shirt-store123.herokuapp.com/api/register', this.state, {headers :  {'Access-Control-Allow-Origin': "http://localhost:3000",
           withCredentials: true,
           credentials: true,
-      })
+     } })
         .then(response => {
-            console.log(response)
-           this.props.history.push('/login') 
+            console.log(response.headers)
+        //    this.props.history.push('/login') 
         })
         .catch(error => {
             console.log(error)
@@ -38,7 +38,7 @@ export default class Register extends React.Component {
         e.preventDefault();
         axios.get('https://shirt-store123.herokuapp.com')
         .then(res => {
-            console.log(res.data.session)
+            console.log(res)
         })
         .catch(err => {
             console.log(err)
