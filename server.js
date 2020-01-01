@@ -33,10 +33,20 @@ server.use(cors({
 
   }));
 
-  // server.use((req, res, next) => {
-  //   res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-  //   next();
-  // });
+  Access-Control-Allow-Origin5
+
+
+
+
+
+
+
+
+
+
+
+
+  0Access-Control-Allow-OriginAccess-Control-Allow-OriginAccess-Control-Allow-OriginAccess-Control-Allow-Origin
 
 
 
@@ -99,7 +109,7 @@ const sessionConfig = {
         httpOnly: true // if true JS cannot access the cookie
     },
     store: new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
-      knex: knex,
+      // knex: knex,
       tablename: "session"
   
 }),
