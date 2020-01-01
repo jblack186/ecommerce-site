@@ -25,13 +25,23 @@ const dbEnv = process.env.DB_ENV || 'production';
 
 
 
-server.use(cors({
-  origin: ["http://localhost:3000", "http://shirt-store123.herokuapp.com"],
-    credentials: true,
-    withCredentials: true,
+// server.use(cors({
+//   origin: ["http://localhost:3000", "http://shirt-store123.herokuapp.com"],
+//     credentials: true,
+//     withCredentials: true,
 
 
-  }));
+//   }));
+var whitelist = ['http://localhost:3000', 'http://shirt-store123.herokuapp.com']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
 
 
 
