@@ -33,22 +33,6 @@ server.use(cors({
 
   }));
 
-  Access-Control-Allow-Origin5
-
-
-
-
-
-
-
-
-
-
-
-
-  0Access-Control-Allow-OriginAccess-Control-Allow-OriginAccess-Control-Allow-OriginAccess-Control-Allow-Origin
-
-
 
 
 const Knex = require("knex");
