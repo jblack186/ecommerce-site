@@ -4,11 +4,11 @@ const generateToken = require('../config/token')
 const Users = require('../m-r users/users-model.js');
 const cors = require('cors');
 
-router.user(cors({
+router.use(cors({
   origin: "*",
     credentials: true,
     withCredentials: true,
-  });
+  }));
 
 router.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
