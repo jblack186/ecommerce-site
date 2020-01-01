@@ -10,11 +10,11 @@ router.use(cors({
     withCredentials: true,
   }));
 
-router.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+// router.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   next();
+// });
 
 // router.use(cors({
 //   origin: "http://shirt-store123.herokuapp.com",
