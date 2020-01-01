@@ -16,13 +16,13 @@ const cors = require('cors');
 //   next();
 // });
 
-router.use(cors({
-  origin: "http://shirt-store123.herokuapp.com",
-    credentials: true,
-    withCredentials: true,
+// router.use(cors({
+//   origin: "http://shirt-store123.herokuapp.com",
+//     credentials: true,
+//     withCredentials: true,
 
 
-  }));
+//   }));
 
 
 router.post('/', (req, res) => {
