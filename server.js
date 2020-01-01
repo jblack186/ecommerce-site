@@ -114,7 +114,7 @@ server.use('/api/users', UsersRouter);
 server.use('/api/cart', CartRouter);
 
 
-
+//yo
 
 server.get("/", authRouter, function(req, res) {
   User.findAll()
