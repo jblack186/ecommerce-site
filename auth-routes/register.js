@@ -16,19 +16,16 @@ const cors = require('cors');
 //   next();
 // });
 
-var whitelist = ['http://localhost:3000', 'http://shirt-store123.herokuapp.com']
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
+router.use(cors({
+  origin: "http://shirt-store123.herokuapp.com",
+    credentials: true,
+    withCredentials: true,
 
 
-router.post('/', cors(corsOptions), (req, res) => {
+  }));
+
+
+router.post('/', (req, res) => {
   let  user = req.body
   const hash = bcrypt.hashSync(user.password, 10)
   user.password=hash
