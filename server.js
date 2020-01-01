@@ -24,14 +24,14 @@ const dbEnv = process.env.DB_ENV || 'production';
 
 
 
-const or = ["http://localhost:3000",  "http://shirt-store123.herokuapp.com"]
-server.use(cors({
-  origin: "*",
-    credentials: true,
-    withCredentials: true,
+// const or = ["http://localhost:3000",  "http://shirt-store123.herokuapp.com"]
+// server.use(cors({
+//   origin: "*",
+//     credentials: true,
+//     withCredentials: true,
 
 
-  }));
+//   }));
 
 
 
