@@ -40,7 +40,7 @@ const knex = Knex({
 
 
   const store = new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
-    knex: knex,
+    // knex: knex,
     tablename: "session"
 
 });
@@ -66,7 +66,7 @@ server.use(session({
       httpOnly: false, // if true JS cannot access the cookie
       // rolling: true
   },
-  // store: store
+  store: store
 }
 )); // add a req.session object
 
