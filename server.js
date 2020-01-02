@@ -6,8 +6,8 @@ const CartRouter = require('./m-r cart/cart-router.js');
 const Register = require('./auth-routes/register.js');
 const Login = require('./auth-routes/login.js');
 const authRouter = require('./auth/authenticate-middleware.js');
-const sessions = require('express-session'); //install express session
-const KnexSessionStore = require('connect-session-knex')(sessions); // to store sessions in database
+const session = require('express-session'); //install express session
+const KnexSessionStore = require('connect-session-knex')(session); // to store sessions in database
 const db = require('./database/dbConfig.js');
 const User = require('./m-r users/users-model.js');
 const cors = require('cors');
@@ -45,7 +45,6 @@ const knex = Knex({
     user: "postgres",
     password: ""
     
-    
   },
   pool: {
          min: 3,
@@ -81,31 +80,35 @@ const knex = Knex({
   //     store: store
   //   })
   // );
-const sessionConfig = {
-    //session storage options
-    name: 'cocoabutter',
-    secret: process.env.COOKIE_SECRET || 'dont bother me',
-    saveUninitialized: true, // has implications with GDPR laws
-    resave: false, // save sessions even when they are not changed
-    cookie: {
-        maxAge: 1000 * 600 * 10,
-        secure: false, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
-        httpOnly: false, // if true JS cannot access the cookie
-        rolling: true
-    },
-    store: new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
-      knex: knex,
-      tablename: "session"
-  
-}),
-    
+
+  const store = new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
+    knex: knex,
+    tablename: "session"
+
+})
+
+server.use(session({
+  //session storage options
+  name: 'cocoabutter',
+  secret: process.env.COOKIE_SECRET || 'dont bother me',
+  saveUninitialized: true, // has implications with GDPR laws
+  resave: false, // save sessions even when they are not changed
+  cookie: {
+      maxAge: 1000 * 600 * 10,
+      secure: false, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
+      httpOnly: false, // if true JS cannot access the cookie
+      // rolling: true
+  },
+  store: store
 }
+)); // add a req.session object
+
+
 
 
 // server.use(allowCrossDomain);
 server.use(helmet());
 server.use(express.json());
-server.use(sessions(sessionConfig)); // add a req.session object
 
 server.use('/api/register', Register);
 server.use('/api/login', Login);
