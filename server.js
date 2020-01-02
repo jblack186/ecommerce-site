@@ -21,7 +21,14 @@ const dbEnv = process.env.DB_ENV || 'production';
 
 
 
+server.use(cors({
+  origin: "http://localhost:3000",
+  'Access-Control-Allow-Origin': "http://localhost:3000",
+    credentials: true,
+    withCredentials: true,
+    
 
+  }));
 
 
 
@@ -29,7 +36,7 @@ const Knex = require("knex");
 const knex = Knex({
   client: "pg",
   connection: {
-    host: '127.0.0.1:5432',
+    host: '127.0.0.1',
     database: 'jamisonblackwell',
     user: "postgres",
     password: ""
@@ -39,6 +46,7 @@ const knex = Knex({
 })
 
 
+
   const store = new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
     knex: knex,
     tablename: "session"
@@ -46,14 +54,7 @@ const knex = Knex({
 });
 
 
-server.use(cors({
-  origin: "http://localhost:3000",
-  'Access-Control-Allow-Origin': "http://localhost:3000",
-    credentials: true,
-    withCredentials: true,
-    
 
-  }));
 
 server.use(session({
   //session storage options
