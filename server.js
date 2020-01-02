@@ -47,8 +47,8 @@ const knex = Knex({
 })
 
   server.use(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    req.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+    req.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
       next();
   });
 
