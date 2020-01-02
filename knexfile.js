@@ -30,14 +30,8 @@ module.exports = {
   
     production: {
       client: 'pg',
-      connection: {
-        host: '127.0.0.1',
-        database: 'jamisonblackwell',
-        user: "postgres",
-        password: ""
-        
-      },       
-      useNullAsDefault: true,
+      connection: process.env.DATABASE_URL,
+       useNullAsDefault: true,
            migrations: {
         directory: './database/migrations',
       },
