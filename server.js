@@ -28,9 +28,7 @@ const dbEnv = process.env.DB_ENV || 'production';
 const Knex = require("knex");
 const knex = Knex({
   client: "pg",
-  connection: {
-    connection: process.env.DATABASE_URL,    
-  },
+  connection: process.env.DATABASE_URL
  
 })
 
