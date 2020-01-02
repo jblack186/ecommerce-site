@@ -75,7 +75,13 @@ server.use('/api/inventory', InventoryRouter);
 server.use('/api/users', UsersRouter);
 server.use('/api/cart', CartRouter);
 
+var count = 0;
 
+server.use("/", function(req, res, next) {
+  var n = req.session.views || 0;
+  req.session.views = ++n;
+  res.end(n + " views");
+});
 
 server.get("/", authRouter, function(req, res) {
   User.findAll()
