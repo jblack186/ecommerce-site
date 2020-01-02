@@ -11,6 +11,7 @@ const KnexSessionStore = require('connect-session-knex')(session); // to store s
 const db = require('./database/dbConfig.js');
 const User = require('./m-r users/users-model.js');
 const cors = require('cors');
+const bcrypt = require('bcryptjs');
 
 
 const server = express();
