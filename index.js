@@ -6,7 +6,7 @@ const server = require('./server.js');
 
 // server.use(express.static('client'))
 server.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*g");
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
   req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
