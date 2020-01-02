@@ -5,7 +5,7 @@ const Users = require('../m-r users/users-model.js');
 // && req.session.user
 module.exports = (req, res, next) => {
    console.log('sess', req.session)
-   if (req.session) {
+   if (req.session.user) {
 
       next();
    } else {
