@@ -7,7 +7,7 @@ const cors = require('cors');
 
 
 router.use(cors({
-  origin: "http://localhost:3000",
+  origin: "http://localhost:3000/login",
   'Access-Control-Allow-Origin': "http://localhost:3000/login",
     credentials: true,
     withCredentials: true,
