@@ -87,11 +87,11 @@ server.use('/api/cart', CartRouter);
 
 var count = 0;
 
-// server.use("/", function(req, res, next) {
-//   var n = req.session.views || 0;
-//   req.session.views = ++n;
-//   res.end(n + " views");
-// });
+server.use("/", function(req, res, next) {
+  var n = req.session.views || 0;
+  req.session.views = ++n;
+  res.end(n + " views");
+});
 
 server.post('/register', (req, res) => {
   let  user = req.body
