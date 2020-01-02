@@ -30,7 +30,7 @@ const knex = Knex({
   connection: {
     host: '127.0.0.1',
     port: '5432',
-    database: 'postgres',
+    database: 'jamisonblackwell',
     user: "postgres",
     password: ""
     
@@ -40,7 +40,7 @@ const knex = Knex({
 
 
   const store = new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
-    // knex: knex,
+    knex: knex,
     tablename: "session"
 
 });
