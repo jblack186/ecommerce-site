@@ -30,9 +30,15 @@ module.exports = {
   
     production: {
       client: 'pg',
-      
-      connection: process.env.DATABASE_URL,
-      migrations: {
+      connection: {
+        host: '127.0.0.1',
+        port: '5432',
+        database: 'jamisonblackwell',
+        user: "postgres",
+        password: ""
+        
+      },
+           migrations: {
         directory: './database/migrations',
       },
       seeds: {
