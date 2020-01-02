@@ -7,8 +7,8 @@ const cors = require('cors');
 
 
 router.use(cors({
-  origin: "http://localhost:3000/login",
-  'Access-Control-Allow-Origin': "http://localhost:3000/login",
+  origin: "http://localhost:3000",
+  'Access-Control-Allow-Origin': "http://localhost:3000",
     credentials: true,
     withCredentials: true,
     
@@ -16,7 +16,7 @@ router.use(cors({
   }));
 
 router.use(function(req, res, next) {
-  req.header("Access-Control-Allow-Origin", "http://localhost:3000/login");
+  req.header("Access-Control-Allow-Origin", "http://localhost:3000");
   req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
