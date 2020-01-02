@@ -29,7 +29,7 @@ const Knex = require("knex");
 const knex = Knex({
   client: "pg",
   connection: {
-    host: '127.0',
+    host: '127.0.0.1',
     database: 'jamisonblackwell',
     user: "postgres",
     password: ""
@@ -45,7 +45,6 @@ const knex = Knex({
 
 });
 
-//a
 
 server.use(cors({
   origin: "http://localhost:3000",
