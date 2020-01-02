@@ -93,17 +93,6 @@ var count = 0;
 //   res.end(n + " views");
 // });
 
-server.get("/", authRouter, function(req, res) {
-  User.findAll()
-  .then(users => {
-    res.status(200).json(users);
-  })
-  .catch(err => {
-      console.log(err);
-      res.send(err)
-  })
-})
-
 server.post('/register', (req, res) => {
   let  user = req.body
   const hash = bcrypt.hashSync(user.password, 10)
@@ -116,9 +105,6 @@ server.post('/register', (req, res) => {
               res.status(201).json({user})
 
         // const token = generateToken(newUser)
-
-
-
       })
       .catch(err => {
         res.status(500)
@@ -126,6 +112,19 @@ server.post('/register', (req, res) => {
       })
   }
 })
+
+server.get("/", authRouter, function(req, res) {
+  User.findAll()
+  .then(users => {
+    res.status(200).json(users);
+  })
+  .catch(err => {
+      console.log(err);
+      res.send(err)
+  })
+})
+
+
 
 module.exports = server;
 
