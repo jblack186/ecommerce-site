@@ -13,25 +13,14 @@ const User = require('./m-r users/users-model.js');
 const cors = require('cors');
 
 
-// const knex = require('./database/dbConfig.js');
 const server = express();
 const dbEnv = process.env.DB_ENV || 'production';
 
 
-// require('dotenv').config()
-// console.log(process.env)
 
 
 
 
-// const or = ["http://localhost:3000",  "http://shirt-store123.herokuapp.com"]
-// server.use(cors({
-//   origin: "*",
-//     credentials: true,
-//     withCredentials: true,
-
-
-//   }));
 
 
 
@@ -46,46 +35,15 @@ const knex = Knex({
     password: ""
     
   },
-  pool: {
-         min: 3,
-         max: 7,
-       },
-       acquireConnectionTimeout: 5000
-     
+ 
 })
-//   "pool": {
-//     "min": 2,
-//     "max": 6,
-//     "createTimeoutMillis": 3000,
-//     "acquireTimeoutMillis": 30000,
-//     "idleTimeoutMillis": 30000,
-//     "reapIntervalMillis": 1000,
-//     "createRetryIntervalMillis": 100,
-//     "propagateCreateError": false // <- default is true, set to false
-//   },  
 
-// });
-
-// const store = new KnexSessionStore({
-//   knex: require('./database/dbConfig.js'),
-//     tablename: "sessions" // optional. Defaults to 'sessions'
-//   });
-
-  // server.use(
-  //   session({
-  //     secret: "keyboard cat",
-  //     cookie: {
-  //       maxAge: 1000 * 60 * 60, // ten seconds, for testing
-  //     },
-  //     store: store
-  //   })
-  // );
 
   const store = new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
     // knex: knex,
     tablename: "session"
 
-})
+});
 
 server.use(session({
   //session storage options
@@ -118,7 +76,6 @@ server.use('/api/users', UsersRouter);
 server.use('/api/cart', CartRouter);
 
 
-//yo
 
 server.get("/", authRouter, function(req, res) {
   User.findAll()
