@@ -11,11 +11,11 @@ const cors = require('cors');
 //     withCredentials: true,
 //   }));
 
-router.use(function(req, res, next) {
-  header("Access-Control-Allow-Origin", "http://localhost:3000");
-  header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+// router.use(function(req, res, next) {
+//   header("Access-Control-Allow-Origin", "http://localhost:3000");
+//   header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });
 
 // router.use(cors({
 //   origin: "http://shirt-store123.herokuapp.com",
@@ -28,9 +28,6 @@ router.use(function(req, res, next) {
 
 router.post('/', (req, res) => {
   let  user = req.body
-  header("Access-Control-Allow-Origin", "http://localhost:3000");
-  header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-
   const hash = bcrypt.hashSync(user.password, 10)
   user.password=hash
   if(!user.username || !user.password ) {
@@ -38,8 +35,6 @@ router.post('/', (req, res) => {
   } else {
     Users.addUser(user)
       .then(user => {
-        header("Access-Control-Allow-Origin", "http://localhost:3000");
-        header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
               res.status(201).json({user})
 
         // const token = generateToken(newUser)

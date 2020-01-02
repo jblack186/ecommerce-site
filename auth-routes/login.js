@@ -6,19 +6,19 @@ const auth = require('../auth/authenticate-middleware.js');
 const cors = require('cors');
 
 
-router.use(cors({
-  origin: "http://localhost:3000",
-    credentials: true,
-    withCredentials: true,
+// router.use(cors({
+//   origin: "http://localhost:3000",
+//     credentials: true,
+//     withCredentials: true,
     
 
-  }));
+//   }));
 
-  router.use(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-      next();
-  });
+  // router.use(function(req, res, next) {
+  //   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  //   res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  //     next();
+  // });
 
 router.post('/', (req, res) => {
   let {username, password} = req.body
