@@ -34,6 +34,7 @@ server.use(cors({
 
 const Knex = require("knex");
 const knex = Knex({
+
   client: "pg",
   connection: {
     host: '127.0.0.1',
@@ -49,7 +50,6 @@ const knex = Knex({
 
   const store = new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
     knex: knex,
-    tablename: "session"
 
 });
 
@@ -86,13 +86,13 @@ server.use('/api/inventory', InventoryRouter);
 server.use('/api/users', UsersRouter);
 server.use('/api/cart', CartRouter);
 
-// var count = 0;
+var count = 0;
 
-// server.use("/", function(req, res, next) {
-//   var n = req.session.views || 0;
-//   req.session.views = ++n;
-//   res.end(n + " views");
-// });
+server.use("/", function(req, res, next) {
+  var n = req.session.views || 0;
+  req.session.views = ++n;
+  res.end(n + " views");
+});
 
 server.post('/register', (req, res) => {
   let  user = req.body
