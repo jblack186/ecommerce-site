@@ -71,7 +71,7 @@ server.use(session({
   cookie: {
       maxAge: 1000 * 600 * 10,
       secure: false, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
-      httpOnly: false, // if true JS cannot access the cookie
+      httpOnly: true, // if true JS cannot access the cookie
       // rolling: true
   },
   store: store
