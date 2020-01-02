@@ -108,7 +108,7 @@ server.post('/register', (req, res) => {
   } else {
     User.addUser(user)
       .then(user => {
-        req.session.user = user;
+        req.session.user = user
               res.status(201).json({user})
         // const token = generateToken(newUser)
       })
