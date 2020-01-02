@@ -46,7 +46,11 @@ const knex = Knex({
  
 })
 
-
+  server.use(function(req, res, next) {
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      next();
+  });
 
   const store = new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
     knex: knex,
