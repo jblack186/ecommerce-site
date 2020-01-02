@@ -4,18 +4,18 @@ const generateToken = require('../config/token')
 const Users = require('../m-r users/users-model.js');
 const cors = require('cors');
 
-router.use(cors({
-  origin: "http://localhost:3000",
-  'Access-Control-Allow-Origin': "http://localhost:3000",
-    credentials: true,
-    withCredentials: true,
-  }));
+// router.use(cors({
+//   origin: "http://localhost:3000",
+//   'Access-Control-Allow-Origin': "http://localhost:3000",
+//     credentials: true,
+//     withCredentials: true,
+//   }));
 
-router.use(function(req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-  res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+// router.use(function(req, res, next) {
+//   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+//   res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });
 
 // router.use(cors({
 //   origin: "http://shirt-store123.herokuapp.com",
