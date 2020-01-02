@@ -45,6 +45,8 @@ const knex = Knex({
 
 });
 
+//a
+
 server.use(cors({
   origin: "http://localhost:3000",
   'Access-Control-Allow-Origin': "http://localhost:3000",
