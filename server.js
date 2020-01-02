@@ -28,19 +28,15 @@ const dbEnv = process.env.DB_ENV || 'production';
 const Knex = require("knex");
 const knex = Knex({
   client: "pg",
-  // connection: {
-  //   host: '127.0.0.1',
-  //   database: 'jamisonblackwell',
-  //   user: "postgres",
-  //   password: ""
-    
-  // },
+  connection: {
+    connection: process.env.DATABASE_URL,    
+  },
  
 })
 
 
   const store = new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
-    // knex: knex,
+    knex: knex,
     tablename: "session"
 
 });
