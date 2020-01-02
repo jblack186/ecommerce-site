@@ -45,14 +45,14 @@ const knex = Knex({
 
 });
 
-// server.use(cors({
-//   origin: "http://localhost:3000",
-//   'Access-Control-Allow-Origin': "http://localhost:3000",
-//     credentials: true,
-//     withCredentials: true,
+server.use(cors({
+  origin: "http://localhost:3000",
+  'Access-Control-Allow-Origin': "http://localhost:3000",
+    credentials: true,
+    withCredentials: true,
     
 
-//   }));
+  }));
 
 server.use(session({
   //session storage options
@@ -76,7 +76,7 @@ server.use(session({
 // server.use(allowCrossDomain);
 server.use(helmet());
 server.use(express.json());
-server.use(cors());
+
 server.use('/api/register', Register);
 server.use('/api/login', Login);
 server.use('api/auth', authRouter);
