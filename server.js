@@ -54,6 +54,7 @@ const knex = Knex({
 
   const store = new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
     knex: knex,
+    tablename: "sessions",
 
 });
 
@@ -62,10 +63,10 @@ const knex = Knex({
 
 server.use(session({
   //session storage options
-  name: 'cocoabutter',
-  secret: process.env.COOKIE_SECRET,
-  saveUninitialized: false, // has implications with GDPR laws
-  resave: false, // save sessions even when they are not changed
+  // name: 'cocoabutter',
+  secret: 'cocoabutter',
+  // saveUninitialized: false, // has implications with GDPR laws
+  // resave: false, // save sessions even when they are not changed
   cookie: {
       maxAge: 1000 * 600 * 10,
       secure: false, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
