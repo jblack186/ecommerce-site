@@ -37,7 +37,7 @@ const knex = Knex({
   client: "pg",
   connection: {
     host: '127.0.0.1',
-    database: 'jamisonblackwell',
+    database: 'postgres',
     user: "postgres",
     password: ""
     
