@@ -26,28 +26,28 @@ const cors = require('cors');
 //   }));
 
 
-router.post('/', (req, res) => {
-  let  user = req.body
-  const hash = bcrypt.hashSync(user.password, 10)
-  user.password=hash
-  if(!user.username || !user.password ) {
-    res.status(422).json({message: 'Please enter Username and Password to create an account'})
-  } else {
-    Users.addUser(user)
-      .then(user => {
-              res.status(201).json({user})
+// router.post('/', (req, res) => {
+//   let  user = req.body
+//   const hash = bcrypt.hashSync(user.password, 10)
+//   user.password=hash
+//   if(!user.username || !user.password ) {
+//     res.status(422).json({message: 'Please enter Username and Password to create an account'})
+//   } else {
+//     Users.addUser(user)
+//       .then(user => {
+//               res.status(201).json({user})
 
-        // const token = generateToken(newUser)
+//         // const token = generateToken(newUser)
 
 
 
-      })
-      .catch(err => {
-        res.status(500)
-        .json({ err, message: "Sorry, but something went wrong while registering" })
-      })
-  }
-})
+//       })
+//       .catch(err => {
+//         res.status(500)
+//         .json({ err, message: "Sorry, but something went wrong while registering" })
+//       })
+//   }
+// })
 
 
 module.exports = router
