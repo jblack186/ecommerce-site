@@ -24,23 +24,14 @@ const Login = () => {
     const login = (e) => {
         
         e.preventDefault();
-        axios.post(`https://shirt-store123.herokuapp.com/api/login`, {'username': username, 'password': password}, {headers: {'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'withCredentials': true,
-        'crossorigin': true,
-        'Access-Control-Allow-Credentials':true,
-        'Access-Control-Allow-Origin': 'http://localhost:3000',
-        'Access-Control-Allow-Headers': "origin, x-requested-with, content-type",
-        'Access-Control-Allow-Methods': "PUT, GET, POST, DELETE, OPTIONS",
-        
-    }})
+        axios.post(`https://shirt-store123.herokuapp.com/api/login`, {'username': username, 'password': password})
         .then(response => {
             // const sess = response.data.session.cookie
         
             console.log(response.headers)
 
         // sessionStorage.setItem('cookie', sess)
-        localStorage.setItem('user', response.data.message)
+        // localStorage.setItem('user', response.data.message)
 // localStorage.setItem('id', response.data.user_id)
         // history.push('/')
 })
