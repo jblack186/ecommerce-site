@@ -67,10 +67,10 @@ server.use(session({
   // name: 'cocoabutter',
   secret: 'cocoabutter',
   saveUninitialized: false, // has implications with GDPR laws
-  resave: false, // save sessions even when they are not changed
+  resave: true, // save sessions even when they are not changed
   cookie: {
       maxAge: 1000 * 600 * 10,
-      secure: false, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
+      secure: true, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
       httpOnly: true, // if true JS cannot access the cookie
       // rolling: true
   },
