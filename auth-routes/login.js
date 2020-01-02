@@ -6,13 +6,14 @@ const auth = require('../auth/authenticate-middleware.js');
 const cors = require('cors');
 
 
-// router.use(cors({
-//   origin: "http://localhost:3000",
-//     credentials: true,
-//     withCredentials: true,
+router.use(cors({
+  origin: "http://localhost:3000",
+  'Access-Control-Allow-Origin': "http://localhost:3000",
+    credentials: true,
+    withCredentials: true,
     
 
-//   }));
+  }));
 
 router.use(function(req, res, next) {
   req.header("Access-Control-Allow-Origin", "http://localhost:3000");
