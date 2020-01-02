@@ -66,7 +66,7 @@ server.use(session({
       httpOnly: false, // if true JS cannot access the cookie
       // rolling: true
   },
-  store: store
+  // store: store
 }
 )); // add a req.session object
 
