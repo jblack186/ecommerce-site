@@ -24,7 +24,7 @@ const Login = () => {
     const login = (e) => {
         
         e.preventDefault();
-        axios.post(`https://shirt-store123.herokuapp.com/api/login`, {'username': username, 'password': password})
+        axios.post(`https://shirt-store123.herokuapp.com/api/login`, {'username': username, 'password': password}, {headers: {"Access-Control-Allow-Origin":"http://localhost:3000", "Access-Control-Request-Headers": "content-type"}})
         .then(response => {
             // const sess = response.data.session.cookie
 
