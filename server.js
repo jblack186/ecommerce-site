@@ -45,6 +45,14 @@ const knex = Knex({
 
 });
 
+server.use(cors({
+  origin: "http://localhost:3000",
+    credentials: true,
+    withCredentials: true,
+    
+
+  }));
+
 server.use(session({
   //session storage options
   name: 'cocoabutter',
