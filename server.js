@@ -30,6 +30,13 @@ server.use(cors({
 
   }));
 
+  server.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", req.headers.origin); //req.headers.origin // '*'
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Set-Cookie");
+    res.header('Access-Control-Allow-Credentials', true)
+    next();
+  }); 
+
 
 
 const Knex = require("knex");
@@ -62,7 +69,7 @@ server.use(session({
   //session storage options
   // name: 'cocoabutter',
   secret: 'cocoabutter',
-  saveUninitialized: true, // has implications with GDPR laws
+  saveUninitialized: false, // has implications with GDPR laws
   resave: false, // save sessions even when they are not changed
   cookie: {
       maxAge: 10000 * 600 * 10,
@@ -127,7 +134,6 @@ server.post('/register', (req, res) => {
 server.get("/", authRouter, function(req, res) {
   User.findAll()
   .then(users => {
-    req.session.user =user
     res.status(200).json({users: users, user: req.session});
     
   })
