@@ -30,10 +30,6 @@ server.use(cors({
 
   }));
 
-  server.use(function(req, res, next) {
-      req.session.user
-      next();
-  });
 
 
 const Knex = require("knex");
