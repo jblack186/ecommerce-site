@@ -31,8 +31,7 @@ server.use(cors({
   }));
 
   server.use(function(req, res, next) {
-    req.header("Access-Control-Allow-Origin", "http://localhost:3000");
-    req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      req.session
       next();
   });
 
