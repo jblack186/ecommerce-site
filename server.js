@@ -52,8 +52,7 @@ const knex = Knex({
   const store = new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
     knex: knex,
     tablename: "sessions",
-    maxAge: 10000 * 600 * 10,
-
+    clearInterval: 10000 * 60 * 60
 });
 
 
