@@ -31,7 +31,7 @@ server.use(cors({
   }));
 
   server.use(function(req, res, next) {
-      req.session
+      req.session.user
       next();
   });
 
