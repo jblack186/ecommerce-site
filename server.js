@@ -127,7 +127,7 @@ server.post('/register', (req, res) => {
   }
 })
 
-server.get('/', (req, res, next) => {
+server.use('/', (req, res, next) => {
   req.session
 })
 
