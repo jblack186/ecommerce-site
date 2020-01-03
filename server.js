@@ -42,10 +42,12 @@ const knex = Knex({
 
   client: "pg",
   connection: {
-    host: "postgres:5432",
-    database: 'postgres',
-    user: "postgres",
-    password: ""
+    host: 'ec2-54-243-241-62.compute-1.amazonaws.com',
+    database: 'd2vhhe21pl74f3',
+    user: "izkbkalkiehxvz",
+    password: "bc14ad9345b95898a896d289fc662044efe2db40d37cb9d054a7a84f31a15a60",
+    port: '5432',
+    ssl: true
     
   },
  
