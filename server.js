@@ -42,7 +42,7 @@ const knex = Knex({
 
   client: "pg",
   connection: {
-    host: process.env.DATABASE_URL,
+    host: '127.0.0.1',
     database: 'postgres',
     user: "postgres",
     password: ""
@@ -109,7 +109,6 @@ server.post('/register', (req, res) => {
   } else {
     User.addUser(user)
       .then(user => {
-        req.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         req.session.user = user
         console.log(req.session)
         res.status(201).json({user})
