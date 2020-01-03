@@ -23,19 +23,13 @@ const dbEnv = process.env.DB_ENV || 'production';
 
 server.use(cors({
   origin: "http://localhost:3000",
-  'Access-Control-Allow-Origin': "http://localhost:3000",
     credentials: true,
     withCredentials: true,
     
 
   }));
 
-  server.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", req.headers.origin); //req.headers.origin // '*'
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Set-Cookie");
-    res.header('Access-Control-Allow-Credentials', true)
-    next();
-  }); 
+
 
 
 
@@ -95,7 +89,6 @@ server.use('/api/inventory', InventoryRouter);
 server.use('/api/users', UsersRouter);
 server.use('/api/cart', CartRouter);
 
-var count = 0;
 
 // server.use("/", function(req, res, next) {
 //   var n = req.session.views || 0;
