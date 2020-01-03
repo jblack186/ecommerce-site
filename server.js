@@ -53,7 +53,7 @@ const knex = Knex({
     knex: knex,
     tablename: "sessions",
     createtable: true,
-    maxAge: 1000 * 600 * 10,
+    maxAge: 10000 * 600 * 10,
 
 });
 

@@ -24,12 +24,13 @@ router.use(function(req, res, next) {
 
 router.post('/', (req, res) => {
   let {username, password} = req.body
-
   if(!req.body.username || !req.body.password) {
     res.status(422).json({message: 'Please provide a username and a password to log in'})
   } else {
     Users.findBy({username}).first()
     .then(user => {
+      req.session.loggedIn  = true;
+
       if(user && bcrypt.compareSync(password, user.password)) {
         req.session.user = user
         console.log(req.session)
