@@ -37,7 +37,6 @@ const knex = Knex({
 
   client: "pg",
   connection: {
-    host: '127.0.0.1',
     database: 'postgres',
     user: "postgres",
     password: ""
@@ -67,10 +66,10 @@ server.use(session({
   // name: 'cocoabutter',
   secret: 'cocoabutter',
   saveUninitialized: false, // has implications with GDPR laws
-  resave: true, // save sessions even when they are not changed
+  resave: false, // save sessions even when they are not changed
   cookie: {
       maxAge: 1000 * 600 * 10,
-      secure: true, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
+      secure: false, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
       httpOnly: true, // if true JS cannot access the cookie
       // rolling: true
   },
