@@ -30,6 +30,11 @@ server.use(cors({
 
   }));
 
+  server.use(function(req, res, next) {
+    req.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+      next();
+  });
 
 
 const Knex = require("knex");
@@ -37,6 +42,7 @@ const knex = Knex({
 
   client: "pg",
   connection: {
+    host: '127.0.0.1',
     database: 'postgres',
     user: "postgres",
     password: ""
@@ -45,11 +51,6 @@ const knex = Knex({
  
 })
 
-  server.use(function(req, res, next) {
-    req.header("Access-Control-Allow-Origin", "http://localhost:3000");
-    req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-      next();
-  });
 
   const store = new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
     knex: knex,
