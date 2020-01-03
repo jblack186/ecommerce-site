@@ -114,7 +114,10 @@ server.post('/register', (req, res) => {
       .then(user => {
         req.session.user = user
         console.log(req.session)
-        res.status(201).json({user})
+        res.status(201).json({
+          message: user.username,
+          id: user.id,
+          session: user})
         // const token = generateToken(newUser)
       })
       .catch(err => {
