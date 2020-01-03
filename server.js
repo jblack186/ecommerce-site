@@ -109,6 +109,7 @@ server.post('/register', (req, res) => {
   } else {
     User.addUser(user)
       .then(user => {
+        req.header("Access-Control-Allow-Origin", "http://localhost:3000");
         req.session.user = user
         console.log(req.session)
         res.status(201).json({user})
