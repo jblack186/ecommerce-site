@@ -127,9 +127,9 @@ server.post('/register', (req, res) => {
   }
 })
 
-server.use('/', (req, res, next) => {
-  req.session
-})
+// server.use('/', (req, res, next) => {
+//   req.session
+// })
 
 server.get("/", authRouter, function(req, res) {
   User.findAll()
