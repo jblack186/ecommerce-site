@@ -128,7 +128,7 @@ server.post('/register', (req, res) => {
 })
 
 server.get("/", authRouter, function(req, res) {
-  req.session
+  req.session.user
   User.findAll()
   .then(users => {
     res.status(200).json({users: users, user: req.session});
