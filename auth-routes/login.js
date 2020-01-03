@@ -40,8 +40,6 @@ router.post('/', (req, res) => {
           message: user.username,
           id: user.id,
           session: user
-          
-
           // token: token
         })
         

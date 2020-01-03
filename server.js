@@ -69,7 +69,7 @@ server.use(session({
   //session storage options
   // name: 'cocoabutter',
   secret: 'cocoabutter',
-  saveUninitialized: false, // has implications with GDPR laws
+  saveUninitialized: true, // has implications with GDPR laws
   resave: false, // save sessions even when they are not changed
   cookie: {
       maxAge: 1000 * 600 * 10,
