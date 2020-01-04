@@ -31,18 +31,16 @@ server.use(cors({
 
 
 
-
-
 const Knex = require("knex");
 const knex = Knex({
 
   client: "pg",
   connection: {
-    host: 'ec2-54-243-241-62.compute-1.amazonaws.com',
-    database: 'd2vhhe21pl74f3',
-    user: "izkbkalkiehxvz",
-    password: "bc14ad9345b95898a896d289fc662044efe2db40d37cb9d054a7a84f31a15a60",
-    port: '5432',
+    host: process.env.host,
+    database: process.env.database,
+    user: process.env.user,
+    password: process.env.password,
+    port: process.env.port,
     ssl: true
     
   },
@@ -69,8 +67,8 @@ server.use(session({
       maxAge: 10000 * 600 * 60 * 24,
       secure: false, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
       httpOnly: true, // if true JS cannot access the cookie
-      // rolling: true
-  },
+      sameSite: true
+      },
   store: store
 }
 )); // add a req.session object
@@ -89,12 +87,6 @@ server.use('/api/inventory', InventoryRouter);
 server.use('/api/users', UsersRouter);
 server.use('/api/cart', CartRouter);
 
-
-// server.use("/", function(req, res, next) {
-//   var n = req.session.views || 0;
-//   req.session.views = ++n;
-//   res.end(n + " views");
-// });
 
 server.post('/register', (req, res) => {
   let  user = req.body
@@ -120,9 +112,6 @@ server.post('/register', (req, res) => {
   }
 })
 
-// server.use('/', (req, res, next) => {
-//   req.session
-// })
 
 server.get("/", authRouter, function(req, res) {
   User.findAll()
