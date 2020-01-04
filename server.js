@@ -66,10 +66,11 @@ server.use(session({
   resave: false, // save sessions even when they are not changed
   cookie: {
       maxAge: 10000 * 600 * 60 * 24,
-      secure: true, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
+      secure: false, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
       httpOnly: true, // if true JS cannot access the cookie
       sameSite: true
-      },
+      // rolling: true
+  },
   store: store
 }
 )); // add a req.session object
@@ -78,9 +79,10 @@ server.use(session({
 
 
 // server.use(allowCrossDomain);
+server.use(cookieParser())
 server.use(helmet());
 server.use(express.json());
-server.use(cookieParser())
+
 server.use('/api/register', Register);
 server.use('/api/login', Login);
 server.use('api/auth', authRouter);
@@ -99,7 +101,12 @@ server.post('/register', (req, res) => {
     User.addUser(user)
       .then(user => {
         req.session.user = user
-
+        res.cookie('nameOfCookie', req.session, {
+          maxAge: 60 * 60 * 1000, // 1 hour
+          httpOnly: true,
+          secure: true,
+          sameSite: true,
+        })
         console.log(req.session)
         res.status(201).json({
           message: user.username,
@@ -116,8 +123,8 @@ server.post('/register', (req, res) => {
 
 
 server.get("/", authRouter, function(req, res) {
+  res.cookies.nameOfCookie
   User.findAll()
-  res.cookies.connect.sid
   .then(users => {
     res.status(200).json({users: users, user: req.session});
     
