@@ -117,7 +117,7 @@ server.post('/register', (req, res) => {
 
 server.get("/", authRouter, function(req, res) {
   User.findAll()
-  response.cookies.connect.sid
+  res.cookies.connect.sid
   .then(users => {
     res.status(200).json({users: users, user: req.session});
     
