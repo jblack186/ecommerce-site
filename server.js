@@ -12,6 +12,7 @@ const db = require('./database/dbConfig.js');
 const User = require('./m-r users/users-model.js');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
+const cookieParser = require('cookie-parser');
 
 
 const server = express();
@@ -65,7 +66,7 @@ server.use(session({
   resave: false, // save sessions even when they are not changed
   cookie: {
       maxAge: 10000 * 600 * 60 * 24,
-      secure: false, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
+      secure: true, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
       httpOnly: true, // if true JS cannot access the cookie
       sameSite: true
       },
@@ -79,7 +80,7 @@ server.use(session({
 // server.use(allowCrossDomain);
 server.use(helmet());
 server.use(express.json());
-
+server.use(cookieParser())
 server.use('/api/register', Register);
 server.use('/api/login', Login);
 server.use('api/auth', authRouter);
@@ -98,6 +99,12 @@ server.post('/register', (req, res) => {
     User.addUser(user)
       .then(user => {
         req.session.user = user
+        res.cookie('nameOfCookie', 'cookieValue', {
+          maxAge: 60 * 60 * 1000, // 1 hour
+          httpOnly: true,
+          secure: true,
+          sameSite: true,
+        })
         console.log(req.session)
         res.status(201).json({
           message: user.username,
