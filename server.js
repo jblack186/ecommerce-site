@@ -93,12 +93,6 @@ server.post('/register', (req, res) => {
   let  user = req.body
   const hash = bcrypt.hashSync(user.password, 10)
   user.password=hash
-  res.cookie('nameOfCookie', 'cookieValue', {
-    maxAge: 60 * 60 * 1000, // 1 hour
-    httpOnly: true,
-    secure: true,
-    sameSite: true,
-  })
   if(!user.username || !user.password ) {
     res.status(422).json({message: 'Please enter Username and Password to create an account'})
   } else {
@@ -123,6 +117,7 @@ server.post('/register', (req, res) => {
 
 server.get("/", authRouter, function(req, res) {
   User.findAll()
+  response.cookies.connect.sid
   .then(users => {
     res.status(200).json({users: users, user: req.session});
     
