@@ -60,7 +60,7 @@ const knex = Knex({
 
 server.use(session({
   //session storage options
-  // name: 'cocoabutter',
+  name: 'cocoabutter',
   secret: 'cocoabutter',
   saveUninitialized: true, // has implications with GDPR laws
   resave: false, // save sessions even when they are not changed
