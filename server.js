@@ -95,12 +95,7 @@ server.post('/register', (req, res) => {
   let  user = req.body
   const hash = bcrypt.hashSync(user.password, 10)
   user.password=hash
-  res.cookie('nameOfCookie', req.session, {
-    maxAge: 60 * 60 * 1000, // 1 hour
-    httpOnly: true,
-    secure: true,
-    sameSite: true,
-  })
+
 
   if(!user.username || !user.password ) {
     res.status(422).json({message: 'Please enter Username and Password to create an account'})
@@ -108,7 +103,7 @@ server.post('/register', (req, res) => {
     User.addUser(user)
       .then(user => {
         req.session.user = user
-        res.cookies.nameOfCookie
+
         console.log(req.session)
         res.status(201).json({
           message: user.username,
