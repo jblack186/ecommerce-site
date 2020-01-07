@@ -33,7 +33,7 @@ const Login = () => {
         // sessionStorage.setItem('cookie', sess)
         // localStorage.setItem('user', response.data.message)
 // localStorage.setItem('id', response.data.user_id)
-        history.push('/')
+        // history.push('/')
 })
         .catch(error => {
             console.log(error)

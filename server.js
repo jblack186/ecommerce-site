@@ -119,7 +119,7 @@ server.post('/register', (req, res) => {
 })
 
 
-server.get("/", authRouter, function(req, res) {
+server.get("/", function(req, res) {
   User.findAll()
   .then(users => {
     req.session.user = users
