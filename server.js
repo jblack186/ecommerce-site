@@ -123,7 +123,7 @@ server.get("/", function(req, res) {
   User.findAll()
   .then(users => {
     req.session.user = users
-    res.status(200).json({users: users, user: req.session});
+    res.status(200).json({users: users});
     
   })
   .catch(err => {
