@@ -119,9 +119,7 @@ server.post('/register', (req, res) => {
 
 
 server.get("/", function(req, res) {
-  res.cookie('hi', 'hello')
   User.findAll()
-
   .then(users => {
     res.status(200).json({users: users, user: req.session});
     
