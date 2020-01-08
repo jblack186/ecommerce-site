@@ -53,7 +53,9 @@ const knex = require('./database/dbConfig');
   const store = new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
     knex: knex,
     tablename: "sessions",
-    clearInterval: 10000 * 60 * 60
+    sidfieldname: 'sid',
+    clearInterval: 60 * 60 * 1000,
+    createtable: true, 
 });
 
 
