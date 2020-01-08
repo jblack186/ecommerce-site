@@ -123,7 +123,7 @@ server.post('/register', (req, res) => {
 
 server.get('/', (req, res) => {
   req.session.name = 'Jamie'
-  res.send('got it')
+  res.send(req.session.name)
 })
 
 
