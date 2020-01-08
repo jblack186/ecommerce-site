@@ -103,7 +103,7 @@ server.post('/register', (req, res) => {
     User.addUser(user)
       .then(user => {
         req.session.user = user
-
+res.cookie('hi', 'hello')
         console.log(req.session)
         res.status(201).json({
           message: user.username,
@@ -123,7 +123,7 @@ server.get("/", function(req, res) {
   User.findAll()
 
   .then(users => {
-    const user = users[0]
+    const user = users
     req.session.user = user
     res.status(200).json({users: users, user: req.session});
     
