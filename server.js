@@ -121,8 +121,14 @@ server.post('/register', (req, res) => {
   }
 })
 
+server.get('/', (req, res) => {
+  req.session.user = 'Jamie'
+  res.send('got it')
+})
+
 
 server.get("/", authRouter, function(req, res) {
+
   User.findAll()
   .then(users => {
     res.status(200).json({users: users, user: req.session});
