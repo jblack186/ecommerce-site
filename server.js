@@ -22,13 +22,7 @@ const dbEnv = process.env.DB_ENV || 'production';
 
 
 
-server.use(cors({
-  origin: "http://localhost:3000",
-    credentials: true,
-    withCredentials: true,
-    
-
-  }));
+server.use(cors());
 
 
 
@@ -121,7 +115,7 @@ server.post('/register', (req, res) => {
   }
 })
 
-server.get('/', (req, res) => {
+server.get('/', authRouter, (req, res) => {
   req.session.name = 'Jamie'
   res.send(req.session.name)
 })
