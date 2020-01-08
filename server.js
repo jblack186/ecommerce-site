@@ -33,20 +33,21 @@ server.use(cors({
 
 
 const Knex = require("knex");
-const knex = Knex({
+const knex = require('./database/dbConfig');
+// const knex = Knex({
 
-  client: "pg",
-  connection: {
-    host: process.env.host,
-    database: process.env.database,
-    user: process.env.user,
-    password: process.env.password,
-    port: process.env.port,
-    ssl: true
+//   client: "pg",
+//   connection: {
+//     host: process.env.host,
+//     database: process.env.database,
+//     user: process.env.user,
+//     password: process.env.password,
+//     port: process.env.port,
+//     ssl: true
     
-  },
+//   },
  
-})
+// })
 
 
   const store = new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
