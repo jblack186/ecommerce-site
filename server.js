@@ -130,7 +130,7 @@ server.get('/', (req, res) => {
 server.get("/usr", authRouter, function(req, res) {
 
   const name = req.session.name
-  res.send(`hello ${req.session.name}`)
+  res.send(`hello ${name}`)
 
   // User.findAll()
   // .then(users => {
