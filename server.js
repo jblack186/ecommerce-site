@@ -92,7 +92,6 @@ server.use('/api/cart', CartRouter);
 
 
 server.post('/register', (req, res) => {
-  res.cookie('hi', 'hello')
   let  user = req.body
   const hash = bcrypt.hashSync(user.password, 10)
   user.password=hash
@@ -120,6 +119,7 @@ server.post('/register', (req, res) => {
 
 
 server.get("/", function(req, res) {
+  res.cookie('hi', 'hello')
   User.findAll()
 
   .then(users => {
