@@ -122,22 +122,25 @@ server.post('/register', (req, res) => {
 })
 
 server.get('/', (req, res) => {
-  req.session.user = 'Jamie'
+  req.session.name = 'Jamie'
   res.send('got it')
 })
 
 
 server.get("/usr", authRouter, function(req, res) {
 
-  User.findAll()
-  .then(users => {
-    res.status(200).json({users: users, user: req.session});
+  const name = req.session.name
+  res.send(`hello ${req.session.name}`)
+
+  // User.findAll()
+  // .then(users => {
+  //   res.status(200).json({users: users, user: req.session});
     
-  })
-  .catch(err => {
-      console.log(err);
-      res.send(err)
-  })
+  // })
+  // .catch(err => {
+  //     console.log(err);
+  //     res.send(err)
+  // })
 })
 
 

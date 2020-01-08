@@ -42,6 +42,17 @@ export default class Register extends React.Component {
             console.log(err)
         })
     }
+
+    testTwo = e => {
+        e.preventDefault();
+        axios.get('https://shirt-store123.herokuapp.com/usr')
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
     
 
 
@@ -66,6 +77,8 @@ export default class Register extends React.Component {
                 <button type='submit'>Add</button>
                 </form>
                 <button onClick={this.test} type='button'>test</button>
+                <button onClick={this.testTwo} type='button'>test2</button>
+
             </div>
         )
     }
