@@ -121,9 +121,9 @@ server.post('/register', (req, res) => {
 
 server.get("/", function(req, res) {
   User.findAll()
-  
+
   .then(users => {
-    req.session.user = users
+    req.session.user = user
     res.status(200).json({users: users, user: req.session});
     
   })
