@@ -127,7 +127,7 @@ server.get('/', (req, res) => {
 })
 
 
-server.get("/", authRouter, function(req, res) {
+server.get("/usr", authRouter, function(req, res) {
 
   User.findAll()
   .then(users => {
