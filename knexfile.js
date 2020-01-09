@@ -4,6 +4,7 @@ const localPg = {
   user: process.env.user,
   password: process.env.password,
   port: process.env.port, 
+  // ssl: true
 }
 
 module.exports = {
