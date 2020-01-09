@@ -22,23 +22,22 @@ const dbEnv = process.env.DB_ENV || 'production';
 
 
 
-server.use(cors());
+// server.use(cors({
+//   origin: "http://localhost:3000",
+//     credentials: true,
+//     withCredentials: true,
+    
 
+//   }));
+
+  server.use(cors());
 
 
 const Knex = require("knex");
 const knex = require('./database/dbConfig');
 // const knex = Knex({
-
 //   client: "pg",
 //   connection: {
-//     host: process.env.host,
-//     database: process.env.database,
-//     user: process.env.user,
-//     password: process.env.password,
-//     port: process.env.port,
-//     ssl: true
-    
 //   },
  
 // })
@@ -51,7 +50,6 @@ const knex = require('./database/dbConfig');
     clearInterval: 60 * 60 * 1000,
     createtable: true, 
 });
-
 
 
 
