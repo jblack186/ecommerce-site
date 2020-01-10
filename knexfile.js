@@ -1,11 +1,14 @@
 const localPg = {
-  host: process.env.host,
-  database: process.env.database,
-  user: process.env.user,
-  password: process.env.password,
-  port: process.env.port, 
+  host: 'localhost',
+  port: 5435, // You may need/want to change this
+  database: 'postgres',
+  user: 'postgres', // User and pass may be different for you
+  password: 'test'  
   // ssl: true
 }
+
+const prodDbConnection = process.env.DATABASE_URL
+
 
 module.exports = {
     // development: {
@@ -36,19 +39,6 @@ module.exports = {
     // },
      
 
-  
-    production: {
-      client: 'pg',
-      connection: process.env.DATABASE_URL,
-      useNullAsDefault: true,
-           migrations: {
-        directory: './database/migrations',
-      },
-      seeds: {
-        directory: './database/seeds',
-      },
-    },
-
     development: {
       client: 'pg',
       connection: localPg,  
@@ -60,6 +50,21 @@ module.exports = {
         directory: './database/seeds',
       },
     },
+
+
+  
+    production: {
+      client: 'pg',
+      connection: prodDbConnection,
+      useNullAsDefault: true,
+           migrations: {
+        directory: './database/migrations',
+      },
+      seeds: {
+        directory: './database/seeds',
+      },
+    },
+
 
 };
 

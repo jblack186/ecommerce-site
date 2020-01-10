@@ -16,8 +16,8 @@ const cookieParser = require('cookie-parser');
 
 
 const server = express();
-const dbEnv = process.env.DB_ENV || 'production';
-
+const dbEnv = process.env.DB_ENV || 'development';
+const config = require("./knexfile.js");
 
 
 
@@ -34,7 +34,7 @@ const dbEnv = process.env.DB_ENV || 'production';
 
 
 const Knex = require("knex");
-const knex = require('./database/dbConfig');
+const knex = Knex(config[dbEnv]);
 // const knex = Knex({
 //   client: "pg",
 //   connection: {
