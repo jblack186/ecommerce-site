@@ -12,7 +12,6 @@ const db = require('./database/dbConfig.js');
 const User = require('./m-r users/users-model.js');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
-const cookieParser = require('cookie-parser');
 
 
 const server = express();
@@ -75,7 +74,6 @@ server.use(session({
 
 
 // server.use(allowCrossDomain);
-server.use(cookieParser())
 server.use(helmet());
 server.use(express.json());
 
