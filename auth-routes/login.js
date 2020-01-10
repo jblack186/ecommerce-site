@@ -32,7 +32,7 @@ router.post('/', (req, res) => {
       req.session.loggedIn  = true;
 
       if(user && bcrypt.compareSync(password, user.password)) {
-        // req.session.user = user
+        req.session.username = username
         console.log(req.session)
         // const token = generateToken(user)
         // res.setHeader("Set-Cookie", req.session)
