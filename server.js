@@ -114,7 +114,7 @@ server.post('/register', (req, res) => {
 })
 
 server.get('/', authRouter, (req, res) => {
-  req.session.user = user
+  req.session
   res.send(req.session.name)
 })
 
