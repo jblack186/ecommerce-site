@@ -60,11 +60,9 @@ server.use(session({
   resave: false, // save sessions even when they are not changed
   cookie: {
       maxAge: 10000 * 600 * 60 * 24,
-      secure: true, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
+      secure: false, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
       httpOnly: true, // if true JS cannot access the cookie
       sameSite: true,
-      credentials: true
-      // rolling: true
   },
   store: store
 }
