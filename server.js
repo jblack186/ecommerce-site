@@ -93,8 +93,7 @@ server.post('/register', (req, res) => {
   } else {
     User.addUser(user)
       .then(user => {
-        req.session.user = user
-        res.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
+        req.session.userID = user.id
         console.log(req.session)
         res.status(201).json({
           mess: user.username,
