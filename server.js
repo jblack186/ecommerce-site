@@ -93,7 +93,7 @@ server.post('/register', (req, res) => {
   } else {
     User.addUser(user)
       .then(user => {
-        req.session.userID = user.id
+        req.session.user = user
         console.log(req.session)
         res.status(201).json({
           mess: user.username,
