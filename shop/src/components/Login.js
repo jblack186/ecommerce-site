@@ -28,7 +28,7 @@ const Login = () => {
         .then(response => {
             // const sess = response.data.session.cookie
         
-            console.log(response.headers)
+            console.log(response)
 
         // sessionStorage.setItem('cookie', sess)
         // localStorage.setItem('user', response.data.message)
