@@ -45,7 +45,7 @@ const knex = Knex(config[dbEnv]);
     knex: knex,
     tablename: "sessions",
     sidfieldname: 'sid',
-    clearInterval: 60 * 60 * 1000,
+    clearInterval: 600 * 600 * 1000,
     createtable: true, 
 });
 
@@ -110,7 +110,7 @@ server.post('/register', (req, res) => {
 })
 
 server.get('/', authRouter, (req, res) => {
-  req.session
+  req.session.user
   res.send(req.session.name)
 })
 
