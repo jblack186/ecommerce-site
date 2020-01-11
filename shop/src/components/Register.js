@@ -24,7 +24,7 @@ export default class Register extends React.Component {
         axios.post('https://shirt-store123.herokuapp.com/register', this.state, { withCredentials: true, sameSite: 'none' })
         .then(response => {
             console.log(response)
-            console.log(document.cookie)
+            console.log(response.document.cookie)
            this.props.history.push('/login') 
         })
         .catch(error => {
