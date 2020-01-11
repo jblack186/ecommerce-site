@@ -21,15 +21,15 @@ const config = require("./knexfile.js");
 
 
 
-// server.use(cors({
-//   origin: "http://localhost:3000",
-//     credentials: true,
-//     withCredentials: true,
+server.use(cors({
+  origin: "http://localhost:3000",
+    credentials: true,
+    withCredentials: true,
     
 
-//   }));
+  }));
 
-  server.use(cors());
+  // server.use(cors());
 
 
 const Knex = require("knex");

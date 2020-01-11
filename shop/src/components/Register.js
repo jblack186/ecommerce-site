@@ -21,9 +21,9 @@ export default class Register extends React.Component {
 
     register = (e) => {
         e.preventDefault();
-        axios.post('https://shirt-store123.herokuapp.com/register', this.state,)
+        axios.post('https://shirt-store123.herokuapp.com/register', this.state, { withCredentials: true })
         .then(response => {
-            console.log(response)
+            console.log(response.cookies)
            this.props.history.push('/login') 
         })
         .catch(error => {
@@ -34,7 +34,7 @@ export default class Register extends React.Component {
 
     test = e => {
         e.preventDefault();
-        axios.get('https://shirt-store123.herokuapp.com')
+        axios.get('https://shirt-store123.herokuapp.com', {withCredentials: 'include'})
         .then(res => {
             console.log(res)
         })
