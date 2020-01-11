@@ -20,7 +20,7 @@ const config = require("./knexfile.js");
 
 
 
-
+server.set('trust proxy', true);
 server.use(cors({
   origin: "http://localhost:3000",
   credentials: true,
