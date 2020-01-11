@@ -24,7 +24,7 @@ const config = require("./knexfile.js");
 server.use(cors({
   origin: "http://localhost:3000",
   credentials: true,
-  SameSite: 'none'    
+  sameSite: 'none'    
 
   }));
 
@@ -94,6 +94,7 @@ server.post('/register', (req, res) => {
     User.addUser(user)
       .then(user => {
         req.session.user = user
+        res.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
         console.log(req.session)
         res.status(201).json({
           mess: user.username,
