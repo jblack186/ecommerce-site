@@ -21,17 +21,6 @@ const config = require("./knexfile.js");
 
 
 
-server.get('/find/:id', (req, res) => {
-  const { id } = req.params
-  User.findBy(id)
-  .then(user => {
-    res.status(200).json(user);
-  })
-  .catch(err => {
-    console.log(err)
-  })
-
-}) 
 
 
 

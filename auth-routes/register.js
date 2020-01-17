@@ -18,7 +18,6 @@ router.post('/', (req, res) => {
         const token = generateToken(usr)
         res.status(200).json({  
             message: `Welcome ${user.username}. You have been successfully registered!`,
-            id: user.id,
             token: token
           })
   
