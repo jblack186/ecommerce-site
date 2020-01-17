@@ -2,7 +2,6 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const generateToken = require('../config/token')
 const Users = require('../m-r users/users-model.js');
-const cors = require('cors');
 
 
 
