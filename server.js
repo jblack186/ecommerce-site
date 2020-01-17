@@ -12,8 +12,8 @@ const db = require('./database/dbConfig.js');
 const User = require('./m-r users/users-model.js');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
-const passport = require('passport')
-const flash = require('express-flash')
+// const passport = require('passport')
+// const flash = require('express-flash')
 
 const server = express();
 const dbEnv = process.env.DB_ENV || 'development';
@@ -21,12 +21,12 @@ const config = require("./knexfile.js");
 
 
 
-const initalizePassport = require('./passport-config')
-initalizePassport(passport, id => 
-  User.findById(id => user.id === id ),
-  username => User.findBy(username => user.username=== username )
+// const initalizePassport = require('./passport-config')
+// initalizePassport(passport, id => 
+//   User.findById(id => user.id === id ),
+//   username => User.findBy(username => user.username=== username )
 
-)
+// )
 
 server.get('/find/:id', (req, res) => {
   const { id } = req.params
@@ -88,10 +88,10 @@ server.use(session({
 )); // add a req.session object
 
 
-server.use(passport.initialize())
-server.use(passport.session())
+// server.use(passport.initialize())
+// server.use(passport.session())
 
-server.use(flash())
+// server.use(flash())
 
 
 // server.use(allowCrossDomain);
