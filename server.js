@@ -19,22 +19,36 @@ const server = express();
 const dbEnv = process.env.DB_ENV || 'development';
 const config = require("./knexfile.js");
 
+
+
 const initalizePassport = require('./passport-config')
-initalizePassport(passport, username => 
-  users.find(user => user.username === email ),
-  id => users.find(user => user.id=== id )
+initalizePassport(passport, id => 
+  User.findById(id => user.id === id ),
+  username => User.findBy(username => user.username=== username )
 
 )
+
+server.get('/find/:id', (req, res) => {
+  const { id } = req.params
+  User.findBy(id)
+  .then(user => {
+    res.status(200).json(user);
+  })
+  .catch(err => {
+    console.log(err)
+  })
+
+}) 
+
 
 server.set('trust proxy', true);
 server.use(cors({
   origin: "http://localhost:3000",
   credentials: true,
-  sameSite: 'none'    
 
   }));
 
-  // server.use(cors());
+  server.use(cors());
 
 
 const Knex = require("knex");
@@ -92,31 +106,33 @@ server.use('/api/users', UsersRouter);
 server.use('/api/cart', CartRouter);
 
 
-server.post('/register', passport.authenticate, (req, res) => {
-
-  // let  user = req.body
-  // const hash = bcrypt.hashSync(user.password, 10)
-  // user.password=hash
 
 
-  // if(!user.username || !user.password ) {
-  //   res.status(422).json({message: 'Please enter Username and Password to create an account'})
-  // } else {
-  //   User.addUser(user)
-  //     .then(user => {
-  //       req.session.user = user
-  //       console.log(req.session)
-  //       res.status(201).json({
-  //         mess: user.username,
-  //         username: req.session.user.username,
-  //         session: user})
-  //       // const token = generateToken(newUser)
-  //     })
-  //     .catch(err => {
-  //       res.status(500)
-  //       .json({ err, message: "Sorry, but something went wrong while registering" })
-  //     })
-  // }
+server.post('/register', (req, res) => {
+
+  let  user = req.body
+  const hash = bcrypt.hashSync(user.password, 10)
+  user.password=hash
+
+
+  if(!user.username || !user.password ) {
+    res.status(422).json({message: 'Please enter Username and Password to create an account'})
+  } else {
+    User.addUser(user)
+      .then(user => {
+        req.session.user = user
+        console.log(req.session)
+        res.status(201).json({
+          mess: user.username,
+          username: req.session.user.username,
+          session: user})
+        // const token = generateToken(newUser)
+      })
+      .catch(err => {
+        res.status(500)
+        .json({ err, message: "Sorry, but something went wrong while registering" })
+      })
+  }
 })
 
 server.get('/', authRouter, (req, res) => {
