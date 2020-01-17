@@ -15,10 +15,10 @@ router.post('/', (req, res) => {
   } else {
     Users.addUser(user)
       .then(usr => {
-        const token = generateToken(user)
+        const token = generateToken(usr)
         res.status(200).json({  
-            message: `Welcome ${usr.password}. You have been successfully registered!`,
-            id: usr.id,
+            message: `Welcome ${user.username}. You have been successfully registered!`,
+            id: user.id,
             token: token
           })
   

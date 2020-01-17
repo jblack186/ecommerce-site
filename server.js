@@ -35,7 +35,7 @@ server.get('/find/:id', (req, res) => {
 
 
 
-  // server.use(cors());
+  server.use(cors());
 
 
 // const Knex = require("knex");
