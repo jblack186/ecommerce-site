@@ -7,7 +7,7 @@ const Register = require('./auth-routes/register.js');
 const Login = require('./auth-routes/login.js');
 const authRouter = require('./auth/authenticate-middleware.js');
 const session = require('express-session'); //install express session
-const KnexSessionStore = require('connect-session-knex')(session); // to store sessions in database
+// const KnexSessionStore = require('connect-session-knex')(session); // to store sessions in database
 const db = require('./database/dbConfig.js');
 const User = require('./m-r users/users-model.js');
 const cors = require('cors');
@@ -20,13 +20,6 @@ const dbEnv = process.env.DB_ENV || 'development';
 const config = require("./knexfile.js");
 
 
-
-// const initalizePassport = require('./passport-config')
-// initalizePassport(passport, id => 
-//   User.findById(id => user.id === id ),
-//   username => User.findBy(username => user.username=== username )
-
-// )
 
 server.get('/find/:id', (req, res) => {
   const { id } = req.params
@@ -41,18 +34,12 @@ server.get('/find/:id', (req, res) => {
 }) 
 
 
-// server.set('trust proxy', true);
-server.use(cors({
-  origin: "http://localhost:3000",
-  credentials: true,
-
-  }));
 
   // server.use(cors());
 
 
-const Knex = require("knex");
-const knex = Knex(config[dbEnv]);
+// const Knex = require("knex");
+// const knex = Knex(config[dbEnv]);
 // const knex = Knex({
 //   client: "pg",
 //   connection: {
@@ -61,31 +48,31 @@ const knex = Knex(config[dbEnv]);
 // })
 
 
-  const store = new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
-    knex: knex,
-    tablename: "sessions",
-    sidfieldname: 'sid',
-    clearInterval: 600 * 600 * 1000,
-    createtable: true, 
-});
+//   const store = new KnexSessionStore({ // DONT FORGET new KEYWORD //how to store sessions
+//     knex: knex,
+//     tablename: "sessions",
+//     sidfieldname: 'sid',
+//     clearInterval: 600 * 600 * 1000,
+//     createtable: true, 
+// });
 
 
 
-server.use(session({
-  //session storage options
-  name: 'cocoabutter',
-  secret: 'cocoabutter',
-  saveUninitialized: false, // has implications with GDPR laws
-  resave: false, // save sessions even when they are not changed
-  cookie: {
-      maxAge: 10000 * 600 * 60 * 24,
-      secure: false, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
-      httpOnly: true, // if true JS cannot access the cookie
-      sameSite: false,
-  },
-  store: store
-}
-)); // add a req.session object
+// server.use(session({
+//   //session storage options
+//   name: 'cocoabutter',
+//   secret: 'cocoabutter',
+//   saveUninitialized: false, // has implications with GDPR laws
+//   resave: false, // save sessions even when they are not changed
+//   cookie: {
+//       maxAge: 10000 * 600 * 60 * 24,
+//       secure: false, //in production set this to true cuz should only be sent if https // if false the cookie is sent over http, if true only sent over https
+//       httpOnly: true, // if true JS cannot access the cookie
+//       sameSite: false,
+//   },
+//   store: store
+// }
+// )); // add a req.session object
 
 
 // server.use(passport.initialize())
@@ -108,32 +95,32 @@ server.use('/api/cart', CartRouter);
 
 
 
-server.post('/register', (req, res) => {
+// server.post('/register', (req, res) => {
 
-  let  user = req.body
-  const hash = bcrypt.hashSync(user.password, 10)
-  user.password=hash
+//   let  user = req.body
+//   const hash = bcrypt.hashSync(user.password, 10)
+//   user.password=hash
 
 
-  if(!user.username || !user.password ) {
-    res.status(422).json({message: 'Please enter Username and Password to create an account'})
-  } else {
-    User.addUser(user)
-      .then(user => {
-        req.session.user = user
-        console.log(req.session)
-        res.status(201).json({
-          mess: user.username,
-          username: req.session.user.username,
-          session: user})
-        // const token = generateToken(newUser)
-      })
-      .catch(err => {
-        res.status(500)
-        .json({ err, message: "Sorry, but something went wrong while registering" })
-      })
-  }
-})
+//   if(!user.username || !user.password ) {
+//     res.status(422).json({message: 'Please enter Username and Password to create an account'})
+//   } else {
+//     User.addUser(user)
+//       .then(user => {
+//         req.session.user = user
+//         console.log(req.session)
+//         res.status(201).json({
+//           mess: user.username,
+//           username: req.session.user.username,
+//           session: user})
+//         // const token = generateToken(newUser)
+//       })
+//       .catch(err => {
+//         res.status(500)
+//         .json({ err, message: "Sorry, but something went wrong while registering" })
+//       })
+//   }
+// })
 
 server.get('/', authRouter, (req, res) => {
   req.session.user

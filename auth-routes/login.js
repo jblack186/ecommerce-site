@@ -6,20 +6,20 @@ const auth = require('../auth/authenticate-middleware.js');
 const cors = require('cors');
 
 
-router.use(cors({
-  origin: "http://localhost:3000",
-  'Access-Control-Allow-Origin': "http://localhost:3000",
-    credentials: true,
-    withCredentials: true,
+// router.use(cors({
+//   origin: "http://localhost:3000",
+//   'Access-Control-Allow-Origin': "http://localhost:3000",
+//     credentials: true,
+//     withCredentials: true,
     
 
-  }));
+//   }));
 
-router.use(function(req, res, next) {
-  req.header("Access-Control-Allow-Origin", "http://localhost:3000");
-  req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+// router.use(function(req, res, next) {
+//   req.header("Access-Control-Allow-Origin", "http://localhost:3000");
+//   req.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     next();
+// });
 
 
 router.post('/', (req, res) => {
@@ -29,26 +29,22 @@ router.post('/', (req, res) => {
   } else {
     Users.findBy({username}).first()
     .then(user => {
-      req.session.loggedIn  = true;
-
       if(user && bcrypt.compareSync(password, user.password)) {
-        req.session.username = username
-        console.log(req.session)
-        // const token = generateToken(user)
-        // res.setHeader("Set-Cookie", req.session)
-      
+        const token = generateToken(user)
+        // Remove password from the user object to be passed back in response
+
         res.status(200).json({
-          message: user.username,
+          message: `Welcome ${user.username}!`,
           id: user.id,
-          session: user
-          // token: token
+          token: token
         })
-        
 
       } else {
-        res.status(401).json({message: 'Invalid credential'})
+        res.status(401).json({message: 'Invalid credentials'})
       }
     })
+
+    
     .catch(err => {
       console.log(err)
       res.status(500) 
