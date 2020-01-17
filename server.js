@@ -41,14 +41,14 @@ server.get('/find/:id', (req, res) => {
 }) 
 
 
-server.set('trust proxy', true);
+// server.set('trust proxy', true);
 server.use(cors({
   origin: "http://localhost:3000",
   credentials: true,
 
   }));
 
-  server.use(cors());
+  // server.use(cors());
 
 
 const Knex = require("knex");
