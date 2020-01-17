@@ -14,15 +14,12 @@ router.post('/', (req, res) => {
     res.status(422).json({message: 'Please enter Username and Password to create an account'})
   } else {
     Users.addUser(user)
-      .then(usr => {
-        const token = generateToken(usr)
+      .then(user => {
+        const token = generateToken(user)
         res.status(200).json({  
             message: `Welcome ${user.username}. You have been successfully registered!`,
             token: token
           })
-  
-
-
       })
       .catch(err => {
         res.status(500)
