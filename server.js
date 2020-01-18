@@ -111,7 +111,7 @@ server.use('/api/cart', CartRouter);
 //   }
 // })
 
-server.get('/test', authRouter, (req, res) => {
+server.get('/test', (req, res) => {
   
   res.status(200).json('hi')
 })
