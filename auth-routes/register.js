@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
     Users.addUser(user)
       .then(user => {
         const token = generateToken(user)
-        res.header({token: token})
+        res.header('Authorization', 'Bearer '+ token);
         res.status(200).json({  
             message: `Welcome ${user.username}. You have been successfully registered!`,
             token: token
