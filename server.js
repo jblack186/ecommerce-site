@@ -10,15 +10,18 @@ const session = require('express-session'); //install express session
 // const KnexSessionStore = require('connect-session-knex')(session); // to store sessions in database
 const db = require('./database/dbConfig.js');
 const User = require('./m-r users/users-model.js');
+const Cart = require('./m-r cart/cart-model.js');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 // const passport = require('passport')
 // const flash = require('express-flash')
+const jwt = require('jsonwebtoken');
 
 const server = express();
 const dbEnv = process.env.DB_ENV || 'development';
 const config = require("./knexfile.js");
 
+const secrets = require('./config/secrets.js');
 
 
 
@@ -108,13 +111,37 @@ server.use('/api/cart', CartRouter);
 //         res.status(500)
 //         .json({ err, message: "Sorry, but something went wrong while registering" })
 //       })
-//   }
+//   }  authenticateToken, 
 // })
 
 server.get('/test', authRouter, (req, res) => {
   
   res.status(200).json('hi')
 })
+  255 
+server.get('/cart', authenticateToken,  (req, res) => {
+  Cart.findAll()
+  .then(cart => {
+    console.log('req', req.user)
+    res.json(cart.filter(car => car.username === req.user.name))
+  })
+  .catch(err => {
+    console.log(err) 
+  })
+})
+
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers['authorization']
+  const token = authHeader && authHeader.split(' ')[1]
+  if (token == null) return res.sendStatus(401)
+
+  jwt.verify(token, secrets.jwtSecret, (err, user) => {
+    console.log(err)
+    if (err) return res.sendStatus(403)
+    req.user = user
+    next()
+  })
+}
 
 
 server.get("/usr", function(req, res) {
