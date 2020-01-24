@@ -17,6 +17,7 @@ router.post('/', (req, res) => {
         Cart.addCart({user_id: newUser.id})
       .then(cart => {
         console.log(cart)
+        console.log(newUser.id)
       })
         const token = generateToken(newUser)
         res.header('Authorization', 'Bearer '+ token);

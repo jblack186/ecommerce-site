@@ -24,4 +24,15 @@ router.get('/', (req, res) => {
     })
   })
 
+  router.get('/userCart/:id', (req, res) => {
+    const {id} = req.params
+    Cart.findById(id)
+    .then(cart => {
+      res.status(200).json(cart)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  })
+
   module.exports = router;
