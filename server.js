@@ -145,9 +145,11 @@ function authenticateToken(req, res, next) {
 
 
 server.get("/usr", function(req, res) {
-
-  const name = req.session.name
-  res.send(`hello ${name}`)
+  const firstname = 'jblack186'
+  User.findBy({username: firstname})
+  .then(user => {
+    res.status(200).json(user)
+  })
 
   // User.findAll()
   // .then(users => {

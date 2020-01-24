@@ -30,7 +30,12 @@ export default class Register extends React.Component {
             console.log(error)
         })
      
+
+
+
     }
+
+    
 
     test = e => {
         e.preventDefault();
@@ -53,6 +58,8 @@ export default class Register extends React.Component {
             console.log(err)
         })
     }
+
+
     
 
 

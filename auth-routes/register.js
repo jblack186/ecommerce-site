@@ -2,7 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const generateToken = require('../config/token')
 const Users = require('../m-r users/users-model.js');
-
+const Cart = require('../m-r cart/cart-model.js');
 
 
 router.post('/', (req, res) => {
@@ -13,18 +13,24 @@ router.post('/', (req, res) => {
     res.status(422).json({message: 'Please enter Username and Password to create an account'})
   } else {
     Users.addUser(user)
-      .then(user => {
-        const token = generateToken(user)
+      .then(newUser => {
+        Cart.addCart({user_id: newUser.id})
+      .then(cart => {
+        console.log(cart)
+      })
+        const token = generateToken(newUser)
         res.header('Authorization', 'Bearer '+ token);
-        res.status(200).json({  
-            message: `Welcome ${user.username}. You have been successfully registered!`,
-            token: token
+        res.status(201).json({  
+            message: `Welcome ${newUser.username}. You have been successfully registered!`,
+            token: token,
+            
           })
       })
       .catch(err => {
         res.status(500)
         .json({ err, message: "Sorry, but something went wrong while registering" })
       })
+      
   }
 })
 

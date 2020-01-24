@@ -6,7 +6,7 @@ const auth = require('../auth/authenticate-middleware.js');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const secrets = require('../config/secrets.js');
-
+const Cart = require('../m-r cart/cart-model.js');
 
 
 // router.use(cors({
@@ -44,6 +44,7 @@ router.post('/', (req, res) => {
   const user = {name: username}
   const accessToken = jwt.sign(user, secrets.jwtSecret)
   res.json({ accessToken: accessToken })
+// Cart.addCart()
   // if(!req.body.username || !req.body.password) {
   //   res.status(422).json({message: 'Please provide a username and a password to log in'})
   // } else {

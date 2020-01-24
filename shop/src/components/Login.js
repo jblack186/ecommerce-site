@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { Dropdown, Form, Button } from 'react-bootstrap';
@@ -8,6 +8,7 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const history = useHistory();
+    const [token, setToken] = useState('');;
 
     const changeUsername = (e) => {
         e.preventDefault();
@@ -21,25 +22,38 @@ const Login = () => {
 
     }
 
+    const push = e => {
+        axios.get('https://shirt-store123.herokuapp.com/cart', {headers : {Authorization: `Bearer ${token}`}})
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+    
+        
     const login = (e) => {
         
         e.preventDefault();
         axios.post(`https://shirt-store123.herokuapp.com/api/login`, {'username': username, 'password': password})
         .then(response => {
             // const sess = response.data.session.cookie
-        
+        setToken(response.data.accessToken)
             console.log(response)
 
         // sessionStorage.setItem('cookie', sess)
-        // localStorage.setItem('user', response.data.message)
+        localStorage.setItem('token', response.data.accessToken)
 // localStorage.setItem('id', response.data.user_id)
-        // history.push('/')
+        history.push('/')
 })
         .catch(error => {
             console.log(error)
         })
       
     }
+
+console.log(token)
 
         return (
             <div>
@@ -74,7 +88,7 @@ const Login = () => {
                         </form>
                         </Dropdown.Menu>
                     </Dropdown>
-               
+               <button onClick={push}>push</button>
             </div>
         )
     }

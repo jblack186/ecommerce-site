@@ -9,8 +9,8 @@ module.exports = {
 
 function findAll() {
     return db('users as u')
-    // .join('cart as c', 'c.user_id', 'u.id')
-    // .select('*')
+    .join('cart as c', 'c.user_id', 'u.id')
+    .select('*')
 
 }
 
@@ -19,15 +19,20 @@ function findBy(filter) {
  
 }
 
-function addUser(user) {
-    const u = user
-  return db('users')
-    .insert(user)
-    .then(user => {
-        return user
-    })
-}
-
+async function addUser(user) {
+    try {
+      const responseIds = await db('users').insert(user).returning('id')
+      const userId = responseIds[0]
+  
+      const newUserData =  await findById(userId)
+      return newUserData
+    } catch(error) {
+      return error
+    }
+    
+  }
+  
+  
 function findById(id) {
     return db('users')
       .where({ id })

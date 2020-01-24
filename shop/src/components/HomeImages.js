@@ -13,26 +13,48 @@ const HomeImages = (props) => {
     const [cookie, setCookie] = useState('')
 console.log('props', sessionStorage.getItem('cookie'))
 
+// useEffect(() => {
+//  const cookie = sessionStorage.getItem('cookie') 
+//  setCookie(cookie)   
+
+// }, [])
+// console.log('c', cookie)
+
 useEffect(() => {
- const cookie = sessionStorage.getItem('cookie') 
- setCookie(cookie)   
-
+    axios.get('https://shirt-store123.herokuapp.com/cart')
+    .then(res => {
+        console.log(res)
+    })
+    .catch(err => {
+        console.log(err)
+    })
 }, [])
-console.log('c', cookie)
+
+useEffect(() => {
+    axios.post('https://shirt-store123.herokuapp.com/cart')
+    .then(res => {
+        console.log(res)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}, [])
 
 
-const test = e => {
-    e.preventDefault();
-axios.get('https://shirt-store123.herokuapp.com/api/users/users', {headers: {Authorization: `Bearer ${sessionStorage.getItem('cookie')}`}})
-.then(res => {
-    console.log(res)
-})
-}
+
+
+
+
+// const test = e => {
+//     e.preventDefault();
+// axios.get('https://shirt-store123.herokuapp.com/api/users/users', {headers: {Authorization: `Bearer ${sessionStorage.getItem('cookie')}`}})
+// .then(res => {
+//     console.log(res)
+// })
+// }
 
     return (
         <div>
-            <button onClick={test}>test</button>
-            <h5>{message}</h5>
             <NavBar />
             <div className='home-images'>
                 <div className='image-box'>
