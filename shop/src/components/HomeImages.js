@@ -11,6 +11,7 @@ import axios from 'axios';
 const HomeImages = (props) => {
     const [message] = useState(localStorage.getItem('user'))
     const [cookie, setCookie] = useState('')
+    const [cart, setCart] = useState('')
 console.log('props', sessionStorage.getItem('cookie'))
 
 // useEffect(() => {
@@ -20,18 +21,18 @@ console.log('props', sessionStorage.getItem('cookie'))
 // }, [])
 // console.log('c', cookie)
 
-useEffect(() => {
-    axios.get('https://shirt-store123.herokuapp.com/cart')
-    .then(res => {
-        console.log(res)
-    })
-    .catch(err => {
-        console.log(err)
-    })
-}, [])
+// useEffect(() => {
+//     axios.get('https://shirt-store123.herokuapp.com/cart')
+//     .then(res => {
+//         console.log(res)
+//     })
+//     .catch(err => {
+//         console.log(err)
+//     })
+// }, [])
 
 useEffect(() => {
-    axios.post('https://shirt-store123.herokuapp.com/cart')
+    axios.get('https://shirt-store123.herokuapp.com/cart', {headers: {Authorization: `Bearer ${localStorage.getItem('user')}`}})
     .then(res => {
         console.log(res)
     })

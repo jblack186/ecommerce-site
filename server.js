@@ -123,7 +123,7 @@ server.get('/cart', authenticateToken,  (req, res) => {
   Cart.findAll()
   .then(cart => {
     console.log('req', req.user)
-    res.json(cart.filter(car => car.username === req.user.name))
+    res.status(200).json(cart.filter(car => car.username === req.user.name))
   })
   .catch(err => {
     console.log(err) 

@@ -39,7 +39,7 @@ const Login = () => {
         axios.post(`https://shirt-store123.herokuapp.com/api/login`, {'username': username, 'password': password})
         .then(response => {
             // const sess = response.data.session.cookie
-        setToken(response.data.accessToken)
+        // setToken(response.data.accessToken)
             console.log(response)
 
         // sessionStorage.setItem('cookie', sess)
