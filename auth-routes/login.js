@@ -42,9 +42,7 @@ const Cart = require('../m-r cart/cart-model.js');
 router.post('/', (req, res) => {
   let {username, password} = req.body
   const user = {name: username}
-  // const accessToken = jwt.sign(user, secrets.jwtSecret)
-  const accessToken = generateToken(user)
-
+  const accessToken = jwt.sign(user, secrets.jwtSecret)
   res.json({ accessToken: accessToken })
 // Cart.addCart()
   // if(!req.body.username || !req.body.password) {
