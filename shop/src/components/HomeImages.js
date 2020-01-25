@@ -32,7 +32,7 @@ console.log('props', sessionStorage.getItem('cookie'))
 // }, [])
 
 useEffect(() => {
-    axios.get('https://shirt-store123.herokuapp.com/cart', {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
+axios.get('https://shirt-store123.herokuapp.com/cart', {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
     .then(res => {
         console.log(res)
     })

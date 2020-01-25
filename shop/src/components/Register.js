@@ -7,7 +7,7 @@ export default class Register extends React.Component {
         super(props)
         this.state = {
             username: '',
-            password: ''
+            password: '',
             
         }
         console.log(this.state)
@@ -24,7 +24,8 @@ export default class Register extends React.Component {
         axios.post('https://shirt-store123.herokuapp.com/api/register', this.state)
         .then(response => {
             console.log(response)
-           this.props.history.push('/login') 
+            localStorage.setItem('token', response.data.token)
+            this.props.history.push('/') 
         })
         .catch(error => {
             console.log(error)
