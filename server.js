@@ -122,10 +122,10 @@ server.get('/test', authRouter, (req, res) => {
 server.get('/cart', authenticateToken,  (req, res) => {
   Cart.findAll()
   .then(cart => {
-    console.log('req', req.user)
-    const userCart = cart.filter(car => car.username === req.user.name)
-      console.log(userCart)
-    res.status(200).json(cart)
+    console.log('req', req.user.subject)
+    const userCart = cart.filter(cart => cart.id === req.user.subject)
+    console.log(userCart)
+    res.status(200).json(userCart)
   })
   .catch(err => {
     console.log(err) 
