@@ -7,16 +7,29 @@ const Basket2 = (props) => {
     const [items, setItems] = useState([])
 
     useEffect(() => {
-        axios.get("https://shirt-store123.herokuapp.com/api/users")
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => {
-            console.log(err)
-        })
-    },[])
+        axios.get('https://shirt-store123.herokuapp.com/cart', {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
+            .then(res => {
+                console.log('res', res.data)
+                setItems(res.data)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }, [])
+        
+        console.log('item', items)
 
-    console.log('cart', props.cartItems)
+    // useEffect(() => {
+    //     axios.get("https://shirt-store123.herokuapp.com/api/users")
+    //     .then(res => {
+    //         console.log(res)
+    //     })
+    //     .catch(err => {
+    //         console.log(err)
+    //     })
+    // },[])
+
+    // console.log('cart', props.cartItems)
 
     function addCartItem(item) {
         setItems(item)
@@ -32,7 +45,10 @@ const Basket2 = (props) => {
     
     return (
         <div>
-            <Link exact to='/Basket2'>{items.length === 0 ? "Basket is empty" : <div> You have {items.length} product in cart</div> }</Link>
+            {/* <Link exact to='/Basket2'>{items === 0 ? "Basket is empty" : <div> You have {items.length} products in cart</div> }</Link> */}
+            {items.length !== undefined ? items.map(item => {
+                return <div> <p>{item.username}</p>  <h1>{item.item_name}</h1></div>
+            }): null}
         </div>
     )
 }

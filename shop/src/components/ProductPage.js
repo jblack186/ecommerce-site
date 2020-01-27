@@ -12,6 +12,7 @@ const ProductPage = (props) => {
     const [prod, setProd] = useState([])
     const [basket, setBasket] = useState(props.cartItems)
     const [items, setItems] = useState([])
+    const [cart, setCart] = useState()
 
     
 console.log('items', items)
@@ -54,11 +55,17 @@ function totalPrice(items) {
     return items.reduce((acc, item) => acc + item.quantity * item.price, 0.0)
 }
 
-function addCartItem() {
+useEffect(() => {
     const product = props.polo.find(product => {
         return String(product.id) === id
      })    
-      setItems(product)
+      setCart(product)
+    
+}, [product])
+console.log(cart)
+
+function addToCart() {
+
 }
 
 
@@ -66,7 +73,7 @@ function addCartItem() {
         <div>
             <NavBar />
             {prod.length !== undefined ? prod.map(item => {
-               return <div><img src={item.img} className='item-pic' alt='item-image'/> <div  className='item'><p>{item.item_name}</p> <p>{formatPrice(item.price)}</p> <p>{item.description} </p> </div><button onClick={addCartItem} >Add to Cart <h2><FontAwesomeIcon className='icon' icon={faCartArrowDown} /></h2></button></div>
+               return <div><img src={item.img} className='item-pic' alt='item-image'/> <div  className='item'><p>{item.item_name}</p> <p>{formatPrice(item.price)}</p> <p>{item.description} </p> </div><button onClick={addToCart} >Add to Cart <h2><FontAwesomeIcon className='icon' icon={faCartArrowDown} /></h2></button></div>
             }) : <p>...Loading</p>}
             <Footer />
         </div>

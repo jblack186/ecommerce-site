@@ -28,7 +28,7 @@ function NavBar() {
                     </div>
                     <div className='cart-about'>
                         <p>About Us</p>  
-                        <h2><FontAwesomeIcon icon={faCartArrowDown} /></h2>
+                        <NavLink exact to ='/Basket2'><h2><FontAwesomeIcon icon={faCartArrowDown} /></h2></NavLink>
                     </div>  
                     
                 </div> 
