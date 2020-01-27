@@ -123,7 +123,7 @@ server.get('/cart', authenticateToken,  (req, res) => {
   Cart.findAll()
   .then(cart => {
     console.log('req', req.user.subject)
-    const userCart = cart.filter(cart => cart.id === req.user.subject)
+    const userCart = cart.filter(cart => cart.user_id === req.user.subject)
     console.log(userCart)
     res.status(200).json(userCart)
   })

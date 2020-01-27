@@ -9,6 +9,7 @@ exports.up = function(knex) {
       tbl.integer('quantity')
       tbl.string('img', 255)
       tbl.string('sku', 256)
+      tbl.string('testOne', 256)
       tbl.integer('cart_id')
         .notNullable()
         .references('id')

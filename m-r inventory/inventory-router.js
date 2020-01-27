@@ -12,4 +12,19 @@ router.get('/', (req, res) => {
     })
   })
 
+
+
+  router.post('/', (req, res) => {
+    const polo = req.body
+    Inventory.addPolo(polo)
+    .then(polo => {
+      res.status(201).json(polo)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  })
+
+  
+
   module.exports = router;

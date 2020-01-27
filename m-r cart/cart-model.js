@@ -9,9 +9,9 @@ module.exports = {
 
 function findAll() {
     return db('cart as c')
+    .join('users as u', 'u.id', 'c.user_id')
     .leftJoin('polos as p', 'p.cart_id', 'c.id')
-    .leftJoin('flannel as f', 'f.cart_id', 'c.id')
-    .leftJoin('users as u', 'u.id', 'c.user_id')
+    // .leftJoin('flannel as f', 'f.cart_id', 'c.id')
     
    
 }
@@ -36,9 +36,19 @@ function addCart(cart) {
 
 }
 
-function findById(id) {
-    return db('cart')
-      .where({ id })
-      .first();
-  }
+async function findById(id) {
+    try {
+    const carts = await
+     db('cart as c')
+    .join('polos as p', 'p.cart_id', 'c.id')
+    .join('users as u', 'u.id','=', 'c.user_id')
+      .where('c.id', id)
+      .first()
+      .select('*')
+    return carts
+  
+} catch (err) {
+    console.log(err)
+}
+}
 
