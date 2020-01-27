@@ -11,6 +11,7 @@ exports.up = function(knex) {
       tbl.string('sku', 256)
       tbl.string('testOne', 256)
       tbl.integer('cart_id')
+        .notNullable()
         .references('id')
         .inTable('cart')
         .onDelete('CASCADE')
