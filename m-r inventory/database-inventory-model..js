@@ -7,21 +7,22 @@ module.exports = {
     updatePoloById
 }
 
+
 function find() {
-    return db('polos')
+    return db('inventory-database')
     
 
 }
 
 function findById(id) {
-    return db('polos')
+    return db('inventory-database')
     .where({ id })
     .first();
 
 }
 
 function addPolo(polo) {
-    return db('polos')
+    return db('inventory-database')
       .insert(polo, 'id')
       .then(ids => {
         const [id] = ids;
@@ -32,7 +33,7 @@ function addPolo(polo) {
 
 async function updatePoloById(id, polo) {
     try {
-        const updatedPoloId = await db('polos')
+        const updatedPoloId = await db('inventory-database')
           .where({ id })
           .update(polo)
           .returning('id')
@@ -46,4 +47,3 @@ async function updatePoloById(id, polo) {
         };
       }
     }
-

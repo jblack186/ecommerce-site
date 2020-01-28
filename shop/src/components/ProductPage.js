@@ -72,7 +72,7 @@ function addToCart() {
 
     })
     console.log(Number(id))
-    axios.put(`https://shirt-store123.herokuapp.com/api/inventory/${Number(id)}`, {"cart_id": 5})
+    axios.put(`https://shirt-store123.herokuapp.com/api/inventory/${Number(id)}`, {"cart_id": localStorage.getItem('id')})
       .then(res => {
           console.log(res)
       })
