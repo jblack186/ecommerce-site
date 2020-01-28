@@ -1,6 +1,7 @@
 const express = require('express');
 const helmet = require('helmet');
 const InventoryRouter = require('./m-r inventory/inventory-router.js');
+const DbInventoryRouter = require('./m-r inventory/database-inventory-router.js');
 const UsersRouter = require('./m-r users/users-router.js');
 const CartRouter = require('./m-r cart/cart-router.js');
 const Register = require('./auth-routes/register.js');
@@ -83,7 +84,7 @@ server.use('api/auth', authRouter);
 server.use('/api/inventory', InventoryRouter);
 server.use('/api/users', UsersRouter);
 server.use('/api/cart', CartRouter);
-
+server.use('/api/dbInventory', DbInventoryRouter);
 
 
 
