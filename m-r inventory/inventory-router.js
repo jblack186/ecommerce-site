@@ -25,6 +25,18 @@ router.get('/', (req, res) => {
     })
   })
 
+  router.put('/:id', (req, res) => {
+    const polo = req.body
+    const {id} = req.params
+    Inventory.updatePoloById(id, polo)
+      .then(polo => {
+        res.status(202).json(polo)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  })
+
   
 
   module.exports = router;

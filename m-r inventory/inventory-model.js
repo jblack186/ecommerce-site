@@ -3,7 +3,8 @@ const db = require('../database/dbConfig.js');
 module.exports = {
     find,
     findById,
-    addPolo
+    addPolo,
+    updatePoloById
 }
 
 function find() {
@@ -29,3 +30,19 @@ function addPolo(polo) {
   }
   
 
+async function updatePoloById(id, polo) {
+    try {
+        const updatedPoloId = await db('polos')
+          .where({ id })
+          .update(polo)
+          .returning('id')
+        const updatedPolo = await findById(updatedPoloId[0])
+        return updatedPolo;
+      } catch (error) {
+        return {
+          code: error.code,
+          errno: error.errno,
+          message: error.message
+        };
+      }
+    }

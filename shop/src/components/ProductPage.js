@@ -66,7 +66,7 @@ useEffect(() => {
 console.log(cart)
 
 function addToCart() {
-    axios.post('https://shirt-store123.herokuapp.com/api/cart', cart)
+    axios.put('https://shirt-store123.herokuapp.com/api/cart', cart)
       .then(res => {
           console.log(res)
       })
