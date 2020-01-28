@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import NavBar from './NavBar';
 import Footer from './Footer';
+import axios from 'axios';
 
 
 
@@ -65,7 +66,13 @@ useEffect(() => {
 console.log(cart)
 
 function addToCart() {
-
+    axios.post('https://shirt-store123.herokuapp.com/api/cart', cart)
+      .then(res => {
+          console.log(res)
+      })
+      .catch(err => {
+          console.log(err)
+      })
 }
 
 
