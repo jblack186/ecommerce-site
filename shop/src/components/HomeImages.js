@@ -35,6 +35,8 @@ useEffect(() => {
 axios.get('https://shirt-store123.herokuapp.com/cart', {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
     .then(res => {
         console.log(res)
+        localStorage.setItem('id', res.data.user_id)
+
     })
     .catch(err => {
         console.log(err)

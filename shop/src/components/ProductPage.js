@@ -60,13 +60,19 @@ useEffect(() => {
     const product = props.polo.find(product => {
         return String(product.id) === id
      })    
-      setCart(product)
+      setCart([product])
     
 }, [product])
 console.log(cart)
 
 function addToCart() {
-    axios.put('https://shirt-store123.herokuapp.com/api/cart', cart)
+   const id = cart.map(item => {
+   const arrId = item.id.toString()
+   return Number(arrId)
+
+    })
+    console.log(Number(id))
+    axios.put(`https://shirt-store123.herokuapp.com/api/inventory/${Number(id)}`, {"cart_id": 5})
       .then(res => {
           console.log(res)
       })

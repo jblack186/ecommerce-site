@@ -125,7 +125,9 @@ server.get('/cart', authenticateToken,  (req, res) => {
     console.log('req', req.user.subject)
     const userCart = cart.filter(cart => cart.user_id === req.user.subject)
     console.log(userCart)
-    res.status(200).json(userCart)
+    res.status(200).json({
+      cart: userCart
+    })
   })
   .catch(err => {
     console.log(err) 
