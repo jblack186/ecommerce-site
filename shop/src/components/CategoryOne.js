@@ -28,7 +28,9 @@ const CategoryOne = (props) => {
         return items.reduce((acc, item) => acc + item.quantity * item.price, 0.0)
     }
 
-console.log(props.polo)
+console.log("pprod", props.polo)
+console.log("pprod2", props.poloCart)
+
     return (
 
         <div>

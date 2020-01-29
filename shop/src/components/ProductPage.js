@@ -86,7 +86,7 @@ function addToCart() {
         <div>
             <NavBar />
             {prod.length !== undefined ? prod.map(item => {
-               return <div><img src={item.img} className='item-pic' alt='item-image'/> <div  className='item'><p>{item.item_name}</p> <p>{formatPrice(item.price)}</p> <p>{item.description} </p> </div><button onClick={addToCart} >Add to Cart <h2><FontAwesomeIcon className='icon' icon={faCartArrowDown} /></h2></button></div>
+               return <div> {item.cart_id !== 1 ? <p>Sold out</p> : null } <img src={item.img} className='item-pic' alt='item-image'/> <div  className='item'><p>{item.item_name}</p> <p>{formatPrice(item.price)}</p> <p>{item.description} </p> </div><button onClick={addToCart} >Add to Cart <h2><FontAwesomeIcon className='icon' icon={faCartArrowDown} /></h2></button></div>
             }) : <p>...Loading</p>}
             <Footer />
         </div>

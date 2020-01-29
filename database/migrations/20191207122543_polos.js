@@ -16,6 +16,12 @@ exports.up = function(knex) {
         .inTable('cart')
         .onDelete('CASCADE')
         .onUpdate('CASCADE')
+        tbl.integer('product_id')
+        .notNullable()
+        .references('id')
+        .inTable('cart')
+        .onDelete('CASCADE')
+        .onUpdate('CASCADE')
 
       
 

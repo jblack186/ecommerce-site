@@ -16,18 +16,32 @@ import axios from 'axios';
 
 const App = () => {
   const [polos, setPolos] = useState([])
+  const [dbPolos, setDbPolos] = useState([])
   const [basket, setBasket] = useState([])
 
     useEffect(() => {
-        axios.get("https://shirt-store123.herokuapp.com/api/inventory",{headers : {"Access-Control-Allow-Origin": 'http://localhost:3000'}})
+        axios.get("https://shirt-store123.herokuapp.com/api/dbInventory")
             .then(res => {
-                setPolos(res.data)
+                setDbPolos(res.data)
                 // console.log(res)
             })
             .catch(err => {
                 console.log(err)
             })
     }, [])
+
+    useEffect(() => {
+      axios.get("https://shirt-store123.herokuapp.com/api/inventory")
+          .then(res => {
+              setPolos(res.data)
+              console.log(res)
+          })
+          .catch(err => {
+              console.log(err)
+          })
+  }, [])
+
+
 
   return (
     <div className="App">
@@ -36,8 +50,8 @@ const App = () => {
       {/* <Basket cartItems={Basket} /> */}
       <Route exact path='/Basket2' render= {(props) => { return <Basket2  {...props} />}} />
      <Route exact path='/' render= {(props) => { return <HomeImages  {...props} />}} />
-     <Route exact path='/categoryone' render= {(props) => { return <CategoryOne {...props} polo={polos} />}} />
-     <Route exact path='/productpage/:id' render= {(props) => { return <ProductPage  {...props} polo={polos} cartItems={basket} />}} />
+     <Route exact path='/categoryone' render= {(props) => { return <CategoryOne {...props} polo={dbPolos} poloCart={polos} />}} />
+     <Route exact path='/productpage/:id' render= {(props) => { return <ProductPage  {...props} polo={polos}   />}} />
     </div>
   );
 }
