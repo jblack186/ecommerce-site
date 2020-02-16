@@ -1,5 +1,6 @@
 const express = require('express');
 const helmet = require('helmet');
+const mustacheExpress = require('mustache-express');
 const InventoryRouter = require('./m-r inventory/inventory-router.js');
 const DbInventoryRouter = require('./m-r inventory/database-inventory-router.js');
 const UsersRouter = require('./m-r users/users-router.js');
@@ -17,16 +18,49 @@ const bcrypt = require('bcryptjs');
 // const passport = require('passport')
 // const flash = require('express-flash')
 const jwt = require('jsonwebtoken');
-
+const bodyParser = require('body-parser');
+const pgp = require('pg-promise')()
+const CONNECTION_STRING = "postgres://localhost:5432/jamisonblackwell"
+const dbOne = pgp(CONNECTION_STRING)
 const server = express();
 const dbEnv = process.env.DB_ENV || 'development';
 const config = require("./knexfile.js");
 
+console.log(dbOne)
+
+
 const secrets = require('./config/secrets.js');
 
+//config for engine
+server.engine('mustache', mustacheExpress());
+server.set('views', './views')
+server.set('view engine', 'mustache')
 
+server.use(bodyParser.urlencoded({extednded: false}))
 
+server.get('/registers', (req, res) => {
+  res.render('registers')
+})
 
+server.post('/registers', (req, res) => {
+  let username = req.body.username
+  let password = req.body.password
+
+  dbOne.oneOrNone('SELECT userid FROM newUsers WHERE username = $1', [username])
+  .then((user) => {
+    if(user) {
+      res.render('register', {message: "Username already exist"})
+    } else {
+      dbOne.none('INSERT INTO newUsers(username,password) VALUES($1, $2)', [username, password])
+      .then(() => {
+        res.send('SUCCESS')
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+  })
+})
 
   server.use(cors());
 

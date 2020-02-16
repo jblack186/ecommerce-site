@@ -1,0 +1,43 @@
+.contain-page {
+    display: flex;
+    justify-content: space-around
+}
+
+
+.cards-list {
+    width: 950px;
+
+}
+
+.img-card-container {
+    width: 950px;
+    text-align: left;
+    display: flex;
+    height: 200px;
+    background-color: lightgray;
+    margin: 0;
+
+
+}
+
+.basket-img {
+    width:170px;
+    height: 200px;
+}
+
+.cards {
+    height: 250px;
+}
+
+.description {
+    align-items: left;
+    margin-left: 30px;
+}
+
+.cart-list {
+
+}
+
+.total {
+    
+}

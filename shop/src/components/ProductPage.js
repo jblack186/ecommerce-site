@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useParams} from 'react-router';
+import { Route } from 'react-router-dom';
+import Basket2 from './Basket2';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import NavBar from './NavBar';
@@ -7,47 +9,37 @@ import Footer from './Footer';
 import axios from 'axios';
 
 
-
-const ProductPage = (props) => {
+export const ProductContext = React.createContext();
+export const ProductPage = (props) => {
     const {id} = useParams()
     const [prod, setProd] = useState([])
     const [basket, setBasket] = useState(props.cartItems)
     const [items, setItems] = useState([])
     const [cart, setCart] = useState()
+    const [carBasket, setCarBasket] = useState('')
 
     
-console.log('items', items)
-console.log('props', props.polo)
+console.log('items', carBasket)
+
+const productById = e => {
+    e.preventDefault();
+    
+
+}
+console.log(props.quantity)
 const product = props.polo.find(product => {
-   return String(product.id) === id
+   return product.item_name === id
 }) 
+
 
 useEffect(() => {
     if(product !== undefined) {
         setProd([...prod, product])
+        localStorage.setItem('product', [JSON.stringify(product)])
     }
-}, [product])
+}, [])
 
-// const addToCart = (e) => {
-//     e.preventDefault();
-//     const cartItems = basket;
-//     let productAlreadyInCart = false;
-
-//     cartItems.forEach(cp => {
-//         if (cp.id === product.id) {
-//           cp.count += 1;
-//           productAlreadyInCart = true;
-//         }
-//       });
-
-//     if(!productAlreadyInCart){
-//         cartItems.push({...product, count:1})
-//     }
-
-//     localStorage.setItem("basket", JSON.stringify(cartItems))
-//     return basket
-// }
-
+console.log('pr',prod)
 function formatPrice(price) {
     return `$${(price * 0.01).toFixed(2)}`
 }
@@ -57,38 +49,80 @@ function totalPrice(items) {
 }
 
 useEffect(() => {
-    const product = props.polo.find(product => {
-        return String(product.id) === id
-     })    
-      setCart([product])
+    const products = props.polo.filter(product => {
+        return product.item_name === id
     
-}, [product])
-console.log(cart)
+     }) 
+     
+    products.find(product => {
+        if (product.cart_id === 1) {
+            setCart([product])
+           }
 
-function addToCart() {
-   const id = cart.map(item => {
-   const arrId = item.id.toString()
-   return Number(arrId)
+           return String(product.id) === id
 
-    })
-    console.log(Number(id))
-    axios.put(`https://shirt-store123.herokuapp.com/api/inventory/${Number(id)}`, {"cart_id": localStorage.getItem('id')})
-      .then(res => {
-          console.log(res)
-      })
-      .catch(err => {
-          console.log(err)
-      })
-}
+     })
+}, [])
 
 
+
+
+console.log('cart',cart)
+
+ console.log('bas',carBasket)
+// function addToCart() {
+//    const id = cart.map(item => {
+//    const arrId = item.id.toString()
+//    console.log(item)
+//     localStorage.setItem("cart", [item.item_name, quantity,item.price * quantity ])
+//     const shirt = {item_name: item.item_name, quantity: quantity, price: item.price * quantity}
+//     setCarBasket(curr => [...curr, shirt])
+//    return Number(arrId)
+
+
+//     })
+
+//     axios.put(`https://shirt-store123.herokuapp.com/api/inventory/${Number(id)}`, {"cart_id": localStorage.getItem('id')})
+//       .then(res => {
+//           console.log(res)
+
+//       })
+//       .catch(err => {
+//           console.log(err)
+//       })
+// }
+
+// function addToCart() {
+//     const arr = []
+//     setCarBasket(curr => [...curr, prod])
+//     // if (shirt) {
+//     // }
+//     //    localStorage.setItem('userCart', JSON.stringify(prod))
+
+//      }
+    
+
+
+function getCart() {
+    const get = localStorage.getItem("cart")
+   return setItems(get)
+
+ }
+ 
     return (
         <div>
-            <NavBar />
+    <NavBar />
             {prod.length !== undefined ? prod.map(item => {
-               return <div> {item.cart_id !== 1 ? <p>Sold out</p> : null } <img src={item.img} className='item-pic' alt='item-image'/> <div  className='item'><p>{item.item_name}</p> <p>{formatPrice(item.price)}</p> <p>{item.description} </p> </div><button onClick={addToCart} >Add to Cart <h2><FontAwesomeIcon className='icon' icon={faCartArrowDown} /></h2></button></div>
+               return <div><img src={item.img} className='item-pic' alt='item-image'/> <div  className='item'><p>{item.item_name}</p> <p>{formatPrice(item.price)}</p> <p>{item.description} </p> </div>{ cart === undefined ? <p>Sold out</p> : <button onClick={props.addToCart} >Add to Cart <h2><FontAwesomeIcon className='icon' icon={faCartArrowDown} /></h2></button>}</div>
             }) : <p>...Loading</p>}
+            <h1 onClick={props.add}>+</h1>
+            <h1 onClick={props.minus}>-</h1>
+            <h1>{props.quantity}</h1>
+           
+
             <Footer />
+            <button onClick={props.addToCart}>get</button>
+
         </div>
     )
 }

@@ -19,22 +19,24 @@ export default class Register extends React.Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
-    register = (e) => {
-        e.preventDefault();
-        axios.post('https://shirt-store123.herokuapp.com/api/register', this.state)
-        .then(response => {
-            console.log(response.data)
-            localStorage.setItem('token', response.data.token)
-            this.props.history.push('/') 
-        })
-        .catch(error => {
-            console.log(error)
-        })
+    // register = (e) => {
+    //     localStorage.removeItem('store')
+
+    //     e.preventDefault();
+    //     axios.post('https://shirt-store123.herokuapp.com/api/register', this.state)
+    //     .then(response => {
+    //         console.log(response.data)
+    //         localStorage.setItem('token', response.data.token)
+    //         this.props.history.push('/') 
+    //     })
+    //     .catch(error => {
+    //         console.log(error)
+    //     })
      
 
 
 
-    }
+    // }
 
     
 
@@ -69,17 +71,17 @@ export default class Register extends React.Component {
         console.log(this.state.password)
         return (
             <div>
-                <form onSubmit={this.register}>
+                <form onSubmit={this.props.register}>
                     <input 
-                    onChange={this.changeHandler}
+                    onChange={this.props.changeUsername}
                     placeholder='username'
-                    value={this.state.username}
+                    value={this.props.username}
                     name='username'
                     />
                     <input 
-                    onChange={this.changeHandler}
+                    onChange={this.props.changePassword}
                     placeholder='password'
-                    value={this.state.password}
+                    value={this.props.password}
                     name='password'
                     />
                 <button type='submit'>Add</button>
