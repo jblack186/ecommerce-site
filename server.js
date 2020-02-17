@@ -46,12 +46,12 @@ server.post('/registers', (req, res) => {
   let username = req.body.username
   let password = req.body.password
 
-  dbOne.oneOrNone('SELECT userid FROM newUsers WHERE username = $1', [username])
+  dbOne.oneOrNone('SELECT id FROM users WHERE username = $1', [username])
   .then((user) => {
     if(user) {
       res.render('register', {message: "Username already exist"})
     } else {
-      dbOne.none('INSERT INTO newUsers(username,password) VALUES($1, $2)', [username, password])
+      dbOne.none('INSERT INTO users(username,password) VALUES($1, $2)', [username, password])
       .then(() => {
         res.send('SUCCESS')
       })
@@ -61,6 +61,8 @@ server.post('/registers', (req, res) => {
     }
   })
 })
+
+
 
   server.use(cors());
 

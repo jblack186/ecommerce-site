@@ -9,6 +9,39 @@ const secrets = require('../config/secrets.js');
 const Cart = require('../m-r cart/cart-model.js');
 
 
+
+router.post('/', (req, res) => {
+  let {username, password} = req.body
+  if(!req.body.username || !req.body.password) {
+    res.status(422).json({message: 'Please provide a username and a password to log in'})
+  } else {
+    Users.findBy({username}).first()
+    .then(user => {
+      if(user && bcrypt.compareSync(password, user.password)) {
+        const token = generateToken(user)
+        // Remove password from the user object to be passed back in response
+        const userNoPasswordCopy = user
+        delete userNoPasswordCopy.password
+
+        res.status(200).json({
+          message: `Welcome ${user.firstname}!`,
+          id: user.id,
+          user: userNoPasswordCopy,
+          token: token
+        })
+
+      } else {
+        res.status(401).json({message: 'Invalid credentials'})
+      }
+    })
+    .catch(err => {
+      res.status(500) 
+      .json({ message: "Sorry, but something went wrong while logging in" });
+    })
+  }
+})
+
+
 // router.use(cors({
 //   origin: "http://localhost:3000",
 //   'Access-Control-Allow-Origin': "http://localhost:3000",
@@ -39,11 +72,11 @@ const Cart = require('../m-r cart/cart-model.js');
 //   })
 // })
 
-router.post('/', (req, res) => {
-  let {username, password} = req.body
-  const user = {name: username}
-  const accessToken = jwt.sign(user, secrets.jwtSecret)
-  res.json({ accessToken: accessToken })
+// router.post('/', (req, res) => {
+//   let {username, password} = req.body
+//   const user = {name: username}
+//   const accessToken = jwt.sign(user, secrets.jwtSecret)
+//   res.json({ accessToken: accessToken })
 // Cart.addCart()
   // if(!req.body.username || !req.body.password) {
   //   res.status(422).json({message: 'Please provide a username and a password to log in'})
@@ -79,7 +112,7 @@ router.post('/', (req, res) => {
     //   res.status(500) 
     //   .json({ message: "Sorry, but something went wrong while logging in" });
     // }
-  })
+  // })
 
 
 
