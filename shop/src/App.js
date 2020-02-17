@@ -137,7 +137,8 @@ function register(e) {
 }
 
 const login = (e) => {
-        
+  localStorage.removeItem('store')
+  setCarts([])
   e.preventDefault();
   axios.post(`https://shirt-store123.herokuapp.com/api/login`, {'username': usernameLog, 'password': passwordLog})
   .then(response => {

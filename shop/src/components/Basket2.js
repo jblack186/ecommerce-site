@@ -34,16 +34,15 @@ const Basket2 = (props) => {
 
     useEffect(() => {
         const getCart = JSON.parse(localStorage.getItem("store"))
-
+        if (getCart) {
         const tota = getCart.reduce((acc, item) => {
 
             return acc + item.price * item.quantity
-         
-            
+
         }, 0)
         console.log('TOTA', tota)
         setTotal(tota)
-    
+        }
     }, [])
     
 console.log('TRUE',total)
@@ -67,7 +66,7 @@ console.log('TRUE',total)
                                     </div>
                                 </div>
                         
-                    }): null}
+                    }): <p><p>Nothing in cart</p><Link exact to="/categoryone">CLICK HERE TO GO BACK SHOPPING</Link></p> }
                     </div>
                 <div className='total'>
                     <p>Total:</p><p>${total}</p> 
