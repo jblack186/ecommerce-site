@@ -20,13 +20,13 @@ router.post('/', (req, res) => {
       if(user && bcrypt.compareSync(password, user.password)) {
         const token = generateToken(user)
         // Remove password from the user object to be passed back in response
-        const userNoPasswordCopy = user
-        delete userNoPasswordCopy.password
+        // const userNoPasswordCopy = user
+        // delete userNoPasswordCopy.password
 
         res.status(200).json({
-          message: `Welcome ${user.firstname}!`,
+          message: `Welcome ${user.username}!`,
           id: user.id,
-          user: userNoPasswordCopy,
+          // user: userNoPasswordCopy,
           token: token
         })
 

@@ -139,7 +139,7 @@ function register(e) {
 const login = (e) => {
         
   e.preventDefault();
-  axios.post(`https://shirt-store123.herokuapp.com/api/login`, {'username': username, 'password': password})
+  axios.post(`https://shirt-store123.herokuapp.com/api/login`, {'username': usernameLog, 'password': passwordLog})
   .then(response => {
       // const sess = response.data.session.cookie
   // setToken(response.data.accessToken)
