@@ -1,0 +1,135 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #ffff;
+    color: #555;
+    font-size: 20px;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+    
+}
+
+.row-one {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+header {
+     background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url("https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
+     background-size: cover;
+     background-position: center;
+     height: 100vh;
+}
+
+header h1 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 240%;
+    color: white;
+    font-weight: 300;
+    text-transform: uppercase;
+    word-spacing: 4px;
+}
+
+.hero-text-box {
+    position: absolute;
+    width: 1140px;
+    top: 50%;
+    left: 50%;
+    text-align: left;
+    transform: translate(-50%, -100%);
+}
+
+.logo {
+    height: 100px;
+    width: auto;
+    float: left;
+    margin-top: 20px;
+
+}
+
+.main-nav {
+    float: right;
+    list-style: none;
+    margin-top: 55px;
+    color: white;
+}
+
+.main-nav li {
+    display: inline;
+    margin-left: 40px;
+    color: #fff;
+}
+
+
+.main-nav li a:link,
+ .main-nav li a:link {
+     padding: 8px 0px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.4s;
+}
+
+.main-nav li a:hover,
+ .main-nav li a:active {
+    border-bottom: 2px solid #e67e22;
+
+ }
+
+
+.btns:link,
+.btns:visited {
+    display: inline-block;
+    padding: 10px 30px;
+    font-weight: 300;
+    text-decoration: none;
+    border-radius: 200px;
+    transition: background-color 0.4s, border 0.2s, color 0.2s;   
+}
+
+
+.btns-full:link,
+.btns-full:visited {
+    background-color: #e67e22;
+    border: 1px solid #e67e22;
+    color: #fff;
+}
+
+
+.btns-ghost:link,
+.btns-ghost:visited {
+    border: 1px solid #e67e22;
+    color: #e67e22;
+    margin-right: 15px;
+
+
+}
+
+.btns:hover,
+.btns:active {
+    background-color: #a15512;
+}
+
+.btns-full:hover,
+.btns-full:active {
+    border: 1px solid #a15512;
+
+}
+
+
+
+.btns-ghost:hover,
+.btns-ghost:active {
+    border: 1px solid a15512;
+    color: white;
+
+}

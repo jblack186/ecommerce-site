@@ -4,6 +4,7 @@ import './App.css';
 import {useParams} from 'react-router';
 import { Route } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
+import Header from './components/Header';
 import NavBar from './components/NavBar';
 import HomeImages from './components/HomeImages';
 import Footer from './components/Footer';
@@ -31,8 +32,19 @@ const App = () => {
   const [ce, setCe] = useState({item_name: "Revy"})
   const [quantity, setQuantity] = useState(1)
   const [total, setTotal] = useState(0)
+  const [polosShirts, setPolosShirts] = useState();
 
+const filter = e => {
+  console.log('yep')
+  const target = e.target.innerHTML
+  console.log(target.toLowerCase())
 
+  const polo =polos.filter(item => {
+   return item.type === target.toLowerCase()
+  })
+  console.log(polo)
+  setPolosShirts(polo)
+}
 
 
     useEffect(() => {
@@ -214,15 +226,14 @@ console.log('QUANTITY', quantity)
 
   return (
     <div className="App">
-          <Route exact path='/Routes' render= {(props) => { return <Routes  {...props} />}} />
-<Orders />
+      <Route exact path='/head' render= {(props) => { return <Header  {...props} />}} />
+      <Orders />
       <Route exact path='/register' render= {(props) => { return <Register register={register} username={username} password={password} changeUsername={changeUsername} changePassword={changePassword} {...props} />}} />
       <Route exact path='/login' render= {(props) => { return <Login  {...props} login={login} username={usernameLog} password={passwordLog} changeUsername={changeUsernameLog} changePassword={changePasswordLog} />}} />
-      {/* <Basket cartItems={Basket} /> */}
       <Route exact path='/Basket2' render= {(props) => { return <Basket2  basket={carBasket} total={total} />}} />
-     <Route exact path='/' render= {(props) => { return <HomeImages  {...props} />}} />
-     <Route exact path='/categoryone' render= {(props) => { return <CategoryOne {...props} polo={dbPolos} poloCart={polos} />}} />
-     <Route exact path='/productpage/:id' render= {(props) => { return <ProductPage {...props} total={total} add={add} minus={minus} quantity={quantity} polo={polos}  addToCart={addToCart} />}} />
+      <Route exact path='/' render= {(props) => { return <HomeImages  {...props} />}} />
+      <Route exact path='/categoryone' render= {(props) => { return <CategoryOne {...props} filter={filter} polo={polosShirts ? polosShirts : polos} poloCart={polos} />}} />
+      <Route exact path='/productpage/:id' render= {(props) => { return <ProductPage {...props} total={total} add={add} minus={minus} quantity={quantity} polo={polos}  addToCart={addToCart} />}} />
     </div>
   );
 }
