@@ -7,6 +7,9 @@ import Banter from '../img/banter-snaps-eLOwnWvK9Fk-unsplash (1).jpg';
 import Dale from '../img/dale-alejandro-RYrMPoxzaZ0-unsplash.jpg';
 import Adrian from '../img/sajiam-n8bZJpA0hig-unsplash.jpg';
 import axios from 'axios';
+import Collage from './Collage';
+import Features from './Features';
+import Header from './Header';
 
 const HomeImages = (props) => {
     const [message] = useState(localStorage.getItem('user'))
@@ -60,7 +63,7 @@ axios.get('https://shirt-store123.herokuapp.com/cart', {headers: {Authorization:
 
     return (
         <div>
-            <NavBar />
+            <Header />
             <div className='home-images'>
                 <div className='image-box'>
                     <div className='overlay'>
@@ -88,7 +91,9 @@ axios.get('https://shirt-store123.herokuapp.com/cart', {headers: {Authorization:
                     <img className='home-image' src={Dale} alt='' />
                 </div>
             </div> 
-            <div className='mid-content'>
+            <Features />
+            <Collage />
+            {/* <div className='mid-content'>
                 <div className='text-container'>
                     <p className='mid-text'>Find the best fitting shirt you'll ever own.</p>
                 </div>
@@ -96,7 +101,7 @@ axios.get('https://shirt-store123.herokuapp.com/cart', {headers: {Authorization:
                     <img className='mid-image' src={Adrian} alt='' />
                     <button className='content-button'><p className='button-text'>Search here for the perfect fit</p></button>                
                 </div>                
-            </div>
+            </div> */}
             <Footer />
         </div>
     )

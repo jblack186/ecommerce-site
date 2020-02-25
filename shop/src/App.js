@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import '@ionic/react/css/core.css';
 import logo from './logo.svg';
 import './App.css';
 import {useParams} from 'react-router';
@@ -17,6 +18,8 @@ import Login from './components/Login';
 import axios from 'axios';
 import Routes from './components/Routes';
 import Orders from './components/Orders'
+import Features from './components/Features';
+import Collage from './components/Collage';
 
 const App = () => {
   const [polos, setPolos] = useState([])
@@ -227,6 +230,9 @@ console.log('QUANTITY', quantity)
   return (
     <div className="App">
       <Route exact path='/head' render= {(props) => { return <Header  {...props} />}} />
+      <Route exact path='/feat' render= {(props) => { return <Features  {...props} />}} />
+      <Route exact path='/collage' render= {(props) => { return <Collage  {...props} />}} />
+
       <Orders />
       <Route exact path='/register' render= {(props) => { return <Register register={register} username={username} password={password} changeUsername={changeUsername} changePassword={changePassword} {...props} />}} />
       <Route exact path='/login' render= {(props) => { return <Login  {...props} login={login} username={usernameLog} password={passwordLog} changeUsername={changeUsernameLog} changePassword={changePasswordLog} />}} />

@@ -1,0 +1,133 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #ffff;
+    color: #555;
+    font-size: 20px;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+    
+}
+
+
+.container {
+	padding: 80px 0;
+	
+	
+}
+
+.head-two {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	/* border: 1px solid black; */
+}
+
+h2 {
+    font-size: 180%;
+	font-weight: 300;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	word-spacing: 2px;
+	text-align: center;
+	margin: 0;
+	margin-bottom: 30px;
+
+}
+
+h2:after {
+	display: block;
+	height: 2px;
+	background-color: #e67e22;
+	content: " ";
+	width: 200px;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+
+
+h3 {
+	text-align: left;
+
+}
+
+.long-copy-container {
+	display: flex;
+	justify-content: center;
+}
+
+.long-copy {
+	line-height: 145%;
+	width: 90%;
+	line-height: 145%;
+	justify-self: center;
+
+}
+
+.section-features h3{
+	font-size: 110%;
+	
+	
+}
+/*  SECTIONS  ============================================================================= */
+
+.section {
+	clear: both;
+	padding: 0px;
+	margin: 0px;
+}
+
+
+/*  GROUPING  ============================================================================= */
+
+.row {
+	zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+	display: flex;
+	justify-content: center;
+
+}
+
+
+ p {
+	text-align: left
+}
+
+.row:before,
+.row:after {
+    content:"";
+    display:table;
+}
+.row:after {
+    clear:both;
+}
+
+.crow {
+    width: 1200px;
+	display: flex;
+	justify-content: space-between;
+
+
+}
+
+.crow img {
+    margin: 20px 0 15px 0;
+
+}
+
+.test {
+	width: 20%;
+    margin: 0px;
+    text-align: left;
+}
+
+.icon {
+    color: yellow;
+}
+
+
