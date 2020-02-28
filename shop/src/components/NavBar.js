@@ -9,7 +9,7 @@ import { Anomaly } from '../img/anomaly-WWesmHEgXDs-unsplash.jpg';
 function NavBar() {
 
     return (
-            <div>
+            <div className='sticky'>
                 <div className='home-container'>
                     
                     <div className='brands'>
@@ -19,8 +19,7 @@ function NavBar() {
                     
                     <div>
                         <div className='clothes-list'>
-                            <NavLink className='clothes-links' activeStyle={{ color: 'black' }} exact to='/categoryone'><p>POLOS</p></NavLink>    
-                            
+                            <NavLink className='clothes-links' activeStyle={{ color: 'black' }} exact to='/categoryone'><li>POLOS</li></NavLink>    
                             <NavLink className='clothes-links' activeStyle={{ color: 'black' }} exact to=''><li>SHIRTS</li></NavLink>   
                             <NavLink activeStyle={{ color: 'black' }} exact to=''><li className='clothes-links'>CRATE</li></NavLink>    
                             <NavLink activeStyle={{ color: 'black' }} exact to=''><li className='clothes-links'>GIFTS</li></NavLink>    
@@ -28,13 +27,11 @@ function NavBar() {
                     </div>
                     <div className='cart-about'>
                         <p>About Us</p>  
-                        <NavLink exact to ='/Basket2'><h2><FontAwesomeIcon icon={faCartArrowDown} /></h2></NavLink>
+                        <NavLink exact to ='/Basket2'><div><FontAwesomeIcon icon={faCartArrowDown} /></div></NavLink>
                     </div>  
                     
                 </div> 
-                <div className='bottom-nav'>
 
-                    </div> 
             </div>
     )
 }

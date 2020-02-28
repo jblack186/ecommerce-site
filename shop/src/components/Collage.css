@@ -6,6 +6,8 @@
     width: 100%;
     margin: 0;
     display: flex;
+    transition: transform 1s;
+
 
 }
 
@@ -13,6 +15,11 @@
     float: left;
     width: 25%;
     height: 300px;
+
+}
+
+.showcaseOne {
+    overflow: hidden;
 
 }
 
@@ -44,3 +51,18 @@
     opacity: 1;
     transform: scale(1);
 }
+
+.hideOne {
+    overflow: hidden;
+ 
+ 
+ }
+ 
+ .hideTwo {
+     overflow: hidden;
+ 
+ 
+ }
+ 
+ 
+ 

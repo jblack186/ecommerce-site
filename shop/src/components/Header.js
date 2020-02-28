@@ -1,10 +1,27 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './Header.css';
-import Logo from './pics/Red Lines Sports Logo.png';
+import Logo from './pics/Red.png';
+import NavBar from './NavBar';
 
 export default function Header() {
+    const [scroll, setScroll] = useState(false)
+console.log(window.scrollY)
+console.log(scroll)
+    useEffect(() => {
+        window.addEventListener('scroll', () => {
+            const isTop = window.scrollY < 840;
+            if (isTop !== true) {
+                setScroll(true)
+            } else {
+                setScroll(false)
+            }
+        })
+    }, [])
     return (
         <div className="contai">
+        <nav className={ scroll ? "sticky" : "hide"} >
+          <NavBar />  
+        </nav>
             <header>
                 <nav>
                     <div className="row-one">

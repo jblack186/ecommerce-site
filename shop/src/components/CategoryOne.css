@@ -1,62 +1,222 @@
+.main-container {
+    width: 100%;
+}
+
 .contain {
     width: 100%;
+    height: 100%;
     margin: 0 auto;
+    padding-top: 125px;
     display: flex;
+    justify-content: flex-end;
+}
+
+
+
+.bar-container {
+    width: 25%;
+    top: 0;
+    position: sticky;
+    top: 0px;
+    justify-items: center;
+    position: sticky;
+    top: 0px;
+
+}
+
+section {
+    /* justify-self: center; */
+
 }
 
 .item-container {
     display: flex;
     flex-flow: wrap;
-    justify-content: space-evenly;
+    width: 75%;
 }
+
+\
 
 .item {
     background: palegoldenrod;
     color: black;
     margin-bottom: 35px;
     text-align: left;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+
 
 }
 
-.item p {
-    margin-left: 5px
+
+
+.super-container {
+
+    /* padding-left: 360px; */
+    /* transform: translate(500px, 0px);
+    transition: transform 1s; */
+
 }
+
+.items {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border-right: .9px solid silver;
+    border-left: .9px solid silver;
+    justify-self: flex-end;
+}
+
+
+
+.item-description {
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-family:acumin-pro-condensed, sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+    list-style: none;
+    color:black;
+    /* overflow: hidden; */
+}
+
+
+.item-active {
+    font-size: 18px;
+    letter-spacing: 1px;
+    font-family:acumin-pro-condensed, sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+    list-style: none;
+    color:black;
+    
+
+}
+
+.img-contain {
+    width: 425px;
+    height: 460px;
+}
+
 
 .item-pic {
-    width: 250px;
-    height: 350px;
+    width: 425px;
+    height: 460px;
+    animation-name: slide;
+    animation-duration: .5s;
 }
 
+@keyframes slide {
+    from{ transform: translateX(1200px) }
+    to{ transform: translateX(0px) }
+
+}
+
+.item-pic-active {
+    width: 425px;
+    height: 460px;
+    animation-name: glide;
+    animation-duration: .5s;
+}
+
+@keyframes glide {
+    from{ transform: translateX(1200px) }
+    to{ transform: translateX(0px) }
+
+}
+
+/* .side-bar-container {
+    border: 3px solid red;
+    width: 200%;
+
+} */
 
 .side-bar {
-    width: 500px;
+    width: 100%;
     height: 800px;
     background: white;
-}
-
-/* .side-bar ul {
+    border-right: .0090px solid silver;
     display: flex;
     flex-direction: column;
-    align-content: space-around;
+
+}
+
+/* .side-bar h2 {
+    width: 500%;
+    justify-self: center;
+    font-size: 120%;
 } */
 
 .side-bar li {
+
     list-style: none;
     height: 70px;
-    font-size: 13px;
+    color: #303a4e;
+    font-size: 20px;
+    font-family: acumin-pro-condensed;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 1.8px;
+    transition-property: background-image, transform;
+    transition-timing-function: 3s;
+    transform: translateX(-100, 0);
+
+
+
 
 }
 
 .side-bar li:hover {
     cursor: pointer;
-    color: purple;
+    /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+    font-style: italic;
+    background-image: url('../img/blueshirt.png');
+    animation-name: move;
+    animation-duration: .3s;
+    background-size: 50px;
+    background-position: center;
+    background-position-y: top;
+    background-repeat: no-repeat;
+
+}
+
+@keyframes move {
+    from{ background-position-y: -200px }
+    to{ background-position-y: 0px }
+
+
+}
+
+/* .side-bar li:hover {
+    background-image: url('../img/feather.png');
+    transform: translateX(-100, 0);
+
+} */
+
+
+.side-li {
+    cursor: pointer;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-style: italic;
     font-size: 15px;
+    background-image: url('../img/blueshirt.png');
+    background-size: 50px;
+    background-position: center;
+    background-position-y: top;
+
+    background-repeat: no-repeat;
+
 }
 
 .icon {
     font-size: 18px;
+}
+
+
+
+
+.style-tag {
+    height: 100px;
+    top: 0px;
+    
+
 }

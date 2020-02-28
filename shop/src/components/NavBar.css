@@ -1,7 +1,19 @@
 .container {
     display: flex;
-    justify-content: space-evenly
+    justify-content: space-evenly;
+
+
 }
+
+/* .sticky {
+    position: fixed;
+    top: 8;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.98);
+} */
+
+
 
 .home-container {
     display: flex;
@@ -10,7 +22,10 @@
     width: 100vw;
     margin: 0;
     padding: 0;
+    z-index:99;    
 }
+
+
 
 .clothes-list {
     width: 500px;
@@ -23,9 +38,13 @@
 .cart-about {
     width: 100px;
     display: flex;
-    align-items: center;
+    align-content: center;
     justify-content: space-between;
 
+}
+
+.cart-about p {
+    margin: 0;
 }
 
 .brand {
@@ -42,7 +61,19 @@
 .clothes-links {
     font-size: 22px;
     color: black;
+    opacity: 5;
+    
 }
+
+ /* .clothes-links li:link,
+ .clothes-links li:visited {
+    position: fixed;
+    top: 8;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.98);
+
+} */
 
 .home-image {
     width: 80px;
@@ -50,12 +81,26 @@
     
 }
 
-.bottom-nav {
-    border-top: solid 1px gray;
-    height: 70px;
-    width: 80%;
-    margin: 0 auto;
-}
 
 
 
+/* .sticky {
+    position: fixed;
+    top: 8;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.98);
+} */
+
+
+.sticky {
+    position: fixed;
+    top: 8;
+    left: 0;
+    width: 100%;
+    background: white;
+    /* background-color: rgba(255, 255, 255, 0.98); */
+    /* z-index:99;   */
+  
+
+} 

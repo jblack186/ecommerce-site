@@ -5,7 +5,7 @@ import axios from 'axios';
 import Footer from './Footer';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import {useParams, useLocation, useHistory} from 'react-router';
 import SideBar from './SideBar';
 
@@ -13,11 +13,30 @@ const CategoryOne = (props) => {
     const location = useLocation();
     const history = useHistory();
     const [polos, setPolos] = useState();
-  
-    console.log(location)
+    const [active, setActive] = useState(false)
+    const [loading, setLoading] = useState(false)
+    const [length, setLength] = useState()
+ 
+    useEffect(() => {
+        setLength(props.polo.length)
+
+    }, [])
+
+
+
+    console.log('PROPS', loading)
+console.log(length)
+    useEffect(() => {
+      
+            setActive(!active)
+        
+    }, [props.filter || props.polo])
+
    
-    function click(){
-        history.push('/');
+console.log('ACTIVE',active)
+
+    function slide(){
+       
     }
 
     function formatPrice(price) {
@@ -33,19 +52,33 @@ console.log("pprod2", props.poloCart)
 
     return (
 
-        <div>
+        <div className='main-container'>
             <NavBar />
             <div className='contain'>
-              <SideBar filter={props.filter} />
+         
+              <div className='bar-container'>
+              
+                <SideBar filter={props.filter} className='side-bar' />
+              </div>
+             
                 <div className='item-container'>
-
-                    {props.polo.map(item => {  
-            return <div><Link exact to={`/productpage/${item.id}`}><img src={item.img} className='item-pic' alt='item-image'/> <div  className='item'><p>{item.item_name}</p> <p>{formatPrice(item.price)}</p> <p>{item.description} </p> </div></Link></div>                    
-                    })}
-                
-                <tr>
-
-                </tr>
+                    <div className='items'>
+                        {props.polo.map(item => {  
+                        return <div className='super-container'>
+                                    <NavLink className={!loading ? 'item-description' : 'item-active'} activeStyle={{ color: 'black' }} exact to={`/productpage/${item.id}`}>
+                                        <div>
+                                        <div className='img-contain'>
+                                            <img src={item.img} className={!active ? 'item-pic' : 'item-pic-active'}  alt='item-image'/> 
+                                            </div>
+                                            <p>{item.item_name}</p> 
+                                                <p>{formatPrice(item.price)}</p> 
+                                                <p>{item.description} </p> 
+                                          
+                                        </div>
+                                    </NavLink>
+                                </div>                    
+                        })}
+                    </div>
                 </div>
             </div> 
 
