@@ -54,8 +54,8 @@ console.log("pprod2", props.poloCart)
 
         <div className='main-container'>
             <NavBar />
-            <div className='contain'>
-         
+            <div className='containing'>
+              
               <div className='bar-container'>
               
                 <SideBar filter={props.filter} className='side-bar' />
@@ -65,15 +65,18 @@ console.log("pprod2", props.poloCart)
                     <div className='items'>
                         {props.polo.map(item => {  
                         return <div className='super-container'>
-                                    <NavLink className={!loading ? 'item-description' : 'item-active'} activeStyle={{ color: 'black' }} exact to={`/productpage/${item.id}`}>
+                                    <NavLink style={{ color: 'black', textDecoration: 'none' }} exact to={`/productpage/${item.id}`}>
                                         <div>
                                         <div className='img-contain'>
                                             <img src={item.img} className={!active ? 'item-pic' : 'item-pic-active'}  alt='item-image'/> 
                                             </div>
-                                            <p>{item.item_name}</p> 
-                                                <p>{formatPrice(item.price)}</p> 
+                                            <div className={!active ? 'item-description' : 'item-description-active'}>
+                                            <div className='descr'>
+                                                <h3>{item.item_name}</h3> 
                                                 <p>{item.description} </p> 
-                                          
+                                                <p className='price'>{formatPrice(item.price)}</p> 
+                                            </div>
+                                            </div>
                                         </div>
                                     </NavLink>
                                 </div>                    

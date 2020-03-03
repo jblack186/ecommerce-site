@@ -13,16 +13,16 @@ function NavBar() {
                 <div className='home-container'>
                     
                     <div className='brands'>
-                        <NavLink className='brand' activeStyle={{ color: 'black' }} exact to='/'><h1>RevTown</h1></NavLink>
+                        <NavLink className='brand' style={{ color: 'black', textDecoration: 'none' }}  exact to='/'><h1>RevTown</h1></NavLink>
 
                     </div>
                     
                     <div>
                         <div className='clothes-list'>
-                            <NavLink className='clothes-links' activeStyle={{ color: 'black' }} exact to='/categoryone'><li>POLOS</li></NavLink>    
-                            <NavLink className='clothes-links' activeStyle={{ color: 'black' }} exact to=''><li>SHIRTS</li></NavLink>   
-                            <NavLink activeStyle={{ color: 'black' }} exact to=''><li className='clothes-links'>CRATE</li></NavLink>    
-                            <NavLink activeStyle={{ color: 'black' }} exact to=''><li className='clothes-links'>GIFTS</li></NavLink>    
+                            <NavLink className='clothes-links' style={{ color: 'black', textDecoration: 'none' }} exact to='/categoryone'><li>POLOS</li></NavLink>    
+                            <NavLink className='clothes-links' style={{ color: 'black', textDecoration: 'none' }}  exact to=''><li>SHIRTS</li></NavLink>   
+                            <NavLink style={{ color: 'black', textDecoration: 'none' }}  exact to=''><li className='clothes-links'>CRATE</li></NavLink>    
+                            <NavLink style={{ color: 'black', textDecoration: 'none' }}  exact to=''><li className='clothes-links'>GIFTS</li></NavLink>    
                         </div>
                     </div>
                     <div className='cart-about'>

@@ -227,7 +227,7 @@ console.log('QUANTITY', quantity)
       <Route exact path='/Basket2' render= {(props) => { return <Basket2  basket={carBasket} total={total} />}} />
       <Route exact path='/' render= {(props) => { return <HomeImages  {...props} />}} />
       <Route exact path='/categoryone' render= {(props) => { return <CategoryOne {...props} filter={filter} polo={polosShirts ? polosShirts : polos} poloCart={polos} />}} />
-      <Route exact path='/productpage/:id' render= {(props) => { return <ProductPage {...props} total={total} add={add} minus={minus} quantity={quantity} polo={polos}  addToCart={addToCart} />}} />
+      <Route exact path='/productpage/:id' render= {(props) => { return <ProductPage {...props}  total={total} add={add} minus={minus} quantity={quantity} polo={polos}  addToCart={addToCart} />}} />
     </div>
   );
 }

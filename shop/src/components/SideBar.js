@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
+import Logo from './pics/Red.png';
 import './CategoryOne.css';
 
 const SideBar = (props) => {
@@ -52,9 +53,10 @@ const flanellC = e => {
 
 
     return (
+        <div>
         <section className='side-bar-container'>
           <div className='side-bar'>
-            <h2 className='style-tag'>Choose Style</h2>
+          <img className='logo-img' src={Logo} style={{width: '150px'}} />
                   <ul className='side-bar-list'>
                     <li onClick={poloC} className={polo === true ? 'side-li active' : null }  >Polo</li>
                     <li onClick={dressC} className={dress === true ? 'side-li active' : null }>Dress</li>
@@ -62,8 +64,8 @@ const flanellC = e => {
                     <li onClick={flanellC} className={flanell === true ? 'side-li active' : null }>Flannel</li>
                   </ul>
                 </div>
-
-        </section>
+                </section>
+        </div>
     )
 }
 

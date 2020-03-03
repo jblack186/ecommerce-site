@@ -7,6 +7,9 @@ import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons';
 import NavBar from './NavBar';
 import Footer from './Footer';
 import axios from 'axios';
+import './ProductPage.css';
+import { faArrowAltCircleUp, faArrowAltCircleDown } from '@fortawesome/free-solid-svg-icons';
+
 
 
 export const ProductPage = (props) => {
@@ -111,15 +114,31 @@ function getCart() {
         <div>
     <NavBar />
             {prod.length !== undefined ? prod.map(item => {
-               return <div><img src={item.img} className='item-pic' alt='item-image'/> <div  className='item'><p>{item.item_name}</p> <p>{formatPrice(item.price)}</p> <p>{item.description} </p> </div><button onClick={props.addToCart} >Add to Cart <h2><FontAwesomeIcon className='icon' icon={faCartArrowDown} /></h2></button></div>
+               return   <div className='prod-contain'>
+                            <img src={item.img} className='pic' alt='item-image'/> 
+                                <div  className='item'>
+                                    <p className='name'>{item.item_name}</p> 
+                                    <p className='about'>{item.description} </p> 
+                                    <div className='quantity-button'>
+                                        <div className='num-quantity'>
+                                        <p className='quantity'>{props.quantity}</p>
+                                        <div className='arrow'>
+                                            <FontAwesomeIcon style={{color: '#333333'}} onClick={props.add} className='icon' icon={faArrowAltCircleUp} />
+                                            <FontAwesomeIcon style={{color: '#333333'}} onClick={props.minus} className='icon' icon={faArrowAltCircleDown} />
+                                            </div>
+                                        </div>
+                                        <p className='prices'>${item.price}</p>
+                                        <div className='contain-button'>
+                                            <button className='prod-button' onClick={props.addToCart} >Add to Cart</button>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
             }) : <p>...Loading</p>}
-            <h1 onClick={props.add}>+</h1>
-            <h1 onClick={props.minus}>-</h1>
-            <h1>{props.quantity}</h1>
+            
            
 
             <Footer />
-            <button onClick={props.addToCart}>get</button>
 
         </div>
     )
