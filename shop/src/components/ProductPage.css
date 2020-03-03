@@ -6,8 +6,8 @@
 }
 
 .pic {
-    width: 38%;
-    height: 70vh;
+    width: 45%;
+    height: 600px;
     object-fit: cover;
 }
 
@@ -15,14 +15,18 @@
     width: 45%;
     background-color: white;
     color: #333333;
+    display: flex;
+    flex-direction: column;
 }
 
 .item .name {
-    font-size: 200%;
+    font-size: 240%;
+    font-family: fantasy;
 }
 
 .item .about {
     font-size: 130%;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 
 .prices {
@@ -33,6 +37,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+
+    
 }
 
 .quantity {
@@ -40,6 +47,8 @@
     padding-right: 10px;
     font-size: 250%;
     color: #333333;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+
 }
 
 .arrow {
@@ -56,7 +65,7 @@
 
 .quantity-button {
     display: flex;
-    width: 70%;
+    width: 40%;
     justify-content: space-between;
 }
 
@@ -67,11 +76,24 @@
 } */
 
 .prod-button {
+    align-items: flex-end;
    margin-left: auto 0;
-   height: 50px;
-   width: 200px;
+   height: 100px;
+   width: 500px;
    background-color: #333333;
    color: white;
    display: flex;
    justify-content: center;
+   border-radius: 7px;
+   font-size: 200%;
+   font-style: italic;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+
 }
+
+.button-container {
+    height: 50%;
+    display: flex;
+    align-items: center;
+}
+
