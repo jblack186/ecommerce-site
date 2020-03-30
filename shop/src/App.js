@@ -69,7 +69,6 @@ const filter = e => {
       axios.get("https://shirt-store123.herokuapp.com/api/inventory")
           .then(res => {
               setPolos(res.data)
-              console.log(res)
           })
           .catch(err => {
               console.log(err)
@@ -151,13 +150,9 @@ const login = (e) => {
   e.preventDefault();
   axios.post(`https://shirt-store123.herokuapp.com/api/login`, {'username': usernameLog, 'password': passwordLog})
   .then(response => {
-      // const sess = response.data.session.cookie
-  // setToken(response.data.accessToken)
       console.log(response)
 
-  // sessionStorage.setItem('cookie', sess)
   localStorage.setItem('token', response.data.accessToken)
-// localStorage.setItem('id', response.data.user_id)
   history.push('/')
 })
   .catch(error => {
@@ -168,13 +163,11 @@ const login = (e) => {
 
 useEffect(() => {
   const both = JSON.parse(localStorage.getItem("store"))
-    console.log('BO', both)
     if (both) {
 
    const newBoth = both.reduce((acc,item) => {
      return acc + item.quantity
    }, 0)
-   console.log(newBoth)
     setCount(newBoth)
   }
 }, [carBasket] )
@@ -197,11 +190,9 @@ useEffect(() => {
     }
     setQuantity(1)
     const prod = [JSON.parse(localStorage.getItem("product"))]
-    console.log('PROD',prod)
     prod.map(item => {
       const cartStorage = JSON.parse(localStorage.getItem("store"))
       const newProd = [{item_name: item.item_name, price: item.price, quantity: quantity, description: item.description, img: item.img}]
-      console.log('NP', newProd)
       if (cartStorage) {
       setCarts([...cartStorage, newProd[0] ])
       } else {
@@ -216,13 +207,10 @@ useEffect(() => {
 
  }
 
- console.log('CB', carBasket)
 
  const removeItem = (index) =>  {
   const store = JSON.parse(localStorage.getItem("store"))
   store.splice(index, 1)
-  console.log('store',store)
-  console.log(index)
   setCarBasket([...carBasket, store])
   localStorage.setItem("store", JSON.stringify(store))
 
@@ -246,5 +234,4 @@ useEffect(() => {
     </div>
   );
 }
-//basket={carBasket}
 export default App;

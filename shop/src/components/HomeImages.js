@@ -12,54 +12,9 @@ import Features from './Features';
 import Header from './Header';
 
 const HomeImages = (props) => {
-    const [message] = useState(localStorage.getItem('user'))
-    const [cookie, setCookie] = useState('')
-    const [cart, setCart] = useState('')
-console.log('props', sessionStorage.getItem('cookie'))
-
-// useEffect(() => {
-//  const cookie = sessionStorage.getItem('cookie') 
-//  setCookie(cookie)   
-
-// }, [])
-// console.log('c', cookie)
-
-// useEffect(() => {
-//     axios.get('https://shirt-store123.herokuapp.com/cart')
-//     .then(res => {
-//         console.log(res)
-//     })
-//     .catch(err => {
-//         console.log(err)
-//     })
-// }, [])
-
-useEffect(() => {
-axios.get('https://shirt-store123.herokuapp.com/cart', {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})
-    .then(res => {
-        console.log(res.data)
-        res.data.map(item => {
-            localStorage.setItem('id', item.user_id)
-        })
-
-    })
-    .catch(err => {
-        console.log(err)
-    })
-}, [])
 
 
 
-
-
-
-// const test = e => {
-//     e.preventDefault();
-// axios.get('https://shirt-store123.herokuapp.com/api/users/users', {headers: {Authorization: `Bearer ${sessionStorage.getItem('cookie')}`}})
-// .then(res => {
-//     console.log(res)
-// })
-// }
 
     return (
         <div>

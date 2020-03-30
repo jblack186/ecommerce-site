@@ -24,8 +24,6 @@ const CategoryOne = (props) => {
 
 
 
-    console.log('PROPS', loading)
-console.log(length)
     useEffect(() => {
       
             setActive(!active)
@@ -33,7 +31,6 @@ console.log(length)
     }, [props.filter || props.polo])
 
    
-console.log('ACTIVE',active)
 
     function slide(){
        
@@ -47,8 +44,6 @@ console.log('ACTIVE',active)
         return items.reduce((acc, item) => acc + item.quantity * item.price, 0.0)
     }
 
-console.log("pprod", props.polo)
-console.log("pprod2", props.poloCart)
 
     return (
 

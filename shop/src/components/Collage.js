@@ -5,8 +5,6 @@ import ImageTwo from '../img/anomaly-WWesmHEgXDs-unsplash.jpg';
 
 const Collage = () => {
     const [scroll, setScroll] = useState(false)
-console.log(window.scrollY)
-console.log(scroll)
     useEffect(() => {
         window.addEventListener('scroll', () => {
             const isTop = window.scrollY < 1500;

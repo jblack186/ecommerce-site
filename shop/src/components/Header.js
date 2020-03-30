@@ -5,8 +5,6 @@ import NavBar from './NavBar';
 
 export default function Header(props) {
     const [scroll, setScroll] = useState(false)
-console.log(window.scrollY)
-console.log(scroll)
     useEffect(() => {
         window.addEventListener('scroll', () => {
             const isTop = window.scrollY < 840;

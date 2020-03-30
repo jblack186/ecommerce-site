@@ -9,7 +9,6 @@ const SideBar = (props) => {
   const [casual, setCasual] = useState(false)
   const [flanell, setFlannel] = useState(false)
 
-console.log(polo)
 const poloC = e => {
   props.filter(e)
     e.preventDefault();
@@ -17,7 +16,6 @@ const poloC = e => {
     setCasual(false)
     setFlannel(false)
     setDress(false)
-    console.log(e)
 }
 
 const dressC = e => {
