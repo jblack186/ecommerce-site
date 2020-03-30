@@ -53,7 +53,7 @@ console.log("pprod2", props.poloCart)
     return (
 
         <div className='main-container'>
-            <NavBar />
+            <NavBar count={props.count} />
             <div className='containing'>
               
               <div className='bar-container'>

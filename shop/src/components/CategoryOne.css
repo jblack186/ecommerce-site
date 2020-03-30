@@ -1,7 +1,6 @@
 .main-container {
     width: 100%;
-background-color:  #333333;
-
+    background-color: #d9d9d9;
 }
 
 .containing {
@@ -25,7 +24,6 @@ background-color:  #333333;
     height: 100%;
     position: sticky;
     top: 0;
-    border-right: 1px solid #333333;
 
 }
 
@@ -64,6 +62,9 @@ background-color:  #333333;
     flex-wrap: wrap;
     justify-content: space-evenly;
     justify-self: flex-end;
+    padding-top: 56px;
+    background-color: whitesmoke;
+
 }
 
 
@@ -215,7 +216,7 @@ to{color: white}
 
 .side-bar li {
     border-right: 1px grove black;
-    background-color: white;
+    background-color: #d9d9d9;
     list-style: none;
     height: 70px;
     color: #333333;
@@ -249,7 +250,7 @@ to{color: white}
 }
 
 .side-bar li:hover {
-    background-color: #cccccc;
+    background-color: white;
 
     cursor: pointer;
     /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
@@ -313,9 +314,8 @@ to{color: white}
     font-family: acumin-pro-condensed;
     text-decoration: none;
     list-style: none;
-    background-color:  #333333;
-    color: white;
-
+    color:  #333333;
+    background-color: whitesmoke;
 }
 
 .descr:hover {

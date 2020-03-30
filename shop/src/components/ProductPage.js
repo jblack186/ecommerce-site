@@ -20,6 +20,13 @@ const [items, setItems] = useState([])
 const [cart, setCart] = useState()
 const [carBasket, setCarBasket] = useState('')
 const [tempProd, setTempProd] = useState([JSON.parse(localStorage.getItem("product"))])
+const [count, setCount] = useState(0)
+
+useEffect(() => {
+     const realCount =  localStorage.setItem('count', [JSON.stringify(props.count)])
+    setCount(realCount)
+}, [props.count])
+
 
 console.log('prod',prod)
 const filter = e => {
@@ -80,13 +87,37 @@ function getCart() {
    return setItems(get)
 
  }
- console.log('prods', prod)
+ console.log('quant',props.addCount)
+
+ console.log('prods', prod.length)
  console.log('temp',tempProd)
  
     return (
         <div>
-    <NavBar />
-            {prod.length === 0 ? tempProd.map(item => {
+    <NavBar count={props.count} />
+    <div className='p-container'>
+            {prod ? prod.map(item => {
+                return   <div className='prod-contain'>
+                             <img src={item.img} className='pic' alt='item-image'/> 
+                                 <div  className='item'>
+                                     <p className='name'>{item.item_name}</p> 
+                                     <p className='about'>{item.description} </p> 
+                                     <div className='quantity-button'>
+                                         <div className='num-quantity'>
+                                         <p className='quantity'>{props.quantity}</p>
+                                         <div className='arrow'>
+                                             <FontAwesomeIcon style={{color: '#333333'}} onClick={props.add} className='icon' icon={faArrowAltCircleUp} />
+                                             <FontAwesomeIcon style={{color: '#333333'}} onClick={props.minus} className='icon' icon={faArrowAltCircleDown} />
+                                             </div>
+                                         </div>
+                                         <p className='prices'>${item.price}</p>
+                                     </div>
+                                     <div className='button-container'>
+                                        <button className='prod-button' onClick={props.addToCart}>Add to Cart</button>
+                                    </div>
+                                 </div>
+                         </div>
+             })  : prod.length === 0 ? tempProd.map(item => {
                 return   <div className='prod-contain'>
                              <img src={item.img} className='pic' alt='item-image'/> 
                                  <div  className='item'>
@@ -107,33 +138,12 @@ function getCart() {
                                     </div>
                                  </div>
                          </div>
-             }) : prod.map(item => {
-                return   <div className='prod-contain'>
-                             <img src={item.img} className='pic' alt='item-image'/> 
-                                 <div  className='item'>
-                                     <p className='name'>{item.item_name}</p> 
-                                     <p className='about'>{item.description} </p> 
-                                     <div className='quantity-button'>
-                                         <div className='num-quantity'>
-                                         <p className='quantity'>{props.quantity}</p>
-                                         <div className='arrow'>
-                                             <FontAwesomeIcon style={{color: '#333333'}} onClick={props.add} className='icon' icon={faArrowAltCircleUp} />
-                                             <FontAwesomeIcon style={{color: '#333333'}} onClick={props.minus} className='icon' icon={faArrowAltCircleDown} />
-                                             </div>
-                                         </div>
-                                         <p className='prices'>${item.price}</p>
-                                     </div>
-                                     <div className='button-container'>
-                                        <button className='prod-button' onClick={props.addToCart} >Add to Cart</button>
-                                    </div>
-                                 </div>
-                         </div>
-             })}
+             }) : null }
             
            
 
             <Footer />
-
+            </div>
         </div>
     )
 }

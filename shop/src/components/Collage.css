@@ -1,7 +1,10 @@
 .section-images {
-    overflow: hidden;
+    margin-bottom: 180px;
+
+    /* overflow: hidden; */
 
 }
+
 
 .image-showcase {
     list-style: none;

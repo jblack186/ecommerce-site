@@ -3,7 +3,7 @@ import './Header.css';
 import Logo from './pics/Red.png';
 import NavBar from './NavBar';
 
-export default function Header() {
+export default function Header(props) {
     const [scroll, setScroll] = useState(false)
 console.log(window.scrollY)
 console.log(scroll)
@@ -20,7 +20,7 @@ console.log(scroll)
     return (
         <div className="contai">
         <nav className={ scroll ? "sticky" : "hide"} >
-          <NavBar />  
+        <NavBar count={props.count} />
         </nav>
             <header>
                 <nav>

@@ -1,28 +1,83 @@
-.contain-page {
+.cart-container {
     display: flex;
-    justify-content: space-around
+}
+.contain-page {
+    width: 40%;
+    padding-top: 56px;
+    display: flex;
+    justify-content: space-around;
+    background-color: whitesmoke;
+
+}
+
+.cart-header {
+    color: white;
+    font-size: 300%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.336),rgba(15, 52, 87, 0.7)), url("https://images.pexels.com/photos/264726/pexels-photo-264726.jpeg?cs=srgb&dl=abstract-blur-business-buy-264726.jpg&fm=jpg");
+    background-size: 100%;
+    background-position: center;
+    height: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cart-header h1 {
+
+    font-size: 240%;
+    text-transform: uppercase;
+    word-spacing: 4px;
 }
 
 
 .cards-list {
-    width: 950px;
+    width: 100%;
 
 }
 
 .img-card-container {
-    width: 950px;
+    width: 100%;
     text-align: left;
     display: flex;
     height: 200px;
-    background-color: lightgray;
     margin: 0;
 
 
 }
 
+.img-card-container img {
+    object-fit: cover;
+    border-radius: 15px;
+    border: .5px solid black;
+}
+
+.img-card-container h1{
+    font-size: 120%;
+    font-weight: bold;
+
+}
+
+.cart-form {
+    width: 60%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 56px;
+
+}
+
+.form-contain {
+    width: 80%;
+}
+
 .basket-img {
-    width:170px;
-    height: 200px;
+    width:120px;
+    height: 120px;
 }
 
 .cards {
@@ -40,4 +95,8 @@
 
 .total {
     
+}
+
+.notta {
+    margin-top: 56px;
 }

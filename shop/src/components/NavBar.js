@@ -6,8 +6,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { Anomaly } from '../img/anomaly-WWesmHEgXDs-unsplash.jpg';
 
 
-function NavBar() {
-
+function NavBar(props) {
     return (
             <div className='sticky'>
                 <div className='home-container'>
@@ -28,6 +27,7 @@ function NavBar() {
                     <div className='cart-about'>
                         <p>About Us</p>  
                         <NavLink exact to ='/Basket2'><div><FontAwesomeIcon icon={faCartArrowDown} /></div></NavLink>
+                        <p>{props.count}</p>
                     </div>  
                     
                 </div> 

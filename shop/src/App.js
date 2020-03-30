@@ -27,6 +27,7 @@ const App = () => {
   const [dbPolos, setDbPolos] = useState([])
   const [cart, setCart] = useState([])
   const [carts, setCarts] = useState([])
+  const [storeStuff, setStoreStuff] = useState([])
  const [username, setUsername] = useState([])
  const [password, setPassword] = useState()
  const [usernameLog, setUsernameLog] = useState([])
@@ -37,16 +38,15 @@ const App = () => {
   const [quantity, setQuantity] = useState(1)
   const [total, setTotal] = useState(0)
   const [polosShirts, setPolosShirts] = useState();
+  const [count, setCount] = useState(0)
+
 
 const filter = e => {
-  console.log('yep')
   const target = e.target.innerHTML
-  console.log(target.toLowerCase())
 
   const polo =polos.filter(item => {
    return item.type === target.toLowerCase()
   })
-  console.log(polo)
   setPolosShirts(polo)
   window.scrollTo({
     top: 0,
@@ -58,7 +58,6 @@ const filter = e => {
         axios.get("https://shirt-store123.herokuapp.com/api/dbInventory")
             .then(res => {
                 setDbPolos(res.data)
-                // console.log(res)
             })
             .catch(err => {
                 console.log(err)
@@ -83,21 +82,11 @@ const filter = e => {
 }, [])
 useEffect(() => {
   if (carts.length > 0) {
-    console.log(carts)
   localStorage.setItem("store", JSON.stringify(carts))
 }
 }, [carts])
 
 
-useEffect(() => {
-  const both = JSON.parse(localStorage.getItem("store"))
-    if (both) {
-      both.map(item => {
-      carts.push(item)
-    })
-    console.log('CARTS',carts)
-  }
-}, [])
 
 const changeUsername = (e) => {
   e.preventDefault();
@@ -121,6 +110,7 @@ const changePasswordLog = (e) => {
   setPasswordLog(e.target.value)
 
 }
+
 
 
 const add = e => {
@@ -176,6 +166,19 @@ const login = (e) => {
 
 }
 
+useEffect(() => {
+  const both = JSON.parse(localStorage.getItem("store"))
+    console.log('BO', both)
+    if (both) {
+
+   const newBoth = both.reduce((acc,item) => {
+     return acc + item.quantity
+   }, 0)
+   console.log(newBoth)
+    setCount(newBoth)
+  }
+}, [carBasket] )
+
 
 
 
@@ -187,47 +190,59 @@ const login = (e) => {
         setTotal(item.price * quantity)
       })
     }
+    if (storeStuff) {
+    const store = JSON.parse(localStorage.getItem("store"));
+    setStoreStuff(store)
 
+    }
     setQuantity(1)
     const prod = [JSON.parse(localStorage.getItem("product"))]
     console.log('PROD',prod)
     prod.map(item => {
+      const cartStorage = JSON.parse(localStorage.getItem("store"))
       const newProd = [{item_name: item.item_name, price: item.price, quantity: quantity, description: item.description, img: item.img}]
-      setCarts([...carts, newProd[0]])
+      console.log('NP', newProd)
+      if (cartStorage) {
+      setCarts([...cartStorage, newProd[0] ])
+      } else {
+        setCarts([...carts, newProd[0] ])
+
+      }
       return localStorage.setItem("pros", JSON.stringify(newProd))
 
     })
 
-    setCarBasket([...carBasket, prod])
-
+    setCarBasket([...carBasket, prod && storeStuff])
 
  }
- 
 
- useEffect(() => {
-    
-// localStorage.setItem('userCart', carBasket)
-const be = localStorage.getItem("prods")
+ console.log('CB', carBasket)
 
-}, [ce])
+ const removeItem = (index) =>  {
+  const store = JSON.parse(localStorage.getItem("store"))
+  store.splice(index, 1)
+  console.log('store',store)
+  console.log(index)
+  setCarBasket([...carBasket, store])
+  localStorage.setItem("store", JSON.stringify(store))
 
-console.log('CARTS',carts)
 
-console.log('QUANTITY', quantity)
+}
+
 
   return (
     <div className="App">
-      <Route exact path='/head' render= {(props) => { return <Header  {...props} />}} />
+      <Route exact path='/head' render= {(props) => { return <Header count={count} {...props} />}} />
       <Route exact path='/feat' render= {(props) => { return <Features  {...props} />}} />
       <Route exact path='/collage' render= {(props) => { return <Collage  {...props} />}} />
       <Route exact path='/parallax' render= {(props) => { return <ParallaxImage  {...props} />}} />
       <Orders />
       <Route exact path='/register' render= {(props) => { return <Register register={register} username={username} password={password} changeUsername={changeUsername} changePassword={changePassword} {...props} />}} />
       <Route exact path='/login' render= {(props) => { return <Login  {...props} login={login} username={usernameLog} password={passwordLog} changeUsername={changeUsernameLog} changePassword={changePasswordLog} />}} />
-      <Route exact path='/Basket2' render= {(props) => { return <Basket2  basket={carBasket} total={total} />}} />
+      <Route exact path='/Basket2' render= {(props) => { return <Basket2 removeItem={removeItem} count={count} basket={carBasket} total={total} />}} />
       <Route exact path='/' render= {(props) => { return <HomeImages  {...props} />}} />
-      <Route exact path='/categoryone' render= {(props) => { return <CategoryOne {...props} filter={filter} polo={polosShirts ? polosShirts : polos} poloCart={polos} />}} />
-      <Route exact path='/productpage/:id' render= {(props) => { return <ProductPage {...props}  total={total} add={add} minus={minus} quantity={quantity} polo={polos}  addToCart={addToCart} />}} />
+      <Route exact path='/categoryone' render= {(props) => { return <CategoryOne count={count} {...props} filter={filter} polo={polosShirts ? polosShirts : polos} poloCart={polos} />}} />
+      <Route exact path='/productpage/:id' render= {(props) => { return <ProductPage count={count} {...props}  total={total} add={add} minus={minus} quantity={quantity} polo={polos}  addToCart={addToCart} />}} />
     </div>
   );
 }
