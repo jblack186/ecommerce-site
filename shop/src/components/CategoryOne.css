@@ -333,3 +333,9 @@ to{color: white}
    align-self: flex-end;
    
 }
+
+.remove {
+    background-color: red;
+    color: white;
+    width: 100px;
+}

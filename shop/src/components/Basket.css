@@ -89,12 +89,16 @@
     margin-left: 30px;
 }
 
-.cart-list {
-
+.total {
+    width: 95%;
+    border-top: solid 1px black; 
+    display: flex;
+    justify-content: space-between;
 }
 
-.total {
-    
+.total P {
+    font-size: 158%;
+    font-weight: bold;
 }
 
 .notta {

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import './HomeImages.css';
 import NavBar from './NavBar';
 import Footer from './Footer';
@@ -32,7 +32,7 @@ const HomeImages = (props) => {
                  <div className='image-box'>
                  <div className='overlay'>
                         <p className='text'>Dress Shirts</p>
-                        <button id='overlay-button' type="button" class="btn btn-primary">Shop</button>
+                        <button id='overlay-button' type="button" className="btn btn-primary">Shop</button>
                     </div>
 
                      <img className='home-image' src={Banter} alt='' />
@@ -40,7 +40,7 @@ const HomeImages = (props) => {
                 <div className='image-box'>
                 <div className='overlay'>
                         <p className='text'>Casual Shirts</p>
-                        <button id='overlay-button' type="button" class="btn btn-primary">Shop</button>
+                        <button id='overlay-button' type="button" className="btn btn-primary">Shop</button>
                     </div>
 
                     <img className='home-image' src={Dale} alt='' />
@@ -48,15 +48,6 @@ const HomeImages = (props) => {
             </div> 
             <Features />
             <Collage />
-            {/* <div className='mid-content'>
-                <div className='text-container'>
-                    <p className='mid-text'>Find the best fitting shirt you'll ever own.</p>
-                </div>
-                <div className='first-image'>
-                    <img className='mid-image' src={Adrian} alt='' />
-                    <button className='content-button'><p className='button-text'>Search here for the perfect fit</p></button>                
-                </div>                
-            </div> */}
             <Footer />
         </div>
     )

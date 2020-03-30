@@ -15,10 +15,8 @@ import { faArrowAltCircleUp, faArrowAltCircleDown } from '@fortawesome/free-soli
 export const ProductPage = (props) => {
 const {id} = useParams()
 const [prod, setProd] = useState([])
-const [basket, setBasket] = useState(props.cartItems)
 const [items, setItems] = useState([])
 const [cart, setCart] = useState()
-const [carBasket, setCarBasket] = useState('')
 const [tempProd, setTempProd] = useState([JSON.parse(localStorage.getItem("product"))])
 const [count, setCount] = useState(0)
 
@@ -28,19 +26,12 @@ useEffect(() => {
 }, [props.count])
 
 
-console.log('prod',prod)
-const filter = e => {
-    
-}
 
-console.log('PRODUCT', props.polo)
-console.log('ID', id)
 useEffect(() => {
     const product = props.polo.find(item => {
         return String(item.id) === id
      }) 
      
-     console.log('PRODS', product)
 
     if(product !== undefined) {
         setProd([...prod, product])
@@ -48,7 +39,6 @@ useEffect(() => {
     }
 }, [])
 
-console.log('pr',prod)
 function formatPrice(price) {
     return `$${(price * 0.01).toFixed(2)}`
 }
@@ -75,23 +65,11 @@ useEffect(() => {
 
 
 
-
-console.log('cart',cart)
-
- console.log('bas',carBasket)
-    
-
-
 function getCart() {
     const get = localStorage.getItem("cart")
    return setItems(get)
 
  }
- console.log('quant',props.addCount)
-
- console.log('prods', prod.length)
- console.log('temp',tempProd)
- 
     return (
         <div>
     <NavBar count={props.count} />
@@ -117,7 +95,9 @@ function getCart() {
                                     </div>
                                  </div>
                          </div>
-             })  : prod.length === 0 ? tempProd.map(item => {
+             })  : null }
+             
+             {prod.length === 0 ? tempProd.map(item => {
                 return   <div className='prod-contain'>
                              <img src={item.img} className='pic' alt='item-image'/> 
                                  <div  className='item'>

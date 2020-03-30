@@ -7,7 +7,6 @@ import { Dropdown, Form, Button, Col } from 'react-bootstrap';
 
 
 const Basket2 = (props) => {
-    const [items, setItems] = useState([])
     const [quantity, setQuantity] = useState('')
     const [basket, setBasket] = useState()
     const [total, setTotal] = useState(0)
@@ -36,7 +35,7 @@ const Basket2 = (props) => {
         console.log('TOTA', tota)
         setTotal(tota)
         }
-    }, [])
+    }, [props.removeItem])
 
     
 console.log('TRUE', basket)
@@ -115,7 +114,7 @@ console.log('TRUE', basket)
                                             <p>{item.description}</p> 
                                             <p>${item.price}</p> 
                                             <p>Qquantity: {item.quantity}</p> 
-                                            <button onClick={() => props.removeItem(index)}>Remove</button>
+                                            <button className='remove' onClick={() => props.removeItem(index)}>Remove</button>
                                         </div>
                                     </div>
                                 </div>
@@ -126,8 +125,8 @@ console.log('TRUE', basket)
                     : null}
                     </div>
                 <div className='total'>
-                    <p>Total:</p><p>${total}</p> 
-                    {quantity !== undefined ? <p>{quantity}</p> : null}
+                    <h4>Total:</h4><p>${total}</p> 
+                    
                 </div>
              </div>
              </div>
