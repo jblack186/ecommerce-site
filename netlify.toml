@@ -1,5 +1,6 @@
 [build]
     functions = "functions"
+    oracledb = "oracledb"
 
 [dev]
     publish = "dist"
