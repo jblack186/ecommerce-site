@@ -6,7 +6,7 @@ import { withRouter } from 'react-router';
 
 const Login = (props) => {
     const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+const [password, setPassword] = useState('');
     const history = useHistory();
     const [token, setToken] = useState('');;
 
