@@ -1,2 +1,3 @@
 # for netlify deployment
 functions
+node_modules
