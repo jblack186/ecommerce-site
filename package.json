@@ -6,9 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon index.js",
-    "start": "./node_modules/.bin/netlify-lambda serve src2",
-    "build": "./node_modules/.bin/netlify-lambda build src2"
-  },
+    "start": "NODE_ENV=development ./node_modules/.bin/netlify-lambda serve src2",
+    "build": "NODE_ENV=production ./node_modules/.bin/netlify-lambda build src2"
+  },  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jblack186/ecommerce-site.git"
