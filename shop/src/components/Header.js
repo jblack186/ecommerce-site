@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import './Header.css';
 import Logo from './pics/Red.png';
 import NavBar from './NavBar';
-import { NavLink } from 'react-bootstrap';
+import { NavLink, Link } from 'react-router-dom';
 
 export default function Header(props) {
     const [scroll, setScroll] = useState(false)
@@ -26,7 +26,7 @@ export default function Header(props) {
                     <div className="row-one">
                         <img src={Logo} alt="logo" className="logo" />
                         <ul className="main-nav">
-                            <NavLink style={{color: "white"}} exact to="/categoryone"><li>>Shop</li></NavLink>
+                            <NavLink exact to="/categoryone" style={{color: "white"}}><li>>Shop</li></NavLink>
                             <li><a href="" style={{color: "white"}}>About Us</a></li>
                             <li><a href="" style={{color: "white"}}>Contact</a></li>
                             <li><a href="/register" style={{color: "white"}}>Sign Up</a></li>
