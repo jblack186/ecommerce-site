@@ -6,9 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon index.js",
-    "start": "NODE_ENV=development ./node_modules/.bin/netlify-lambda serve src2",
-    "build": "NODE_ENV=production ./node_modules/.bin/netlify-lambda build src2"
-  },  
+    "start": "node index.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jblack186/ecommerce-site.git"
@@ -39,7 +38,6 @@
     "knex": "^0.20.1",
     "knex-cleaner": "^1.3.0",
     "mustache-express": "^1.3.0",
-    "netlify-lambda": "^1.6.3",
     "nodemon": "^1.19.4",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",

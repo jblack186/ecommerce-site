@@ -1,6 +1,5 @@
 const express = require('express');
 const helmet = require('helmet');
-const mustacheExpress = require('mustache-express');
 const InventoryRouter = require('./m-r inventory/inventory-router.js');
 const DbInventoryRouter = require('./m-r inventory/database-inventory-router.js');
 const UsersRouter = require('./m-r users/users-router.js');
@@ -8,32 +7,20 @@ const CartRouter = require('./m-r cart/cart-router.js');
 const Register = require('./auth-routes/register.js');
 const Login = require('./auth-routes/login.js');
 const authRouter = require('./auth/authenticate-middleware.js');
-const session = require('express-session'); //install express session
 
-const db = require('./database/dbConfig.js');
 const User = require('./m-r users/users-model.js');
 const Cart = require('./m-r cart/cart-model.js');
 const cors = require('cors');
-const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const pgp = require('pg-promise')()
 const CONNECTION_STRING = "postgres://localhost:5432/jamisonblackwell"
 const dbOne = pgp(CONNECTION_STRING)
 const server = express();
-const dbEnv = process.env.DB_ENV || 'development';
-const config = require("./knexfile.js");
-
-console.log(dbOne)
 
 
 const secrets = require('./config/secrets.js');
 
-const router = express.Router();
-//config for engine
-server.engine('mustache', mustacheExpress());
-server.set('views', './views')
-server.set('view engine', 'mustache')
 
 server.use(bodyParser.urlencoded({extednded: false}))
 
@@ -80,12 +67,7 @@ server.use('/api/dbInventory', DbInventoryRouter);
 
 
 
-router.get('/test', authRouter, (req, res) => {
-  
-  res.status(200).json('hi')
-})
-  255 
-router.get('/cart', authenticateToken,  (req, res) => {
+server.get('/cart', authenticateToken,  (req, res) => {
   Cart.findAll()
   .then(cart => {
     console.log('req', req.user.subject)
@@ -112,15 +94,13 @@ function authenticateToken(req, res, next) {
 }
 
 
-router.get("/usr", function(req, res) {
+server.get("/usr", function(req, res) {
   const firstname = 'jblack186'
   User.findBy({username: firstname})
   .then(user => {
     res.status(200).json(user)
   })
 
+})
 
-
-module.exports = server
-
-
+module.exports = server;

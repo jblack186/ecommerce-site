@@ -229,7 +229,7 @@ useEffect(() => {
       <Route exact path='/login' render= {(props) => { return <Login  {...props} login={login} username={usernameLog} password={passwordLog} changeUsername={changeUsernameLog} changePassword={changePasswordLog} />}} />
       <Route exact path='/Basket2' render= {(props) => { return <Basket2 removeItem={removeItem} count={count} basket={carBasket} total={total} />}} />
       <Route exact path='/' render= {(props) => { return <HomeImages  {...props} />}} />
-      <Route exact path='/categoryone' render= {(props) => { return <CategoryOne count={count} {...props} filter={filter} polo={polosShirts ? polosShirts : polos} poloCart={polos} />}} />
+      <Route exact path='/categoryone/' render= {(props) => { return <CategoryOne count={count} {...props} filter={filter} polo={polosShirts ? polosShirts : polos} poloCart={polos} />}} />
       <Route exact path='/productpage/:id' render= {(props) => { return <ProductPage count={count} {...props}  total={total} add={add} minus={minus} quantity={quantity} polo={polos}  addToCart={addToCart} />}} />
     </div>
   );
