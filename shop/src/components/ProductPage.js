@@ -19,7 +19,7 @@ const [items, setItems] = useState([])
 const [cart, setCart] = useState()
 const [tempProd, setTempProd] = useState([JSON.parse(localStorage.getItem("product"))])
 const [count, setCount] = useState(0)
-
+console.log('Pprops', props.polo)
 useEffect(() => {
      const realCount =  localStorage.setItem('count', [JSON.stringify(props.count)])
     setCount(realCount)
@@ -63,7 +63,7 @@ useEffect(() => {
      })
 }, [])
 
-
+console.log(localStorage.getItem('items'))
 
 function getCart() {
     const get = localStorage.getItem("cart")
@@ -76,10 +76,10 @@ function getCart() {
     <div className='p-container'>
             {prod ? prod.map(item => {
                 return   <div className='prod-contain'>
-                             <img src={item.img} className='pic' alt='item-image'/> 
+                             <img src={localStorage.getItem('items')} className='pic' alt='item-image'/> 
                                  <div  className='item'>
-                                     <p className='name'>{item.item_name}</p> 
-                                     <p className='about'>{item.description} </p> 
+                                     <p className='name'>{localStorage.getItem('name')}</p> 
+                                     <p className='about'>{localStorage.getItem('description')} </p> 
                                      <div className='quantity-button'>
                                          <div className='num-quantity'>
                                          <p className='quantity'>{props.quantity}</p>
@@ -88,7 +88,7 @@ function getCart() {
                                              <FontAwesomeIcon style={{color: '#333333'}} onClick={props.minus} className='icon' icon={faArrowAltCircleDown} />
                                              </div>
                                          </div>
-                                         <p className='prices'>${item.price}</p>
+                                         <p className='prices'>${localStorage.getItem('price')}</p>
                                      </div>
                                      <div className='button-container'>
                                         <button className='prod-button' onClick={props.addToCart}>Add to Cart</button>
@@ -97,10 +97,10 @@ function getCart() {
                          </div>
              })  : null }
              
-             {prod.length === 0 ? tempProd.map(item => {
-                return   <div className='prod-contain'>
-                             <img src={item.img} className='pic' alt='item-image'/> 
-                                 <div  className='item'>
+             {/* {prod.length === 0 ? tempProd.map(item => {
+                return   <div className='prod-contain'> */}
+                             {/* <img src={item.img} className='pic' alt='item-image'/>  */}
+                                 {/* <div  className='item'>
                                      <p className='name'>{item.item_name}</p> 
                                      <p className='about'>{item.description} </p> 
                                      <div className='quantity-button'>
@@ -118,7 +118,7 @@ function getCart() {
                                     </div>
                                  </div>
                          </div>
-             }) : null }
+             }) : null } */}
             
            
 

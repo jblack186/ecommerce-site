@@ -44,7 +44,12 @@ const CategoryOne = (props) => {
         return items.reduce((acc, item) => acc + item.quantity * item.price, 0.0)
     }
 
+    // const setItem = e => {
+    //     e.preventDefault();
+    //     localStorage.setItem('item', e.target)
+    // }
 
+console.log('props',props)
     return (
 
         <div className='main-container'>
@@ -62,8 +67,13 @@ const CategoryOne = (props) => {
                         return <div className='super-container'>
                                     <NavLink style={{ color: 'black', textDecoration: 'none' }} exact to={`/productpage/${item.id}`}>
                                         <div>
+                                        {localStorage.setItem('items', item.img)}
+                                        {localStorage.setItem('name', item.item_name)}
+                                        {localStorage.setItem('price', item.price)}
+                                        {localStorage.setItem('description', item.description)}
+
                                         <div className='img-contain'>
-                                            <img src={item.img} className={!active ? 'item-pic' : 'item-pic-active'}  alt='item-image'/> 
+                                            <img  src={item.img} className={!active ? 'item-pic' : 'item-pic-active'}  alt='item-image'/> 
                                             </div>
                                             <div className={!active ? 'item-description' : 'item-description-active'}>
                                             <div className='descr'>
