@@ -41,9 +41,6 @@ const Basket2 = (props) => {
 console.log('TRUE', basket)
     return (
             <div>
-            <NavLink exact to="/categoryone" style={{ color: 'white', textDecoration: 'none' }}><div className='cart-header' >
-                <h1>RevTown</h1>
-            </div></NavLink>
             <div className='cart-container'>
             <div className='cart-form'>
             <div className='form-contain'>
