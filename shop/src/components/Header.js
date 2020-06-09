@@ -26,9 +26,7 @@ export default function Header(props) {
                     <div className="row-one">
                         <img src={Logo} alt="logo" className="logo" />
                         <ul className="main-nav">
-                        <NavLink exact to="/categoryone" style={{ color: 'white', textDecoration: 'none' }}><div className='cart-header' >
-                <h1>RevTown</h1>
-            </div></NavLink>
+                            <NavLink exact to="/categoryone" style={{color: "white"}}><li>Shop</li></NavLink>
                             <li><a href="" style={{color: "white"}}>About Us</a></li>
                             <li><a href="" style={{color: "white"}}>Contact</a></li>
                             <li><a href="/register" style={{color: "white"}}>Sign Up</a></li>
