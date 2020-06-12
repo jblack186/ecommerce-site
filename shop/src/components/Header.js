@@ -34,7 +34,7 @@ export default function Header(props) {
                     </div>
                 </nav>
                 <div className="hero-text-box">
-                    <h1>Find the perfect shirts.</h1> 
+                    <h1>Find the perfect shirt.</h1> 
                     <a className="btns btns-ghost" href="/categoryone">Find the right fit</a>
                     <a className="btns btns-full" href="/login">Login</a>
                 </div>
