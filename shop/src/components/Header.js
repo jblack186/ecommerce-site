@@ -3,9 +3,20 @@ import './Header.css';
 import Logo from './pics/Red.png';
 import NavBar from './NavBar';
 import { NavLink, Link } from 'react-router-dom';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+
 
 export default function Header(props) {
-    const [scroll, setScroll] = useState(false)
+    const [scroll, setScroll] = useState(false);
+    const [openClose, setOpenClose] = useState(false);
+
+    const toggle = e => {
+        e.preventDefault();
+        console.log('yep')
+        setOpenClose(!openClose);
+    }
+
     useEffect(() => {
         window.addEventListener('scroll', () => {
             const isTop = window.scrollY < 840;
@@ -25,6 +36,14 @@ export default function Header(props) {
                 <nav>
                     <div className="row-one">
                         <img src={Logo} alt="logo" className="logo" />
+                        <div className='hamburger-nav'>
+                        <FontAwesomeIcon icon={faBars} onClick={toggle} />
+                        <ul className={openClose === false ? 'nav-closed' : 'nav-open'}>
+                            <li><a href="/categoryone" style={{color: "white"}}>Shop</a></li>
+                            <li><a href="/Basket2" style={{color: "white"}}>Checkout</a></li>
+                            <li><a href="/register" style={{color: "white"}}>Logout</a></li>
+                        </ul>
+                        </div>
                         <ul className="main-nav">
                             <NavLink exact to="/categoryone" style={{color: "white"}}><li>Shop</li></NavLink>
                             <li><a href="" style={{color: "white"}}>About Us</a></li>

@@ -17,10 +17,10 @@ const HomeImages = (props) => {
 
 
     return (
-        <div>
+        <div className='home-images-container'>
             <Header />
             <div className='home-images'>
-                <div className='image-box'>
+                <div>
                     <div className='overlay'>
                         <p className='text'>White Shirts</p>
                         <button id='overlay-button' type="button" class="btn btn-primary">Shop</button>
@@ -29,7 +29,7 @@ const HomeImages = (props) => {
                        
                     
                 </div>
-                 <div className='image-box'>
+                 <div>
                  <div className='overlay'>
                         <p className='text'>Dress Shirts</p>
                         <button id='overlay-button' type="button" className="btn btn-primary">Shop</button>
@@ -37,7 +37,7 @@ const HomeImages = (props) => {
 
                      <img className='home-image' src={Banter} alt='' />
                 </div>
-                <div className='image-box'>
+                <div>
                 <div className='overlay'>
                         <p className='text'>Casual Shirts</p>
                         <button id='overlay-button' type="button" className="btn btn-primary">Shop</button>

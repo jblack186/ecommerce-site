@@ -5,6 +5,13 @@
 
 }
 
+@media screen and (max-width: 510px) {
+    .section-images {
+        display: none;
+
+    }
+}
+
 
 .image-showcase {
     list-style: none;

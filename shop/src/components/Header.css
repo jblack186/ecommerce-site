@@ -3,7 +3,9 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
+
 
 html {
     background-color: #d9d9d9;
@@ -12,19 +14,29 @@ html {
     font-family: 'Lato', 'Arial', sans-serif;
     font-weight: 300;
     text-rendering: optimizeLegibility;
-    
+
 }
+
 
 header {
     overflow: hidden;
 
 }
 
-
-.contai{
-
-    margin: 0;
+.contai {
+    width: 100vmax;
 }
+
+
+@media screen and (max-width: 1025px) {
+    .contai{
+        width: 100vw;
+        margin: 0;
+    }
+}
+
+
+
 
 .sticky {
     overflow: hidden;
@@ -34,18 +46,21 @@ header {
     width: 100%;
     height: 56px;
     background: white;
-    /* border-bottom: 1px solid transparent; */
     z-index: 99;  
     transition: transform 1s, background 1s;
   
 
 } 
 
-/* .sticky:hover {
-    background: #e67e22;
-    transition:  background 1s;
+@media screen and (max-width: 1025px) {
+    .sticky {
+        width: 100vmax;
+
+    }
 }
- */
+
+
+
 
 .hide {
     position: absolute;
@@ -81,6 +96,15 @@ header {
     margin: 0 auto;
 }
 
+@media screen and (max-width: 1025px) {
+    .row-one {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px;
+
+    }
+}
+
 section {
     padding: 80px 0;
 }
@@ -97,6 +121,16 @@ header {
      background-attachment: fixed; 
  
 }
+
+@media screen and (max-width: 1025px) {
+    header {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+
+    }
+}
+
 
 header h1 {
     margin-top: 0;
@@ -116,6 +150,15 @@ header h1 {
     text-align: left;
     transform: translate(-50%, -100%);
 }
+
+@media screen and (max-width: 1025px) {
+    .hero-text-box {
+        width: 100%;
+        margin: auto 0;
+
+    }
+}
+
 
 .logo {
     height: 100px;
@@ -204,3 +247,44 @@ header h1 {
 
 }
 
+@media screen and (max-width: 1025px) {
+    .main-nav {
+        display: none;
+    }
+}
+
+    .hamburger-nav {
+        color: white;
+        cursor: pointer;
+        width: 100px;
+    }
+
+    @media screen and (min-width: 1110px) {
+        .hamburger-nav {
+           display: none;
+        }
+    }
+    
+.nav-open {
+    display: flex;
+    flex-direction: column;
+    justify-self: flex-end;
+    list-style: none;
+    animation-name: flow;
+    animation-duration: .5s;
+}
+
+.nav-closed {
+    display: none;
+    transition: transform .5s;
+
+}
+
+@keyframes flow {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        translate: translateY(100%);
+    }
+}

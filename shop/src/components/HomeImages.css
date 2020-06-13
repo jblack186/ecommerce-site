@@ -1,3 +1,11 @@
+@media screen and (max-width: 510px) {
+    .home-images-container{
+        width: 100vw;
+        margin: 0px;
+    }
+}
+
+
 .home-images {
     margin: 0 auto;
     margin-top: 50px;
@@ -8,19 +16,21 @@
     
 }
 
+@media screen and (max-width: 510px) {
+    .home-images {
+        display: none;
+
+
+
+    }
+}
+
+
 .home-image {
     width: 400px;
     height: 540px;
 }
 
-/* .banner {
-    background-image: 
-    url(https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80);
-    width: 400px;
-    height: 540px;
-    background-size: cover;
-    text-align: center;
-} */
 
 .overlay-text {
     position: absolute;
@@ -83,12 +93,6 @@
     font-size: 65px;
 }
 
-.first-image {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-}
 
 .mid-image {
     width: 680px;

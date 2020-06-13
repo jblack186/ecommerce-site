@@ -22,6 +22,14 @@ html {
 	
 }
 
+@media screen and (max-width: 510px) {
+    .container {
+        display: none;
+
+    }
+}
+
+
 .head-two {
 	width: 100%;
 	display: flex;

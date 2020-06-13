@@ -20,7 +20,6 @@ import Routes from './components/Routes';
 import Orders from './components/Orders'
 import Features from './components/Features';
 import Collage from './components/Collage';
-import ParallaxImage from './components/ParallaxImage';
 
 const App = () => {
   const [polos, setPolos] = useState([])
@@ -223,7 +222,6 @@ useEffect(() => {
       <Route exact path='/head' render= {(props) => { return <Header count={count} {...props} />}} />
       <Route exact path='/feat' render= {(props) => { return <Features  {...props} />}} />
       <Route exact path='/collage' render= {(props) => { return <Collage  {...props} />}} />
-      <Route exact path='/parallax' render= {(props) => { return <ParallaxImage  {...props} />}} />
       <Orders />
       <Route exact path='/register' render= {(props) => { return <Register register={register} username={username} password={password} changeUsername={changeUsername} changePassword={changePassword} {...props} />}} />
       <Route exact path='/login' render= {(props) => { return <Login  {...props} login={login} username={usernameLog} password={passwordLog} changeUsername={changeUsernameLog} changePassword={changePasswordLog} />}} />
