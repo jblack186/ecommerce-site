@@ -1,4 +1,4 @@
-/* .sticky {
+.sticky {
     overflow: hidden;
     position: fixed;
     top: 8;
@@ -11,13 +11,6 @@
   
 
 }  
-
- @media screen and (max-width: 1025px) {
-    .sticky {
-        width: 100vmax;
-
-    }
-} */
 
 
 .container {
