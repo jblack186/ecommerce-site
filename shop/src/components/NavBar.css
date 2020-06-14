@@ -1,18 +1,31 @@
+/* .sticky {
+    overflow: hidden;
+    position: fixed;
+    top: 8;
+    left: 0;
+    width: 100%;
+    height: max-content;
+    background: white;
+    z-index: 99;  
+    transition: transform 1s, background 1s;
+  
+
+}  
+
+ @media screen and (max-width: 1025px) {
+    .sticky {
+        width: 100vmax;
+
+    }
+} */
+
+
 .container {
     display: flex;
     justify-content: space-evenly;
 
 
 }
-
-/* .sticky {
-    position: fixed;
-    top: 8;
-    left: 0;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.98);
-} */
-
 
 
 .home-container {
@@ -22,17 +35,29 @@
     width: 100vw;
     margin: 0;
     padding: 0;
-    z-index:99;   
     background-color : white;
+    /* animation-name: slide;
+    animation-duration: 5s; */
  
 }
 
-@media screen and (max-width: 510px) {
+@keyframes slide {
+    from {
+        transform: translateX(150%);
+    }
+    to {
+        translate: translateX(100%);
+    }
+}
+
+@media screen and (max-width: 1025px) {
     .home-container {
-        width: 100vmax;
+        width: 100%;
+        justify-content: space-between;
 
     }
 }
+
 
 .clothes-list {
     width: 500px;
@@ -41,9 +66,16 @@
     list-style: none;
 }
 
+@media screen and (max-width: 1025px) {
+    .clothes-list{
+        display: none;
+
+    }
+}
+
 
 .cart-about {
-    width: 100px;
+    width: 40px;
     display: flex;
     align-content: center;
     justify-content: space-between;
@@ -68,20 +100,9 @@
 .clothes-links {
     font-size: 22px;
     color: black;
-    opacity: 5;
     
     
 }
-
- /* .clothes-links li:link,
- .clothes-links li:visited {
-    position: fixed;
-    top: 8;
-    left: 0;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.98);
-
-} */
 
 .home-image {
     width: 80px;
@@ -92,23 +113,10 @@
 
 
 
+
+
 /* .sticky {
-    position: fixed;
-    top: 8;
-    left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.98);
-} */
-
-
-.sticky {
-    position: fixed;
-    top: 8;
-    left: 0;
-    width: 100%;
-    background: white;
-    /* background-color: rgba(255, 255, 255, 0.98); */
-    /* z-index:99;   */
   
 
-} 
+}  */

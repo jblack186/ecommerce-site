@@ -52,15 +52,6 @@ header {
 
 } 
 
-@media screen and (max-width: 1025px) {
-    .sticky {
-        width: 100vmax;
-
-    }
-}
-
-
-
 
 .hide {
     position: absolute;
@@ -254,14 +245,22 @@ header h1 {
 }
 
     .hamburger-nav {
-        color: white;
         cursor: pointer;
         width: 100px;
+        background-color: gray;
+        color: black;
+        border-radius: 5px;
+        padding: 3px;
+        border: 1px solid silver;
+        
     }
 
     @media screen and (min-width: 1110px) {
         .hamburger-nav {
            display: none;
+           z-index: 100;
+
+
         }
     }
     

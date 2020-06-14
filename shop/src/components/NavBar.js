@@ -4,6 +4,8 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { Link, NavLink } from 'react-router-dom';
 import { Anomaly } from '../img/anomaly-WWesmHEgXDs-unsplash.jpg';
+import HamburgerNav from './HamburgerNav';
+import './Header.css'
 
 
 function NavBar(props) {
@@ -24,9 +26,9 @@ function NavBar(props) {
                             <NavLink style={{ color: 'black', textDecoration: 'none' }}  exact to=''><li className='clothes-links'>GIFTS</li></NavLink>    
                         </div>
                     </div>
+                    <HamburgerNav />
                     <div className='cart-about'>
-                        <p>About Us</p>  
-                        <NavLink exact to ='/Basket2'><div><FontAwesomeIcon icon={faCartArrowDown} /></div></NavLink>
+                        <NavLink exact to ='/Basket2'><div><FontAwesomeIcon style={{color: 'blue'}} icon={faCartArrowDown} /></div></NavLink>
                         <p>{props.count}</p>
                     </div>  
                     
