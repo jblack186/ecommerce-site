@@ -1,5 +1,7 @@
+.contai {
+}
+
 .sticky {
-    overflow: hidden;
     position: fixed;
     top: 8;
     left: 0;
@@ -8,9 +10,13 @@
     background: white;
     z-index: 99;  
     transition: transform 1s, background 1s;
-  
 
-}  
+}
+
+.hide {
+    overflow: hidden;
+
+}
 
 
 .container {
@@ -31,6 +37,7 @@
     background-color : white;
     /* animation-name: slide;
     animation-duration: 5s; */
+
  
 }
 

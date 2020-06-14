@@ -23,10 +23,6 @@ header {
 
 }
 
-.contai {
-    width: 100vmax;
-}
-
 
 @media screen and (max-width: 1025px) {
     .contai{
@@ -38,24 +34,11 @@ header {
 
 
 
-.sticky {
-    overflow: hidden;
-    position: fixed;
-    top: 8;
-    left: 0;
-    width: 100%;
-    height: 56px;
-    background: white;
-    z-index: 99;  
-    transition: transform 1s, background 1s;
-  
 
-} 
 
 
 .hide {
     position: absolute;
-     z-index: 0;
     transform: translate(1400px, 0px);
      background-color: lightgray;
 
@@ -287,3 +270,4 @@ header h1 {
         translate: translateY(100%);
     }
 }
+

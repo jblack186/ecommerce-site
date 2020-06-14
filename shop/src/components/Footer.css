@@ -3,7 +3,7 @@
     height: 350px;
     display: flex;
     flex-direction: column;
-    z-index: 99;
+    /* z-index: 99; */
 
     
 }
@@ -35,7 +35,7 @@
     display: flex;
     justify-content: space-evenly;
     height: 80%;
-    z-index: 99;
+    /* z-index: 99; */
  
 }
 
@@ -45,7 +45,7 @@
     display: flex;
     justify-content: space-evenly;
     color: black;
-    z-index: 99;
+    /* z-index: 99; */
 
     
 }
