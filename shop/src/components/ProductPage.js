@@ -97,31 +97,6 @@ function getCart() {
                          </div>
              })  : null }
              
-             {/* {prod.length === 0 ? tempProd.map(item => {
-                return   <div className='prod-contain'> */}
-                             {/* <img src={item.img} className='pic' alt='item-image'/>  */}
-                                 {/* <div  className='item'>
-                                     <p className='name'>{item.item_name}</p> 
-                                     <p className='about'>{item.description} </p> 
-                                     <div className='quantity-button'>
-                                         <div className='num-quantity'>
-                                         <p className='quantity'>{props.quantity}</p>
-                                         <div className='arrow'>
-                                             <FontAwesomeIcon style={{color: '#333333'}} onClick={props.add} className='icon' icon={faArrowAltCircleUp} />
-                                             <FontAwesomeIcon style={{color: '#333333'}} onClick={props.minus} className='icon' icon={faArrowAltCircleDown} />
-                                             </div>
-                                         </div>
-                                         <p className='prices'>${item.price}</p>
-                                     </div>
-                                     <div className='button-container'>
-                                         <button className='prod-button' onClick={props.addToCart} >Add to Cart</button>
-                                    </div>
-                                 </div>
-                         </div>
-             }) : null } */}
-            
-           
-
             <Footer />
             </div>
         </div>

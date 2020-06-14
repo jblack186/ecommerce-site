@@ -388,6 +388,8 @@ to{color: white}
 
 .descr p {
     font-size: 100%;
+    word-wrap:break-word;
+
     
 }
 
@@ -395,6 +397,8 @@ to{color: white}
 
 .price {
    align-self: flex-end;
+   word-wrap:break-word;
+
    
 }
 
