@@ -1,6 +1,3 @@
-.contai {
-}
-
 .sticky {
     position: fixed;
     top: 8;
@@ -35,9 +32,6 @@
     margin: 0;
     padding: 0;
     background-color : white;
-    /* animation-name: slide;
-    animation-duration: 5s; */
-
  
 }
 
@@ -109,14 +103,3 @@
     height: 60px;
     
 }
-
-
-
-
-
-
-/* .sticky {
-    width: 100%;
-  
-
-}  */

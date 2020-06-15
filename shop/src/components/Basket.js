@@ -1,8 +1,7 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
-const Basket = (props) => {
+const Basket = () => {
     const [items, setItems] = useState([])
 
 

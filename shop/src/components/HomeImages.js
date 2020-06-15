@@ -1,17 +1,14 @@
 import React from 'react';
 import './HomeImages.css';
-import NavBar from './NavBar';
 import Footer from './Footer';
 import Anomaly from '../img/anomaly-WWesmHEgXDs-unsplash.jpg';
 import Banter from '../img/banter-snaps-eLOwnWvK9Fk-unsplash (1).jpg';
 import Dale from '../img/dale-alejandro-RYrMPoxzaZ0-unsplash.jpg';
-import Adrian from '../img/sajiam-n8bZJpA0hig-unsplash.jpg';
-import axios from 'axios';
 import Collage from './Collage';
 import Features from './Features';
 import Header from './Header';
 
-const HomeImages = (props) => {
+const HomeImages = () => {
 
 
 

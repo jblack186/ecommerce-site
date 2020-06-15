@@ -1,28 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import './CategoryOne.css';
 import NavBar from './NavBar';
-import axios from 'axios';
 import Footer from './Footer';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom';
-import {useParams, useLocation, useHistory} from 'react-router';
 import SideBar from './SideBar';
 
 const CategoryOne = (props) => {
-    const location = useLocation();
-    const history = useHistory();
-    const [polos, setPolos] = useState();
     const [active, setActive] = useState(false)
-    const [loading, setLoading] = useState(false)
-    const [length, setLength] = useState()
  
-    useEffect(() => {
-        setLength(props.polo.length)
-
-    }, [])
-
-
 
     useEffect(() => {
       
@@ -32,24 +17,10 @@ const CategoryOne = (props) => {
 
    
 
-    function slide(){
-       
-    }
-
     function formatPrice(price) {
         return `$${(price * 0.01).toFixed(2)}`
     }
 
-    function totalPrice(items) {
-        return items.reduce((acc, item) => acc + item.quantity * item.price, 0.0)
-    }
-
-    // const setItem = e => {
-    //     e.preventDefault();
-    //     localStorage.setItem('item', e.target)
-    // }
-
-console.log('props',props)
     return (
 
         <div className='main-container'>

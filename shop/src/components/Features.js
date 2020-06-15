@@ -1,6 +1,5 @@
 import React from 'react';
 import './Features.css';
-import { IonButton, IonSpinner } from '@ionic/react';
 import '@ionic/react/css/core.css';
 import Home from '../img/home-outline.svg';
 

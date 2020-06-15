@@ -32,13 +32,11 @@ const Basket2 = (props) => {
             return acc + item.price * item.quantity
 
         }, 0)
-        console.log('TOTA', tota)
         setTotal(tota)
         }
     }, [props.removeItem])
 
     
-console.log('TRUE', basket)
     return (
             <div>
             <NavLink exact to="/categoryone" style={{ color: 'white', textDecoration: 'none' }}><div className='cart-header' >

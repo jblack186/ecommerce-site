@@ -8,7 +8,6 @@ export default function HamburgerNav () {
 
     const toggle = e => {
         e.preventDefault();
-        console.log('yep')
         setOpenClose(!openClose);
     }
 
@@ -20,7 +19,7 @@ export default function HamburgerNav () {
                 <ul className={openClose === false ? 'nav-closed' : 'nav-open'}>
                     <li><a href="/categoryone" style={{color: "white"}}>Shop</a></li>
                     <li><a href="/Basket2" style={{color: "white"}}>Checkout</a></li>
-                    <li><a href="/register" style={{color: "white"}}>Logout</a></li>
+                    <li><a href="/" style={{color: "white"}}>Logout</a></li>
                 </ul>
              </div>
 

@@ -33,7 +33,7 @@ export default function Header(props) {
                             <NavLink exact to="/categoryone" style={{color: "white"}}><li>Shop</li></NavLink>
                             <li><a href="" style={{color: "white"}}>About Us</a></li>
                             <li><a href="" style={{color: "white"}}>Contact</a></li>
-                            <li><a href="/register" style={{color: "white"}}>Sign Up</a></li>
+                            <li><a href="" style={{color: "white"}}>Sign Up</a></li>
                         </ul>
                     </div>
                 </nav>

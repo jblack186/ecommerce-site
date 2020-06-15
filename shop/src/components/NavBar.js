@@ -2,8 +2,7 @@ import React from 'react';
 import './NavBar.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faCartArrowDown } from '@fortawesome/free-solid-svg-icons'
-import { Link, NavLink } from 'react-router-dom';
-import { Anomaly } from '../img/anomaly-WWesmHEgXDs-unsplash.jpg';
+import { NavLink } from 'react-router-dom';
 import HamburgerNav from './HamburgerNav';
 import './Header.css'
 
