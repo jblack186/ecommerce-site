@@ -163,9 +163,9 @@ to{color: white}
 
 @media screen and (max-width: 1025px) {
     .img-contain {
-        width: 300px;
-        height: 200px;
-        margin-right: 100px;
+        width: 200px;
+        height: 100px;
+        margin-right: 150px;
 
     }
 }
@@ -375,6 +375,7 @@ to{color: white}
 @media screen and (max-width: 1025px) {
     .descr {
         margin-top: 100px;
+        margin-right: 150px;
 
     }
 
