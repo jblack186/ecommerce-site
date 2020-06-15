@@ -34,8 +34,8 @@ const CategoryOne = (props) => {
              
                 <div className='item-container'>
                     <div className='items'>
-                        {props.polo.map(item => {  
-                        return <div className='super-container'>
+                        {props.polo.map((item, index) => {  
+                        return <div  key={index} className='super-container'>
                                     <NavLink style={{ color: 'black', textDecoration: 'none' }} exact to={`/productpage/${item.id}`}>
                                         <div>
                                         <div className='item-flex'>

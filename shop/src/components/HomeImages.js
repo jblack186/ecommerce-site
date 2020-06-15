@@ -20,9 +20,9 @@ const HomeImages = () => {
                 <div>
                     <div className='overlay'>
                         <p className='text'>White Shirts</p>
-                        <button id='overlay-button' type="button" class="btn btn-primary">Shop</button>
+                        <button id='overlay-button' type="button" className="btn btn-primary">Shop</button>
                     </div>
-                        <img className='white-shirt' className='home-image' src={Anomaly} alt='' />
+                        <img className='home-image' src={Anomaly} alt='khb' />
                        
                     
                 </div>

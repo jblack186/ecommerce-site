@@ -22,7 +22,7 @@ export default function Features() {
 
                 <div className='crow'>
                     <div className='test'>
-                                <img src={Home} style={{width: '38px'}}/>
+                                <img src={Home} style={{width: '38px'}} alt='awesome' />
                                 <h3>Up to 365 days/year</h3>
                                 <p className='long-copy'>
                                 Hello, were Omnifood, your new premium food delivery service. e know you're always busy. No time fpr cooking. 
@@ -31,7 +31,7 @@ export default function Features() {
 
                             </div>
                             <div className='test'>
-                                <img src={Home} style={{width: '38px'}}/>
+                                <img src={Home} style={{width: '38px'}} alt='awesowme'/>
                                 <h3>Up to 365 days/year</h3>
                                 <p className='long-copy'>
                                 Hello, were Omnifood, your new premium food delivery service. e know you're always busy. No time fpr cooking. 
@@ -40,7 +40,7 @@ export default function Features() {
 
                             </div>
                             <div className='test'>
-                                <img src={Home} style={{width: '38px'}}/>
+                                <img src={Home} style={{width: '38px'}} alt='awesdome'/>
                                 <h3>Up to 365 days/year</h3>
                                 <p className='long-copy'>
                                 Hello, were Omnifood, your new premium food delivery service. e know you're always busy. No time fpr cooking. 
@@ -49,7 +49,7 @@ export default function Features() {
 
                             </div>
                             <div className='test'>
-                                <img src={Home} style={{width: '38px'}}/>
+                                <img src={Home} style={{width: '38px'}} alt='awesomeef'/>
                                 <h3>Up to 365 days/year</h3>
                                 <p className='long-copy'>
                                 Hello, were Omnifood, your new premium food delivery service. e know you're always busy. No time fpr cooking. 
