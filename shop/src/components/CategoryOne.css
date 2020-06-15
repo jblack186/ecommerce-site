@@ -165,6 +165,7 @@ to{color: white}
     .img-contain {
         width: 300px;
         height: 200px;
+        margin-right: 100px;
 
     }
 }

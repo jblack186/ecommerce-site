@@ -96,14 +96,6 @@ header {
  
 }
 
-@media screen and (max-width: 1025px) {
-    header {
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-
-    }
-}
 
 
 header h1 {
@@ -115,6 +107,18 @@ header h1 {
     text-transform: uppercase;
     word-spacing: 4px;
 }
+
+@media screen and (max-width: 1025px) {
+    header h1{
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        margin-top: 500px;
+
+    }
+}
+
+
 
 .hero-text-box {
     position: absolute;
@@ -129,6 +133,7 @@ header h1 {
     .hero-text-box {
         width: 100%;
         margin: auto 0;
+        margin-top: 50px;
 
     }
 }
