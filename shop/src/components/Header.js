@@ -30,7 +30,7 @@ export default function Header(props) {
                         <img src={Logo} alt="logo" className="logo" />
                         <HamburgerNav />
                         <ul className="main-nav">
-                            <NavLink exact to="/categoryone" style={{color: "white"}}><li>Shop</li></NavLink>
+                            <NavLink exact to="/categoryone" style={{color: "white"}}><li>SHOP</li></NavLink>
                             <li><a href="" style={{color: "white"}}>About Us</a></li>
                             <li><a href="" style={{color: "white"}}>Contact</a></li>
                             <li><a href="" style={{color: "white"}}>Sign Up</a></li>
